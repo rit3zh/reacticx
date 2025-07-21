@@ -1,7 +1,0 @@
-{
-  "/_not-found/page": "/_not-found",
-  "/api/search/route": "/api/search",
-  "/changelog/page": "/changelog",
-  "/docs/[[...slug]]/page": "/docs/[[...slug]]",
-  "/(home)/page": "/"
-}

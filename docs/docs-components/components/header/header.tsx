@@ -101,12 +101,12 @@ export const navLinks = [
 export const socialLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/rit3zh",
+    href: "https://github.com/rit3zh/reacticx",
     icon: GithubIcon,
   },
   {
     label: "Discord",
-    href: "https://discord.gg/yourinvite",
+    href: "https://discord.gg/bvEpjhKgar",
     icon: DiscordIcon,
   },
   {

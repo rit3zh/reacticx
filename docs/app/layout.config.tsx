@@ -37,7 +37,7 @@ export const baseOptions = <T extends Partial<BaseLayoutProps>>(
     {
       type: "custom",
       children: (
-        <GithubInfo owner="rit3zh" repo="glow-ui" className="lg:-mx-2" />
+        <GithubInfo owner="rit3zh" repo="reacticx" className="lg:-mx-2" />
       ),
     },
   ],

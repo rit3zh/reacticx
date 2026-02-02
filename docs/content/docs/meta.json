@@ -52,6 +52,8 @@
     "components/bento-grid",
     "components/blur-carousel",
     "components/button",
+    "components/bottom-sheet",
+    "components/bottom-sheet-stack",
     "components/card",
     "components/card-list",
     "components/card-stack",

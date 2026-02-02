@@ -65,9 +65,21 @@ const nextConfig = {
   },
   reactStrictMode: true,
   cacheComponents: true,
-  serverExternalPackages: ["twoslash", "typescript"],
+  serverExternalPackages: ["twoslash", "typescript", "shiki", "gsap", "ogl", "three"],
   experimental: {
     turbopackFileSystemCacheForDev: true,
+  },
+  webpack: (config, { isServer }) => {
+    // Exclude heavy packages from server bundle to reduce function size
+    if (isServer) {
+      config.externals = config.externals || [];
+      config.externals.push({
+        'shiki': 'commonjs shiki',
+        'gsap': 'commonjs gsap',
+        'ogl': 'commonjs ogl',
+      });
+    }
+    return config;
   },
 };
 

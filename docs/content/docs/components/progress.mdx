@@ -1,0 +1,57 @@
+---
+title: Progress
+description: An animated progress bar that smoothly fills based on progress with optional gradient
+lastModified: 2025-01-31
+icon: Pipette
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="progress"
+  comment={["React Native Reanimated", "Expo Linear Gradient"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/progress.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated expo-linear-gradient
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/organisms/progress```
+  <ComponentSource name="progress" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="progress" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/progress.ts"
+  name="AnimatedProgressBarProps"
+/>
+
+<PreviewComment
+  comments={["React Native Reanimated", "Expo Linear Gradient"]}
+/>

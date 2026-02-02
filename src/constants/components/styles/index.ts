@@ -1,9 +1,5 @@
-// types/designSystem.ts
-import { ViewStyle, TextStyle, ImageStyle } from "react-native";
+import { ViewStyle, TextStyle } from "react-native";
 
-// =============================================================================
-// SPACING SYSTEM
-// =============================================================================
 export type SpacingKey =
   | "none"
   | "xs"
@@ -41,9 +37,6 @@ export const spacingStyles: Record<SpacingKey, number> = {
   "10xl": 128,
 };
 
-// =============================================================================
-// BORDER RADIUS SYSTEM
-// =============================================================================
 export type BorderRadiusKey =
   | "none"
   | "xs"
@@ -85,9 +78,6 @@ export const borderRadiusStyles: Record<BorderRadiusKey, number> = {
   pill: 500,
 };
 
-// =============================================================================
-// TYPOGRAPHY SYSTEM
-// =============================================================================
 export type FontSizeKey =
   | "xs"
   | "sm"
@@ -160,9 +150,6 @@ export const lineHeightStyles: Record<LineHeightKey, number> = {
   loose: 2,
 };
 
-// =============================================================================
-// COLOR SYSTEM
-// =============================================================================
 export type ColorKey =
   | "transparent"
   | "black"
@@ -294,9 +281,6 @@ export const colorStyles: Record<ColorKey, string> = {
   "purple-900": "#581c87",
 };
 
-// =============================================================================
-// SHADOW SYSTEM
-// =============================================================================
 export type ShadowKey =
   | "none"
   | "xs"
@@ -366,9 +350,6 @@ export const shadowStyles: Record<ShadowKey, ViewStyle> = {
   },
 };
 
-// =============================================================================
-// OPACITY SYSTEM
-// =============================================================================
 export type OpacityKey =
   | "0"
   | "5"
@@ -404,9 +385,6 @@ export const opacityStyles: Record<OpacityKey, number> = {
   "100": 1,
 };
 
-// =============================================================================
-// BORDER WIDTH SYSTEM
-// =============================================================================
 export type BorderWidthKey = "none" | "xs" | "sm" | "base" | "md" | "lg" | "xl";
 
 export const borderWidthStyles: Record<BorderWidthKey, number> = {
@@ -419,11 +397,6 @@ export const borderWidthStyles: Record<BorderWidthKey, number> = {
   xl: 4,
 };
 
-// =============================================================================
-// UTILITY FUNCTIONS
-// =============================================================================
-
-// Spacing utilities
 export const generatePadding = (value: SpacingKey | number): ViewStyle => {
   const paddingValue = typeof value === "string" ? spacingStyles[value] : value;
   return { padding: paddingValue };
@@ -454,7 +427,6 @@ export const generateMarginY = (value: SpacingKey | number): ViewStyle => {
   return { marginVertical: marginValue };
 };
 
-// Border radius utilities
 type BorderCorner = "topLeft" | "topRight" | "bottomLeft" | "bottomRight";
 
 export const generateBorderRadius = (
@@ -497,7 +469,6 @@ export const generateCornerRadius = (
   return style;
 };
 
-// Typography utilities
 export const generateTextStyle = (config: {
   fontSize?: FontSizeKey | number;
   fontWeight?: FontWeightKey;
@@ -540,7 +511,6 @@ export const generateTextStyle = (config: {
   return style;
 };
 
-// Color utilities
 export const generateBackgroundColor = (
   color: ColorKey | string,
 ): ViewStyle => {
@@ -559,7 +529,6 @@ export const generateBorderColor = (color: ColorKey | string): ViewStyle => {
   return { borderColor: colorValue };
 };
 
-// Border utilities
 export const generateBorder = (
   width: BorderWidthKey | number,
   color: ColorKey | string,
@@ -577,7 +546,6 @@ export const generateBorder = (
   };
 };
 
-// Flex utilities
 export const generateFlex = (value: number = 1): ViewStyle => ({
   flex: value,
 });
@@ -600,7 +568,6 @@ export const generateAlignItems = (
   alignItems: align,
 });
 
-// Positioning utilities
 export const generatePosition = (
   position: ViewStyle["position"],
 ): ViewStyle => ({
@@ -627,7 +594,6 @@ export const generateRight = (value: SpacingKey | number): ViewStyle => {
   return { right: rightValue };
 };
 
-// Dimension utilities
 export const generateWidth = (
   value: SpacingKey | number | string,
 ): ViewStyle => {
@@ -646,18 +612,15 @@ export const generateHeight = (
   return { height: value as number };
 };
 
-// Opacity utility
 export const generateOpacity = (value: OpacityKey | number): ViewStyle => {
   const opacityValue = typeof value === "string" ? opacityStyles[value] : value;
   return { opacity: opacityValue };
 };
 
-// Shadow utility
 export const generateShadow = (shadow: ShadowKey): ViewStyle => {
   return shadowStyles[shadow];
 };
 
-// Combined style generators
 export const generateViewStyle = (config: {
   padding?: SpacingKey | number;
   margin?: SpacingKey | number;

@@ -1,21 +1,20 @@
 <div align="center">
-  <img src="images/glow/glow_ui_poster.png" alt="Glow UI Poster" width="800" />
+  <img src="https://i.postimg.cc/5y1vMLJs/reacticx-trademark-without-trademark.png" alt="Reacticx Poster" width="800" />
 </div>
 
 <h1 align="center">
-  <a href="https://github.com/rit3zh/glow-ui" target="_blank" rel="noopener noreferrer">
+  <a href="https://github.com/rit3zh/reacticx" target="_blank" rel="noopener noreferrer">
     💅
   </a>
 </h1>
 
 <p align="center">
   <!-- <strong>Glow UI</strong><br> -->
-  Effortless design. Flawless components. Shine bright with every interface with Glow UI.
-</p>
+  Beautiful React Native components. One command away.</p>
 
 <div align="center">
   <p>
-    <img src="https://img.shields.io/npm/v/rn-glow.svg" alt="Version" />
+    <img src="https://img.shields.io/npm/v/reacticx.svg?style=flat-square" alt="Version" />
     <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
     <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build Status" />
     <img src="https://img.shields.io/badge/PRs-welcome-purple.svg" alt="PRs Welcome" />
@@ -26,23 +25,9 @@
 </p>
 </div>
 
-### 🚀 Overview
-
-**Glow UI** is a modern, accessible, and customizable React component library designed to help developers build beautiful and responsive user interfaces with ease. Our components are built with performance, accessibility, and developer experience in mind.
-
-## ✨ Features
-
-- 🎨 Beautiful and modern design system
-- ♿️ Fully accessible components
-- 📱 Responsive and mobile-friendly
-- 🎯 TypeScript support
-- 🎭 Highly customizable
-- ⚡️ Optimized performance
-- 🧩 Easy to integrate
-
 ## 📚 Documentation
 
-Visit our [documentation](https://glow-ui.xyz/) to learn more about our components and how to use them.
+Visit our [documentation](https://glow-ui.vercel.app/) to learn more about our components and how to use them.
 
 ## 🤝 Contributing
 
@@ -50,10 +35,10 @@ We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING
 
 ## 📝 License
 
-MIT © [Glow UI](https://glow-ui.xyz/)
+MIT © [rit3zh](https://github.com/rit3zh)
 
 ---
 
-<div align="center">
-  Made with the ❤️ of <a href="https://github.com/rit3zh">rit3zh</a>
-</div>
+<p align="center">
+  Made with ❤️ for the React Native community
+</p>

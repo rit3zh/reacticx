@@ -1,0 +1,74 @@
+---
+title: Scrollable Search
+description: A pull to search layout with smooth scroll animations
+lastModified: 2025-01-31
+icon: Mouse
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="scrollable-search"
+  comment={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "React Native Safe Area Context",
+    "Expo Blur",
+  ]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/scrollable-search.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated react-native-worklets react-native-safe-area-context expo-blur
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/base/scrollable-search.tsx```
+  <ComponentSource name="scrollable-search" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="scrollable-search" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/scrollable-search.ts"
+  name="IScrollContent"
+/>
+
+### IScrollableSearchContext
+
+<AutoTypeTable
+  path="react-native-types/scrollable-search.ts"
+  name="IScrollableSearchContext"
+/>
+
+<PreviewComment
+  comments={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "React Native Safe Area Context",
+    "Expo Blur",
+  ]}
+/>

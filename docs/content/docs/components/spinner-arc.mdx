@@ -1,0 +1,55 @@
+---
+title: Spinner Arc
+description: A rotating arc with a gradient that spins continuously
+lastModified: 2025-01-31
+icon: Loader
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="spinner-arc"
+  comment={["React Native Reanimated", "React Native Svg"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/spinner-arc.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated react-native-svg
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/molecules/spinner-arc```
+  <ComponentSource name="spinner-arc" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="spinner-arc" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/spinner-arc.ts"
+  name="SpinnerArcProps"
+/>
+
+<PreviewComment comments={["React Native Reanimated", "React Native Svg"]} />

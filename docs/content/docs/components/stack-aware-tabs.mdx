@@ -1,0 +1,65 @@
+---
+title: Stack Aware Tabs
+description: A modern bottom tab bar with animated focus scaling
+lastModified: 2025-01-31
+icon: NotebookTabs
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="stack-aware-tabs"
+  comment={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "React Native Gesture Handler",
+  ]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/stack-aware-tabs.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated react-native-gesture-handler react-native-worklets
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/base/stack-aware-tabs.tsx```
+  <ComponentSource name="stack-aware-tabs" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="stack-aware-tabs" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/stack-aware-tabs.ts"
+  name="TabBarProps"
+/>
+
+<PreviewComment
+  comments={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "React Native Gesture Handler",
+  ]}
+/>

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import type { BreadcrumbsProps } from "../Breadcrumbs.types";
+import type { BreadcrumbsProps } from "../types";
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   children,

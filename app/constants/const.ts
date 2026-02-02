@@ -1,6 +1,4 @@
 import { SFSymbol } from "expo-symbols";
-import { Color } from "swiftui-native";
-
 interface IScreenComponents {
   title: string;
   icon: SFSymbol;

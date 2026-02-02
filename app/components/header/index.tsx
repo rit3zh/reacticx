@@ -258,6 +258,7 @@ export const HeaderDemo: React.FC = (): React.ReactNode => {
 
       <AnimatedScrollView
         showsVerticalScrollIndicator={false}
+        scrollEnabled={true}
         renderHeaderNavBarComponent={() => (
           <Header
             headerBackground={() => <></>}

@@ -1,0 +1,138 @@
+---
+title: Getting Started
+description: Getting started with Reacticx
+icon: ListStart
+---
+
+<div className="flex ml-3 my-10">
+  <img
+    src="/static/deps/getting-started-poster-dark.png"
+    alt="Reacticx Getting Started"
+    className="rounded-2xl max-w-[720px] w-full"
+  />
+</div>
+
+## Overview
+
+Reacticx is a headless, animation-focused component library for React Native.
+It does **not** rely on external styling systems and is designed to integrate cleanly into existing projects.
+
+---
+
+## 1. Install Required Utilities
+
+Some components depend on shared native utilities that must be installed once.
+
+```package-install
+react-native-reanimated react-native-gesture-handler react-native-svg expo-haptics expo-blur expo-symbols @expo/vector-icons @shopify/react-native-skia
+```
+
+Additional dependencies are listed on individual component pages when required.
+
+---
+
+## 2. Initialize Reacticx
+
+<Card title="Note: The `components.json` file is optional">
+  It is only required if you're using the CLI to add components to your project.
+  If you're using the copy and paste method, you pretty much don't need this
+  file.
+</Card>
+Run the init command to create your config file:
+
+```bash
+npx reacticx init
+```
+
+This creates a `component.config.json` in your project root:
+
+```json
+{
+  "outDir": "src/shared/ui"
+}
+```
+
+---
+
+## 3. Browse Components
+
+List all available components:
+
+```bash
+npx reacticx list
+```
+
+Filter by category:
+
+```bash
+npx reacticx list -c molecules
+```
+
+Example output:
+
+```
+📦 Reacticx UI Components (v1.0.0)
+
+Total: 50 components
+
+atoms/
+  button
+  input
+  text
+
+molecules/
+  accordion
+  card
+  modal
+
+micro-interactions/
+  gooey-switch
+  spin-button
+```
+
+---
+
+## 4. Add Components
+
+Add a component to your project:
+
+```bash
+npx reacticx add button
+```
+
+Output:
+
+```
+✔ Added button!
+
+Files created:
+  src/shared/ui/atoms/button/index.tsx
+  src/shared/ui/atoms/button/types.ts
+```
+
+### Options
+
+```bash
+npx reacticx add <component> --dir <path>
+npx reacticx add <component> --overwrite
+```
+
+---
+
+## 5. CLI Reference
+
+| Command                                 | Description              |
+| --------------------------------------- | ------------------------ |
+| `reacticx init`                         | Create config file       |
+| `reacticx list`                         | List all components      |
+| `reacticx list -c <category>`           | Filter by category       |
+| `reacticx add <component>`              | Add component            |
+| `reacticx add <component> --dir <path>` | Custom output directory  |
+| `reacticx add <component> --overwrite`  | Overwrite existing files |
+
+---
+
+## What's Next
+
+Each component page documents required dependencies and usage patterns.
+Install only what you need, and customize freely.

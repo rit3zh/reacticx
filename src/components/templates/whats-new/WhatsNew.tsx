@@ -22,7 +22,7 @@ export const WhatsNew: React.FC<WhatsNewProps> &
   return (
     <WhatsNewContext.Provider value={{ open, close, setContent }}>
       {children}
-      <TrueSheet ref={sheetRef} sizes={["100%"]} blurTint={blurTint}>
+      <TrueSheet ref={sheetRef} detents={[1]} blurTint={blurTint}>
         {content}
       </TrueSheet>
     </WhatsNewContext.Provider>

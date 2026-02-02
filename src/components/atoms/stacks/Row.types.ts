@@ -1,7 +1,9 @@
-import { StyleProp, ViewStyle } from "react-native";
+import type { StyleProp, ViewStyle } from "react-native";
 
-export interface RowProps {
+interface IRow {
   children: React.ReactNode;
-  spacing?: number;
-  style?: StyleProp<ViewStyle>;
+  readonly spacing?: number;
+  readonly style?: StyleProp<ViewStyle>;
 }
+
+export type { IRow };

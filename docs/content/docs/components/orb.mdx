@@ -1,0 +1,52 @@
+---
+title: Unstable Orb
+description: Unstable Orb built with Skia's shader
+lastModified: 2025-01-31
+icon: GlassWater
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="unstable_orb"
+  comment={["React Native Reanimated", "React Native Skia"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/unstable-orb.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated @shopify/react-native-skia
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/organisms/unstable_orb```
+  <ComponentSource name="orb" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="orb" />
+
+### Props
+
+<AutoTypeTable path="react-native-types/orb.ts" name="UnstableOrbProps" />
+
+<PreviewComment comments={["React Native Reanimated", "React Native Skia"]} />

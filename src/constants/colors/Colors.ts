@@ -564,7 +564,10 @@ export const semanticColors = {
   info: Colors.light.systemBlue,
 };
 
-export const withOpacity = (color: string, opacity: number): string => {
+export const withOpacity = <T extends string, U extends string>(
+  color: T,
+  opacity: U,
+): Required<string> => {
   if (color.startsWith("#")) {
     const r = parseInt(color.slice(1, 3), 16);
     const g = parseInt(color.slice(3, 5), 16);

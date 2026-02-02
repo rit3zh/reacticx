@@ -1,0 +1,55 @@
+---
+title: Hamburger
+description: An animated menu icon that smoothly morphs into a close icon
+lastModified: 2025-02-01
+icon: Hamburger
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="hamburger"
+  comment={["React Native Reanimated", "Expo Blur"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/hamburger.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated expo-blur
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/micro-interactions/hamburger.tsx```
+  <ComponentSource name="hamburger" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="hamburger" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/hamburger.ts"
+  name="HamburgerIconProps"
+/>
+
+<PreviewComment comments={["React Native Reanimated", "Expo Blur"]} />

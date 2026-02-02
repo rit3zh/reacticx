@@ -38,6 +38,7 @@ export const FloatingSheet: React.FC<IFloatingPlayerProps> = ({
   showImageWhenExpanded = true,
   customImageAnimation,
   onSheetDismiss,
+  ___experimental,
 }: IFloatingPlayerProps) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [value, setValue] = useState<number>(0);
@@ -269,12 +270,12 @@ export const FloatingSheet: React.FC<IFloatingPlayerProps> = ({
   return (
     <TrueSheet
       ref={sheetRef}
-      sizes={sheetSizes}
+      detents={sheetSizes}
       blurTint="dark"
       cornerRadius={20}
       collapsable={false}
       dismissible={true}
-      onPresent={(e) =>
+      onDidPresent={(e) =>
         present({
           animation,
           setIsPresented,
@@ -292,7 +293,7 @@ export const FloatingSheet: React.FC<IFloatingPlayerProps> = ({
           setIsExpanded,
         })
       }
-      onSizeChange={(e) =>
+      onDetentChange={(e) =>
         onHandleSizeChange({
           event: e,
           animation,
@@ -314,8 +315,7 @@ export const FloatingSheet: React.FC<IFloatingPlayerProps> = ({
           sheetSizes,
         })
       }
-      scrollRef={scrollRef}
-      onDismiss={() => {
+      onDidDismiss={() => {
         typeof onSheetDismiss !== "undefined" || undefined
           ? onSheetDismiss!()
           : null;
@@ -327,9 +327,8 @@ export const FloatingSheet: React.FC<IFloatingPlayerProps> = ({
           setSheetPosition,
         });
       }}
-      initialIndexAnimated={true}
+      initialDetentAnimated={true}
       style={{ flex: 1 }}
-      contentContainerStyle={{ flex: 1 }}
     >
       <AnimatedScrollView
         ref={scrollRef}

@@ -1,9 +1,9 @@
-import type { SizeChangeEvent } from "@lodev09/react-native-true-sheet";
+import type { DetentChangeEvent } from "@lodev09/react-native-true-sheet";
 import { Animated } from "react-native";
 
 interface SizeChangeEventProps {
   animation?: Animated.Value;
-  event?: SizeChangeEvent;
+  event?: DetentChangeEvent;
   setIsExpanded?: (isExpanded: boolean) => void;
   setSheetPosition?: (sheetPosition: number) => void;
   isMinimized?: boolean;
@@ -20,9 +20,9 @@ export const onHandleSizeChange = ({
   sheetSizes,
   setIsMinimized,
 }: SizeChangeEventProps) => {
-  const newValue = event!.nativeEvent.value;
+  const newValue = event!.nativeEvent.position;
   if (isMinimized) {
-    setIsExpanded!(newValue >= sheetSizes![1] - 10);
+    setIsExpanded!(newValue >= sheetSizes![1] - 0.5);
     setSheetPosition!(newValue);
     Animated.spring(animation!, {
       toValue: newValue,

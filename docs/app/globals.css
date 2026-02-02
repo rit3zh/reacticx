@@ -1,0 +1,426 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@import "fumadocs-ui/css/preset.css";
+@import "fumadocs-ui/css/solar.css";
+/* @import "fumadocs-ui/css/shadcn.css"; */
+/* @import "fumadocs-ui/css/black.css"; */
+/* @import "fumadocs-ui/css/catppuccin.css"; */
+/* @import "fumadocs-ui/css/dusk.css"; */
+
+@import "tw-animate-css";
+
+@source "../node_modules/fumadocs-ui/dist/**/*.js";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-cursor: cursor 1s ease-in-out infinite;
+  --animate-border-trace: border-trace 3s ease-out forwards;
+  --animate-bounce-music: bounce-music 0.8s ease-in-out infinite;
+
+  @keyframes bounce-music {
+    0%,
+    100% {
+      height: 6px;
+    }
+    50% {
+      height: 26px;
+    }
+  }
+
+  @keyframes border-trace {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes cursor {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+/* @layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+} */
+
+@layer utilities {
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  pre::-webkit-scrollbar {
+    display: none;
+  }
+
+  pre {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  /* Remove Safari input shadow on mobile */
+  input[type="text"],
+  input[type="email"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  table {
+    display: block;
+    max-width: fit-content;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .title {
+    text-wrap: balance;
+  }
+
+  .geist-mono {
+    font-family: var(--font-geist-mono);
+  }
+
+  .geist-sans {
+    font-family: var(--font-geist-sans);
+  }
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background-transparent: 0 0% 98%;
+  }
+
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  @media (min-width: 1024px) {
+    article {
+      padding-left: 0px !important;
+    }
+  }
+}
+
+/* Animated gradient border properties */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Keyframe for rotating gradient */
+@keyframes gradient-angle {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* New badge styling with animated border - Light mode (dark animation) */
+/* a[href="/docs/components/animated-chip-group"]::after,
+a[href="/docs/components/animated-input-bar"]::after,
+a[href="/docs/components/animated-masked-text"]::after,
+a[href="/docs/components/aurora"]::after,
+a[href="/docs/components/avatar-group"]::after,
+a[href="/docs/components/dynamic-island"]::after,
+
+// micro-interactions components
+
+a[href="/docs/components/animated-scroll-progress"]::after,
+a[href="/docs/components/stacked-chips"]::after,
+a[href="/docs/components/animated-theme-toggle"]::after,
+a[href="/docs/components/countdown"]::after,
+a[href="/docs/components/elastic-slider"]::after,
+a[href="/docs/components/gooey-switch"]::after,
+a[href="/docs/components/spin-button"]::after,
+a[href="/docs/components/flexi-button"]::after,
+a[href="/docs/components/hamburger"]::after,
+
+a[href="/docs/components/chroma-ring"]::after,
+a[href="/docs/components/blur-carousel"]::after,
+a[href="/docs/components/slide-text-button"]::after,
+a[href="/docs/components/morphic-navbar"]::after {
+  content: "New";
+  position: absolute;
+  right: 0.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgb(30, 30, 30);
+
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgb(245, 245, 245), rgb(245, 245, 245)) padding-box,
+    conic-gradient(
+        from var(--gradient-angle),
+        transparent,
+        #404040 10%,
+        #737373 20%,
+        #404040 30%,
+        transparent 40%
+      )
+      border-box;
+
+  animation: gradient-angle 3s linear infinite;
+} */
+
+a[href="https://kokonutui.pro/templates#ai"] svg,
+a[href="https://kokonutui.pro/templates#futur"] svg,
+a[href="https://kokonutui.pro/templates#postly"] svg,
+a[href="https://kokonutui.pro/templates#startup"] svg,
+a[href="https://kokonutui.pro/templates#grace"] svg,
+a[href="https://kokonutui.pro/templates#sonae"] svg,
+a[href="https://kokonutui.pro/templates#lume"] svg,
+a[href="https://kokonutui.pro/templates#agenta"] svg {
+  display: none;
+}
+
+/* Pro badge styling */
+a[href="https://kokonutui.pro/templates#ai"]::after,
+a[href="https://kokonutui.pro/templates#futur"]::after,
+a[href="https://kokonutui.pro/templates#postly"]::after,
+a[href="https://kokonutui.pro/templates#startup"]::after,
+a[href="https://kokonutui.pro/templates#grace"]::after,
+a[href="https://kokonutui.pro/templates#lume"]::after,
+a[href="https://kokonutui.pro/templates#agenta"]::after {
+  content: "Pro";
+  position: absolute;
+  right: 2.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(251, 146, 60, 0.15) 0%,
+    rgba(234, 88, 12, 0.15) 100%
+  );
+  color: rgb(194, 65, 12);
+  padding: 0.05rem 0.2rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  box-shadow: 0 1px 2px rgba(251, 146, 60, 0.1);
+}
+
+a[href="https://kokonutui.pro/templates#ai"]::after,
+a[href="https://kokonutui.pro/templates#futur"]::after,
+a[href="https://kokonutui.pro/templates#postly"]::after,
+a[href="https://kokonutui.pro/templates#startup"]::after,
+a[href="https://kokonutui.pro/templates#grace"]::after,
+a[href="https://kokonutui.pro/templates#sonae"]::after,
+a[href="https://kokonutui.pro/templates#lume"]::after,
+a[href="https://kokonutui.pro/templates#agenta"]::after {
+  content: "Pro";
+  position: absolute;
+  right: 0rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(251, 146, 60, 0.15) 0%,
+    rgba(234, 88, 12, 0.15) 100%
+  );
+  color: rgb(194, 65, 12);
+  padding: 0.05rem 0.2rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  box-shadow: 0 1px 2px rgba(251, 146, 60, 0.1);
+}
+
+/* Dark mode adjustments - white animated border on dark bg */
+
+/* a[href="/docs/components/animated-chip-group"]::after,
+a[href="/docs/components/animated-input-bar"]::after,
+a[href="/docs/components/animated-masked-text"]::after,
+a[href="/docs/components/chroma-ring"]::after,
+a[href="/docs/components/aurora"]::after,
+a[href="/docs/components/avatar-group"]::after,
+a[href="/docs/components/dynamic-island"]::after,
+a[href="/docs/components/blur-carousel"]::after,
+
+// micro-interactions compopnents
+
+a[href="/docs/components/animated-scroll-progress"]::after,
+a[href="/docs/components/stacked-chips"]::after,
+a[href="/docs/components/animated-theme-toggle"]::after,
+a[href="/docs/components/countdown"]::after,
+a[href="/docs/components/elastic-slider"]::after,
+a[href="/docs/components/gooey-switch"]::after,
+a[href="/docs/components/spin-button"]::after,
+a[href="/docs/components/flexi-button"]::after,
+a[href="/docs/components/hamburger"]::after,
+
+a[href="/docs/components/slide-text-button"]::after,
+.dark a[href="/docs/components/morphic-navbar"]::after {
+  color: rgb(255, 255, 255);
+  background:
+    linear-gradient(rgb(20, 20, 20), rgb(20, 20, 20)) padding-box,
+    conic-gradient(
+        from var(--gradient-angle),
+        transparent,
+        #a3a3a3 10%,
+        #ffffff 20%,
+        #a3a3a3 30%,
+        transparent 40%
+      )
+      border-box;
+} */
+
+.dark a[href="https://kokonutui.pro/templates#ai"]::after,
+.dark a[href="https://kokonutui.pro/templates#futur"]::after,
+.dark a[href="https://kokonutui.pro/templates#postly"]::after,
+.dark a[href="https://kokonutui.pro/templates#startup"]::after,
+.dark a[href="https://kokonutui.pro/templates#grace"]::after,
+.dark a[href="https://kokonutui.pro/templates#lume"]::after,
+.dark a[href="https://kokonutui.pro/templates#sonae"]::after,
+.dark a[href="https://kokonutui.pro/templates#agenta"]::after {
+  background-color: rgba(255, 165, 0, 0.2);
+  color: #ffa500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+:root {
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+.dark {
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+@theme inline {
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+[role="dialog"] {
+  margin-bottom: 20px;
+}
+
+[data-vaul-drawer][data-vaul-drawer-direction="bottom"]::after {
+  height: 0px !important;
+}

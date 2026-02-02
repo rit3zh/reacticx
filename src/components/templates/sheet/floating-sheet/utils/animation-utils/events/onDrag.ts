@@ -9,7 +9,7 @@ interface DragChangeEventProps {
   isMinimized: boolean;
 }
 
-const THRESHOLD = sheetSizes[1] - 10;
+const THRESHOLD = sheetSizes[1] - 0.5;
 
 export const onHandleDragChange = ({
   animation,
@@ -18,10 +18,9 @@ export const onHandleDragChange = ({
   setIsExpanded,
 }: DragChangeEventProps) => {
   if (isMinimized) {
-    const newValue = event.nativeEvent.value;
-    // setIsExpanded(newValue >= THRESHOLD);
+    const newValue = event.nativeEvent.position;
   } else {
-    const newValue = event.nativeEvent.value;
+    const newValue = event.nativeEvent.position;
     setIsExpanded(newValue >= THRESHOLD);
 
     animation.setValue(newValue);

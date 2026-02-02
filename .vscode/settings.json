@@ -1,4 +1,11 @@
 {
   "mdx-preview.preview.useVscodeMarkdownStyles": false,
-  "find-it-faster.general.useTerminalInEditor": true
+  "find-it-faster.general.useTerminalInEditor": true,
+  "editor.smoothScrolling": false,
+  "editor.cursorSmoothCaretAnimation": "off",
+  "workbench.list.smoothScrolling": false,
+  "terminal.integrated.smoothScrolling": false,
+  "editor.cursorBlinking": "solid",
+  "animations.Smooth-Mode": false,
+  "discord.enabled": true
 }

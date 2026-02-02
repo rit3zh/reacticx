@@ -1,0 +1,13 @@
+bun.lock
+package-lock.json
+yarn.lock
+node_modules
+tsconfig.json
+tsup.config.ts
+.gitignore
+src/
+.git
+.DS_Store
+*.log
+.env
+.env.*

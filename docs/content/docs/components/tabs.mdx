@@ -1,0 +1,56 @@
+---
+title: Tabs
+description: An animated top tabs layout
+lastModified: 2025-01-31
+icon: AlignVerticalSpaceAround
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="tabs"
+  comment={["React Native Reanimated", "React Native Blur"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/tabs.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated @sbaiahmed1/react-native-blur
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/base/tabs.tsx```
+  <ComponentSource name="tabs" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="tabs" />
+
+### Props
+
+<AutoTypeTable path="react-native-types/tabs.ts" name="TopTabsProps" />
+
+### Tab
+
+<AutoTypeTable path="react-native-types/tabs.ts" name="Tab" />
+
+<PreviewComment comments={["React Native Reanimated", "React Native Blur"]} />

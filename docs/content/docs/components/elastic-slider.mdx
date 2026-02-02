@@ -1,0 +1,65 @@
+---
+title: Elastic Slider
+description: An elastic slider with smooth drag interactions
+lastModified: 2025-02-01
+icon: Minus
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="elastic-slider"
+  comment={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "React Native Gesture Handler",
+  ]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/elastic-slider.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated react-native-gesture-handler react-native-worklets
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/micro-interactions/elastic-slider.tsx```
+  <ComponentSource name="elastic-slider" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="elastic-slider" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/elastic-slider.ts"
+  name="IElasticSlider"
+/>
+
+<PreviewComment
+  comments={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "React Native Gesture Handler",
+  ]}
+/>

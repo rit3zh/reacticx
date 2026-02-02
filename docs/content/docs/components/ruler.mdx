@@ -1,0 +1,70 @@
+---
+title: Ruler
+description: A smooth draggable ruler with animated ticks
+lastModified: 2025-01-31
+icon: Ruler
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="ruler"
+  comment={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "React Native Gesture Handler",
+    "React Native Skia",
+    "Expo Haptics",
+  ]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/ruler.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated expo-haptics react-native-gesture-handler react-native-worklets @shopify/react-native-skia
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/base/ruler.tsx```
+  <ComponentSource name="ruler" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="ruler" />
+
+### Props
+
+<AutoTypeTable path="react-native-types/ruler.ts" name="IRuler" />
+
+### ITick
+
+<AutoTypeTable path="react-native-types/ruler.ts" name="ITick" />
+
+<PreviewComment
+  comments={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "React Native Gesture Handler",
+    "React Native SKia",
+    "Expo Haptics",
+  ]}
+/>

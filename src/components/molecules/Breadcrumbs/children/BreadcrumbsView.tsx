@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import type { BreadcrumbsSeparatorProps } from "../Breadcrumbs.types";
+import type { BreadcrumbsSeparatorProps } from "../types";
 
 /**
  *

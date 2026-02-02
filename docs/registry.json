@@ -1,0 +1,592 @@
+{
+    "name": "kokonut-ui",
+    "homepage": "https://kokonutui.com",
+    "items": [
+        {
+            "name": "ai-prompt",
+            "type": "registry:component",
+            "title": "AI Input Selector",
+            "description": "My own style of chat AI input.",
+            "dependencies": ["lucide-react", "motion"],
+            "registryDependencies": ["textarea", "button", "dropdown-menu"],
+            "files": [
+                {
+                    "path": "components/kokonutui/ai-prompt.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "hooks/use-auto-resize-textarea.ts",
+                    "type": "registry:hook"
+                },
+                {
+                    "path": "components/icons/anthropic.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "components/icons/anthropic-dark.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "command-button",
+            "type": "registry:component",
+            "title": "Command Button",
+            "description": "Command button for shortcut.",
+            "dependencies": ["lucide-react"],
+            "registryDependencies": ["button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/command-button.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "card-flip",
+            "type": "registry:component",
+            "title": "Card Flip",
+            "description": "Animated flip card with gradient button and animation.",
+            "dependencies": ["lucide-react"],
+            "files": [
+                {
+                    "path": "components/kokonutui/card-flip.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "smooth-drawer",
+            "type": "registry:component",
+            "title": "Smooth Drawer",
+            "description": "Smooth slide-in drawer. (this was harder than i thought to make that one)",
+            "dependencies": ["motion"],
+            "registryDependencies": ["drawer", "button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/smooth-drawer.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "shape-hero",
+            "type": "registry:component",
+            "title": "Shapes Hero",
+            "description": "Shapes that fall from the top.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/shape-hero.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "ai-text-loading",
+            "type": "registry:component",
+            "title": "AI Text Loading",
+            "description": "Thinking mode.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/ai-text-loading.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "shimmer-text",
+            "type": "registry:component",
+            "title": "Shimmer Text",
+            "description": "Quite fancy.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/shimmer-text.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "carousel-cards",
+            "type": "registry:component",
+            "title": "Carousel Cards",
+            "description": "Interactive carousel with card navigation.",
+            "dependencies": ["lucide-react"],
+            "registryDependencies": ["card", "badge", "button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/carousel-cards.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "file-upload",
+            "type": "registry:component",
+            "title": "File Upload",
+            "description": "File upload with special uploading animation. Make sure to try the drag and drop.",
+            "dependencies": ["lucide-react", "motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/file-upload.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "action-search-bar",
+            "type": "registry:component",
+            "title": "Action Search Bar",
+            "description": "Action Bar with shortcuts, and smooth dropdown animation.",
+            "dependencies": ["lucide-react", "motion"],
+            "registryDependencies": ["input"],
+            "files": [
+                {
+                    "path": "components/kokonutui/action-search-bar.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "hooks/use-debounce.ts",
+                    "type": "registry:hook"
+                }
+            ]
+        },
+        {
+            "name": "ai-input-search",
+            "type": "registry:component",
+            "title": "AI Input Search",
+            "description": "AI input with search mode.",
+            "dependencies": ["motion"],
+            "registryDependencies": ["textarea"],
+            "files": [
+                {
+                    "path": "components/kokonutui/ai-input-search.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "hooks/use-auto-resize-textarea.ts",
+                    "type": "registry:hook"
+                }
+            ]
+        },
+        {
+            "name": "currency-transfer",
+            "type": "registry:component",
+            "title": "Currency Transfer",
+            "description": "Multiples step animation transaction inspired.",
+            "dependencies": ["lucide-react", "motion"],
+            "registryDependencies": ["card", "tooltip"],
+            "files": [
+                {
+                    "path": "components/kokonutui/currency-transfer.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "background-paths",
+            "type": "registry:component",
+            "title": "Background Paths",
+            "description": "Drawed line paths in the middle.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/background-paths.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "beams-background",
+            "type": "registry:component",
+            "title": "Beams Background",
+            "description": "Animated Beams in the background that are customizable.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/beams-background.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "apple-activity-card",
+            "type": "registry:component",
+            "title": "Apple Activity Card",
+            "description": "Inspired by Apple activity app.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/apple-activity-card.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "ai-voice",
+            "type": "registry:component",
+            "title": "AI Voice",
+            "description": "Voice mode.",
+            "dependencies": ["motion", "lucide-react"],
+            "files": [
+                {
+                    "path": "components/kokonutui/ai-voice.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "smooth-tab",
+            "type": "registry:component",
+            "title": "Smooth Tab",
+            "description": "Animated tab switcher.",
+            "dependencies": ["motion", "lucide-react"],
+            "files": [
+                {
+                    "path": "components/kokonutui/smooth-tab.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "team-selector",
+            "type": "registry:component",
+            "title": "Team Selector",
+            "description": "Group selector with a different style.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/team-selector.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "switch-button",
+            "type": "registry:component",
+            "title": "Switch Button",
+            "description": "Animated shadow theme switcher button.",
+            "dependencies": ["lucide-react"],
+            "registryDependencies": ["button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/switch-button.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "bento-grid",
+            "type": "registry:component",
+            "title": "Bento Grid",
+            "description": "Grid of 4 cards with different content and animations.",
+            "dependencies": ["lucide-react", "motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/bento-grid.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "components/icons/anthropic.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "components/icons/anthropic-dark.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "components/icons/gemini.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "components/icons/open-ai.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "components/icons/open-ai-dark.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "components/icons/mistral.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "components/icons/deepseek.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "social-button",
+            "type": "registry:component",
+            "title": "Social Button",
+            "description": "Animated Social show-up",
+            "dependencies": ["lucide-react", "motion"],
+            "registryDependencies": ["button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/social-button.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "hold-button",
+            "type": "registry:component",
+            "title": "Hold Button",
+            "description": "Hold Button with different hold duration and colors.",
+            "dependencies": ["lucide-react", "motion"],
+            "registryDependencies": ["button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/hold-button.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "attract-button",
+            "type": "registry:component",
+            "title": "Magnet Button",
+            "description": "Attract particles button!",
+            "dependencies": ["lucide-react", "motion"],
+            "registryDependencies": ["button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/attract-button.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "gradient-button",
+            "type": "registry:component",
+            "title": "Gradient Button",
+            "description": "That was so hard to make.",
+            "registryDependencies": ["button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/gradient-button.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "v0-button",
+            "type": "registry:component",
+            "title": "V0 Button",
+            "description": "Open in V0.",
+            "registryDependencies": ["button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/v0-button.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "toolbar",
+            "type": "registry:component",
+            "title": "Toolbar",
+            "description": "Multiples actions toolbar inspired by Figma.",
+            "dependencies": ["lucide-react", "motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/toolbar.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "ai-loading",
+            "type": "registry:component",
+            "title": "AI State Loading",
+            "description": "Code loading pending.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/ai-loading.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "card-stack",
+            "type": "registry:component",
+            "title": "Stack",
+            "description": "Stack of cards that expend onclick.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/card-stack.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "avatar-picker",
+            "type": "registry:component",
+            "title": "Avatar Picker",
+            "description": "Avatar picker with rotation animation.",
+            "dependencies": ["lucide-react", "motion"],
+            "registryDependencies": ["card", "button", "input"],
+            "files": [
+                {
+                    "path": "components/kokonutui/avatar-picker.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "type-writer",
+            "type": "registry:component",
+            "title": "Typing Text",
+            "description": "Animated TypeWritter with multiples options.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/type-writer.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "swoosh-text",
+            "type": "registry:component",
+            "title": "Swoosh Text",
+            "description": "Nike inspired Text",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/swoosh-text.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "sliced-text",
+            "type": "registry:component",
+            "title": "Sliced Text",
+            "description": "I haven't found any usage for that component, but i like it.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/sliced-text.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "glitch-text",
+            "type": "registry:component",
+            "title": "Glitch Text",
+            "description": "Why not?",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/glitch-text.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "matrix-text",
+            "type": "registry:component",
+            "title": "Matrix Text",
+            "description": "010110010110111101110101011100100010000001110111011001010110110001100011011011110110110101100101",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/matrix-text.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "dynamic-text",
+            "type": "registry:component",
+            "title": "Dynamic Text",
+            "description": "Dynamic switcher text.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/dynamic-text.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "particle-button",
+            "type": "registry:component",
+            "title": "Particle Button",
+            "description": "Particle Button Animation on click.",
+            "dependencies": ["lucide-react", "motion"],
+            "registryDependencies": ["button"],
+            "files": [
+                {
+                    "path": "components/kokonutui/particle-button.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "tweet-card",
+            "type": "registry:component",
+            "title": "X Card",
+            "description": "Gradient on hover X card. (The post is real!)",
+            "dependencies": ["lucide-react"],
+            "files": [
+                {
+                    "path": "components/kokonutui/tweet-card.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "scroll-text",
+            "type": "registry:component",
+            "title": "Scroll Text",
+            "description": "Animated on scroll texts.",
+            "dependencies": ["motion"],
+            "files": [
+                {
+                    "path": "components/kokonutui/scroll-text.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "liquid-glass-card",
+            "type": "registry:component",
+            "title": "Liquid Glass",
+            "description": "Liquid Glass inspired by @Apple",
+            "dependencies": ["lucide-react"],
+            "files": [
+                {
+                    "path": "components/kokonutui/liquid-glass-card.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        },
+        {
+            "name": "profile-dropdown",
+            "type": "registry:component",
+            "title": "Profile Dropdown",
+            "description": "Menu dropdown with action buttons.",
+            "dependencies": ["lucide-react"],
+            "registryDependencies": ["dropdown-menu"],
+            "files": [
+                {
+                    "path": "components/kokonutui/profile-dropdown.tsx",
+                    "type": "registry:component"
+                },
+                {
+                    "path": "components/icons/gemini.tsx",
+                    "type": "registry:component"
+                }
+            ]
+        }
+    ]
+}

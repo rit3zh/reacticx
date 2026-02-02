@@ -1,6 +1,6 @@
-# Contributing to Glow UI
+# Contributing to reacticx
 
-Thank you for your interest in contributing to Glow UI! 🎉
+Thank you for your interest in contributing to reacticx! 🎉
 We welcome all kinds of contributions: bug reports, feature requests, code, documentation, and more.
 
 ## How to Contribute
@@ -12,8 +12,8 @@ Click the "Fork" button at the top right of this page to create your own copy of
 ### 2. Clone Your Fork
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/glow-ui.git
-cd glow-ui
+git clone https://github.com/YOUR-USERNAME/reacticx.git
+cd reacticx
 ```
 
 ### 3. Create a Branch
@@ -38,14 +38,14 @@ git push origin my-feature
 
 ### 6. Open a Pull Request
 
-Go to your fork on GitHub and open a pull request to the `main` branch of `rit3zh/glow-ui`.
+Go to your fork on GitHub and open a pull request to the `main` branch of `rit3zh/reacticx`.
 Describe your changes and link any related issues.
 
 ---
 
 ## Reporting Bugs
 
-- Search [issues](https://github.com/rit3zh/glow-ui/issues) to see if your bug has already been reported.
+- Search [issues](https://github.com/rit3zh/reacticx/issues) to see if your bug has already been reported.
 - If not, open a new issue and include:
   - A clear and descriptive title
   - Steps to reproduce
@@ -54,7 +54,7 @@ Describe your changes and link any related issues.
 
 ## Suggesting Features
 
-- Search [issues](https://github.com/rit3zh/glow-ui/issues) for similar feature requests.
+- Search [issues](https://github.com/rit3zh/reacticx/issues) for similar feature requests.
 - If not found, open a new issue and describe:
   - The problem your feature would solve
   - A suggested solution or design
@@ -73,5 +73,5 @@ Describe your changes and link any related issues.
 
 ---
 
-Thank you for helping make Glow UI better!
+Thank you for helping make reacticx better!
 If you have any questions, feel free to open an issue or join the discussion.

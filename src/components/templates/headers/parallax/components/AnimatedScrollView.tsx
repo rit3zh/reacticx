@@ -43,7 +43,7 @@ export const AnimatedScrollView = forwardRef<
       <>
         <Animated.ScrollView
           ref={ref}
-          scrollEnabled
+          scrollEnabled={true}
           onScroll={onScroll}
           scrollEventThrottle={16}
           {...props}

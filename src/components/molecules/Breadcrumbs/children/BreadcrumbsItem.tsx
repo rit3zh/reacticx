@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import type { BreadcrumbItemProps } from "../Breadcrumbs.types";
+import type { BreadcrumbItemProps } from "../types";
 
 export const BreadcrumbsItem: React.FC<BreadcrumbItemProps> = ({
   children,
@@ -9,6 +9,7 @@ export const BreadcrumbsItem: React.FC<BreadcrumbItemProps> = ({
   tint = "#888",
   currentTint = "#000",
   className,
+  style,
 }) => {
   const content = (
     <Text
@@ -19,6 +20,7 @@ export const BreadcrumbsItem: React.FC<BreadcrumbItemProps> = ({
           : {
               color: tint,
             },
+        style,
       ]}
     >
       {children}

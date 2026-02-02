@@ -19,7 +19,7 @@ export const onHandleDragEnd = ({
   sheetSizes,
   setIsMinimized,
 }: DragEndEventProps) => {
-  const endValue = event.nativeEvent.value;
+  const endValue = event.nativeEvent.position;
   if (isMinimized) {
     let closestValue = sheetSizes[0];
     let minDistance = Math.abs(endValue - sheetSizes[0]);

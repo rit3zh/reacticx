@@ -1,0 +1,61 @@
+---
+title: Stacked Chips
+description: A stacked chip menu where each chip expands sideways on tap
+lastModified: 2025-02-01
+icon: MemoryStick
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="stacked-chips"
+  comment={["React Native Reanimated", "Expo Blur", "Expo Haptics"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/stacked-chips.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated expo-haptics expo-blur
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/micro-interactions/stacked-chips.tsx```
+  <ComponentSource name="stacked-chips" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="stacked-chips" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/stacked-chips.ts"
+  name="StackedChipsProps"
+/>
+
+### TriggerProps
+
+<AutoTypeTable path="react-native-types/stacked-chips.ts" name="TriggerProps" />
+
+<PreviewComment
+  comments={["React Native Reanimated", "Expo Blur", "Expo Haptics"]}
+/>

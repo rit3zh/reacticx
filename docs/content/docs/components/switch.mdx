@@ -1,0 +1,49 @@
+---
+title: Switch
+description: An animated toggle switch with spring motion
+lastModified: 2025-01-31
+icon: ToggleRight
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient link="switch" comment={["React Native Reanimated"]} />
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/switch.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/base/AnimatedSwitch.tsx```
+  <ComponentSource name="switch" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="switch" />
+
+### Props
+
+<AutoTypeTable path="react-native-types/switch.ts" name="AnimatedSwitchProps" />
+
+<PreviewComment comments={["React Native Reanimated"]} />

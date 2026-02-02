@@ -8,7 +8,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": false,
+    "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -16,7 +16,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.glow-ui"
+      "bundleIdentifier": "com.anonymous.glow-ui",
+      "appleTeamId": "5CRK3U48GP"
     },
     "android": {
       "adaptiveIcon": {
@@ -29,6 +30,9 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": ["expo-video"]
+    "plugins": [
+      "expo-video",
+      "expo-router"
+    ]
   }
 }

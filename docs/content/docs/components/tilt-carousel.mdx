@@ -1,0 +1,66 @@
+---
+title: Tilt Carousel
+description: A horizontal carousel where items tilt and lift as you scroll
+lastModified: 2025-01-31
+icon: RotateCw
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="tilt-carousel"
+  comment={["React Native Reanimated", "React Native Blur"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/tilt-carousel.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated @sbaiahmed1/react-native-blur
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/molecules/tilt-carousel```
+  <ComponentSource name="tilt-carousel" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="tilt-carousel" />
+
+### Props
+
+<AutoTypeTable path="react-native-types/tilt-carousel.ts" name="ICarousel" />
+
+### ICarouselItem
+
+<AutoTypeTable
+  path="react-native-types/tilt-carousel.ts"
+  name="ICarouselItem"
+/>
+
+### ICarouselRenderItem
+
+<AutoTypeTable
+  path="react-native-types/tilt-carousel.ts"
+  name="ICarouselRenderItem"
+/>
+
+<PreviewComment comments={["React Native Reanimated", "React Native Blur"]} />

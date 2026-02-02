@@ -1,15 +1,21 @@
-import { View, Text } from "react-native";
-import React from "react";
-import { RowProps } from "./Row.types";
+import React, { memo } from "react";
+import Animated, { LinearTransition } from "react-native-reanimated";
+import type { IRow } from "./Row.types";
 
-export const Row: React.FC<RowProps> = ({
-  children,
-  spacing = 5,
-  style,
-}): React.JSX.Element & React.ReactNode => {
-  return (
-    <View className="flex-row" style={[{ gap: spacing }, style]}>
-      {children}
-    </View>
-  );
-};
+export const Row: React.FC<IRow> & React.FunctionComponent<IRow> = memo<IRow>(
+  ({
+    children,
+    spacing = 5,
+    style,
+  }: IRow): React.JSX.Element & React.ReactNode & React.ReactElement => {
+    return (
+      <Animated.View
+        className="flex-row"
+        style={[{ gap: spacing }, style]}
+        layout={LinearTransition}
+      >
+        {children}
+      </Animated.View>
+    );
+  },
+);

@@ -1,0 +1,36 @@
+# Reacticx - React Native UI Components Library
+
+A comprehensive collection of high-quality React Native UI components built with Expo, React Native Reanimated, React Native Gesture Handler, and React Native Skia.
+
+## Overview
+
+Reacticx provides developers with beautiful, performant, and customizable UI components for React Native applications. All components are designed with modern mobile UX principles and built using the latest React Native technologies.
+
+## Key Features
+
+- **Modern Architecture** - Built with Expo SDK and latest React Native practices
+- **Smooth Animations** - Powered by React Native Reanimated for 60fps animations
+- **Gesture Support** - Interactive components using React Native Gesture Handler
+- **Custom Graphics** - Advanced visual effects with React Native Skia
+- **Cross-Platform** - Works seamlessly on iOS and Android
+- **TypeScript First** - Full TypeScript support for better developer experience
+- **Open Source** - Free and open source under MIT license
+
+## Technology Stack
+
+- React Native
+- Expo
+- React Native Reanimated
+- React Native Gesture Handler  
+- React Native Skia
+- TypeScript
+
+## Links
+
+- Website: [Your website URL]
+- GitHub: [Your GitHub repository URL]
+- Documentation: [Your docs URL]
+- NPM Package: [Your NPM package URL]
+
+Created by @rit3zh
+

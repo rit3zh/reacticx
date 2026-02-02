@@ -1,0 +1,55 @@
+---
+title: Unstable Metallic Paint
+description: Unstable Metallic Paint built with Skia's shader
+lastModified: 2025-01-31
+icon: Stamp
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="unstable_metallic-paint"
+  comment={["React Native Reanimated", "React Native Skia"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/unstable-metalic-liquid.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated @shopify/react-native-skia
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/organisms/unstable_metallic-paint```
+  <ComponentSource name="metalic-paint" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="metalic-paint" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/metalic-paint.ts"
+  name="MetallicPaintProps"
+/>
+
+<PreviewComment comments={["React Native Reanimated", "React Native Skia"]} />

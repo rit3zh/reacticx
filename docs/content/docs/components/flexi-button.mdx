@@ -1,0 +1,57 @@
+---
+title: Flexi Button
+description: A compact animated button that expands form an icon into text
+lastModified: 2025-02-01
+icon: MousePointerClick
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="flexi-button"
+  comment={["React Native Reanimated", "Expo Vector Icons", "Expo Blur"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/flexi-button.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated expo-blur @expo/vector-icons
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/micro-interactions/flexi-button.tsx```
+  <ComponentSource name="flexi-button" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="flexi-button" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/flexi-button.ts"
+  name="FlexiButtonProps"
+/>
+
+<PreviewComment
+  comments={["React Native Reanimated", "Expo Vector Icons", "Expo Blur"]}
+/>

@@ -1,39 +1,39 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
-import React from "react";
-import type { IPrivacyNoticeLinkProps } from "./PrivacyNoticeLink.type";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { memo } from "react";
+import type { IPrivacyNoticeLink } from "./PrivacyNoticeLink.type";
+import { DEFAULT_SIZE, DEFAULT_TINT } from "./const";
 
-const DEFAULT_TINT = "#007AFF";
-const DEFAULT_SIZE = 14;
+export const PrivacyNoticeLink: React.FC<IPrivacyNoticeLink> &
+  React.FunctionComponent<IPrivacyNoticeLink> = memo<IPrivacyNoticeLink>(
+  ({
+    children,
+    ...props
+  }: IPrivacyNoticeLink): React.ReactNode &
+    React.JSX.Element &
+    React.ReactElement => {
+    return (
+      <View style={[styles.container, props.style]}>
+        <TouchableOpacity onPress={props.onPress} activeOpacity={0.8}>
+          <Text
+            style={[
+              styles.text,
+              {
+                color: props.tint ?? DEFAULT_TINT,
+                fontSize: props.size ?? DEFAULT_SIZE,
+              },
+            ]}
+          >
+            {children}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  },
+);
 
-export const PrivacyNoticeLink: React.FC<IPrivacyNoticeLinkProps> &
-  React.FunctionComponent<IPrivacyNoticeLinkProps> = ({
-  children,
-  ...props
-}: IPrivacyNoticeLinkProps): React.ReactNode => {
-  return (
-    <View style={[styles.container, props.style]}>
-      <TouchableOpacity onPress={props.onPress}>
-        <Text
-          style={[
-            styles.text,
-            {
-              color: props.tint ?? DEFAULT_TINT,
-              fontSize: props.size ?? DEFAULT_SIZE,
-            },
-          ]}
-        >
-          {children}
-        </Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+export default memo<
+  React.FC<IPrivacyNoticeLink> & React.FunctionComponent<IPrivacyNoticeLink>
+>(PrivacyNoticeLink);
 
 const styles = StyleSheet.create({
   container: {},

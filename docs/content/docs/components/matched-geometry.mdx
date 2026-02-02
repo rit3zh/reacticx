@@ -1,0 +1,67 @@
+---
+title: Matched Geometry
+description: Tap to expand matched geometry transition
+lastModified: 2025-01-31
+icon: Box
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="matched-geometry"
+  comment={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "Expo Blur",
+    "React Native Gesture Handler",
+  ]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/matched-geometry.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated react-native-worklets expo-blur react-native-gesture-handler
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/organisms/matched-geometry```
+  <ComponentSource name="matched-geometry" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="matched-geometry" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/matched-geometry.ts"
+  name="IMatchedGeometry"
+/>
+
+<PreviewComment
+  comments={[
+    "React Native Reanimated",
+    "React Native Worklets",
+    "Expo Blur",
+    "React Native Gesture Handler",
+  ]}
+/>

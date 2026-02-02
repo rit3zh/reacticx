@@ -1,14 +1,9 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Pagination } from "@/components";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const PaginationCard: React.FC<{
   title: string;
@@ -69,13 +64,17 @@ const PaginationDemo = () => {
   const [largeIndex, setLargeIndex] = React.useState(1);
 
   return (
-    <GestureHandlerRootView>
-      <View className="flex-1 bg-zinc-950">
+    <GestureHandlerRootView
+      style={{
+        flex: 1,
+      }}
+    >
+      <View className="flex-1 bg-red-400">
         <ScrollView
           className="flex-1"
           contentContainerStyle={{ flexGrow: 1 }}
           showsVerticalScrollIndicator={false}
-          scrollEnabled
+          scrollEnabled={true}
           contentInsetAdjustmentBehavior="always"
         >
           <SafeAreaView className="flex-1">

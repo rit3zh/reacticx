@@ -1,0 +1,52 @@
+---
+title: Unstable Aurora
+description: A Skia-powered set featuring smooth visual transitions and flowing shader-based backgrounds.
+lastModified: 2025-01-31
+icon: Paintbrush
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="unstable_aurora"
+  comment={["React Native Reanimated", "React Native Skia"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/unstable-aurora.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated @shopify/react-native-skia
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/organisms/unstable_aurora```
+  <ComponentSource name="aurora" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="aurora" />
+
+### Props
+
+<AutoTypeTable path="react-native-types/aurora.ts" name="UnstableAuroraProps" />
+
+<PreviewComment comments={["React Native Reanimated", "React Native Skia"]} />

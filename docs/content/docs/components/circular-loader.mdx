@@ -1,0 +1,55 @@
+---
+title: Circular Loader
+description: A circular loader rotates with optional gradient
+lastModified: 2025-01-31
+icon: Loader
+full: true
+---
+
+import DynamicText from "@/components/kokonutui/dynamic-text";
+import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
+
+<PreviewClient
+  link="circular-loader"
+  comment={["React Native Reanimated", "React Native Svg"]}
+/>
+
+<div className="items-center ml-0">
+  <video
+    src="/static/media/circular-loader.mp4"
+    autoPlay
+    muted
+    loop
+    className="rounded-xl"
+  />
+</div>
+
+### Manual
+
+<Steps>
+  <Step>
+     Install the following dependencies:
+     ```package-install
+     react-native-reanimated react-native-svg
+     ```
+  </Step>
+
+<Step>
+  Copy and paste the following code into your project.
+  ```component/molecules/circular-loader```
+  <ComponentSource name="circular-loader" />
+</Step>
+</Steps>
+
+### Usage
+
+<ExampleComponentSource name="circular-loader" />
+
+### Props
+
+<AutoTypeTable
+  path="react-native-types/circular-loader.ts"
+  name="CircularLoaderProps"
+/>
+
+<PreviewComment comments={["React Native Reanimated", "React Native Svg"]} />

@@ -1,6 +1,12 @@
-import type { ViewProps } from "react-native";
+import type { StyleProp, ViewProps, ViewStyle } from "react-native";
 
-export interface CenterTypes extends ViewProps {
+interface ICenter extends ViewProps {
   children: React.ReactNode;
-  className?: string;
+  readonly style?: StyleProp<ViewStyle>;
+  /**
+   * @deprecated Use `style` prop instead.
+   */
+  readonly className?: string;
 }
+
+export type { ICenter };

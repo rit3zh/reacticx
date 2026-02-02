@@ -1,0 +1,1151 @@
+{
+  "version": "1.0.0",
+  "totalComponents": 117,
+  "categories": [
+    "ai",
+    "atoms",
+    "base",
+    "micro-interactions",
+    "molecules",
+    "organisms",
+    "screens",
+    "templates"
+  ],
+  "components": {
+    "accordion": {
+      "name": "accordion",
+      "category": "molecules",
+      "path": "src/components/molecules/accordion",
+      "files": [
+        "index.tsx",
+        "presets.ts",
+        "types.ts"
+      ]
+    },
+    "action-card": {
+      "name": "action-card",
+      "category": "base",
+      "path": "src/components/base/action-card",
+      "files": [
+        "ActionCard.tsx",
+        "ActionCard.types.ts"
+      ]
+    },
+    "animated-chip": {
+      "name": "animated-chip",
+      "category": "molecules",
+      "path": "src/components/molecules/animated-chip",
+      "files": [
+        "AnimatedChip.tsx",
+        "Chip.tsx",
+        "Chip.types.ts"
+      ]
+    },
+    "animated-header-scrollview": {
+      "name": "animated-header-scrollview",
+      "category": "organisms",
+      "path": "src/components/organisms/animated-header-scrollview",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "animated-input-bar": {
+      "name": "animated-input-bar",
+      "category": "base",
+      "path": "src/components/base/animated-input-bar",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "animated-masked-text": {
+      "name": "animated-masked-text",
+      "category": "molecules",
+      "path": "src/components/molecules/animated-masked-text",
+      "files": [
+        "AnimatedMaskedText.tsx",
+        "AnimatedMaskedText.types.ts"
+      ]
+    },
+    "animated-scroll-progress": {
+      "name": "animated-scroll-progress",
+      "category": "micro-interactions",
+      "path": "src/components/micro-interactions/animated-scroll-progress",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "animated-text": {
+      "name": "animated-text",
+      "category": "organisms",
+      "path": "src/components/organisms/animated-text",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "animated-theme-toggle": {
+      "name": "animated-theme-toggle",
+      "category": "micro-interactions",
+      "path": "src/components/micro-interactions/animated-theme-toggle",
+      "files": [
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "avatar": {
+      "name": "avatar",
+      "category": "base",
+      "path": "src/components/base/avatar",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "avatar-group": {
+      "name": "avatar-group",
+      "category": "base",
+      "path": "src/components/base/avatar-group",
+      "files": [
+        "const.ts",
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "badge": {
+      "name": "badge",
+      "category": "base",
+      "path": "src/components/base/badge",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "blur-carousel": {
+      "name": "blur-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/blur-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "bottom-input-bar": {
+      "name": "bottom-input-bar",
+      "category": "ai",
+      "path": "src/components/ai/bottom-input-bar",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "bottom-sheet": {
+      "name": "bottom-sheet",
+      "category": "templates",
+      "path": "src/components/templates/bottom-sheet",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts",
+        "utils.ts"
+      ]
+    },
+    "bottom-sheet-stack": {
+      "name": "bottom-sheet-stack",
+      "category": "templates",
+      "path": "src/components/templates/bottom-sheet-stack",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "breadcrumbs": {
+      "name": "breadcrumbs",
+      "category": "molecules",
+      "path": "src/components/molecules/breadcrumbs",
+      "files": [
+        "BreadcrumbsList.tsx",
+        "types.ts"
+      ]
+    },
+    "button": {
+      "name": "button",
+      "category": "base",
+      "path": "src/components/base/button",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "card": {
+      "name": "card",
+      "category": "molecules",
+      "path": "src/components/molecules/card",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "check-box": {
+      "name": "check-box",
+      "category": "organisms",
+      "path": "src/components/organisms/check-box",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "children": {
+      "name": "children",
+      "category": "base",
+      "path": "src/components/base/action-card/children",
+      "files": [
+        "ActionCardSubtitle.tsx",
+        "ActionCardTitle.tsx",
+        "ActionCardWrapper.tsx"
+      ]
+    },
+    "chroma-ring": {
+      "name": "chroma-ring",
+      "category": "organisms",
+      "path": "src/components/organisms/chroma-ring",
+      "files": [
+        "conf.ts",
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "cinematic-carousel": {
+      "name": "cinematic-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/cinematic-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "circle": {
+      "name": "circle",
+      "category": "molecules",
+      "path": "src/components/molecules/Loaders/circle",
+      "files": [
+        "Circle.Indiactor.tsx",
+        "Circle.types.ts"
+      ]
+    },
+    "circular": {
+      "name": "circular",
+      "category": "molecules",
+      "path": "src/components/molecules/Loaders/circular",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "circular-carousel": {
+      "name": "circular-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/circular-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "circular-list": {
+      "name": "circular-list",
+      "category": "molecules",
+      "path": "src/components/molecules/circular-list",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "circular-progress": {
+      "name": "circular-progress",
+      "category": "organisms",
+      "path": "src/components/organisms/circular-progress",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "circular-text": {
+      "name": "circular-text",
+      "category": "organisms",
+      "path": "src/components/organisms/circular-text",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "components": {
+      "name": "components",
+      "category": "templates",
+      "path": "src/components/templates/headers/parallax/components",
+      "files": [
+        "AnimatedHeader.tsx",
+        "AnimatedNavBar.tsx",
+        "AnimatedScrollView.tsx",
+        "AnimatedScrollViewTitle.tsx"
+      ]
+    },
+    "context": {
+      "name": "context",
+      "category": "molecules",
+      "path": "src/components/molecules/Toast/context",
+      "files": [
+        "ToastContext.tsx"
+      ]
+    },
+    "countdown": {
+      "name": "countdown",
+      "category": "micro-interactions",
+      "path": "src/components/micro-interactions/countdown",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "curved-bottom-tabs": {
+      "name": "curved-bottom-tabs",
+      "category": "base",
+      "path": "src/components/base/curved-bottom-tabs",
+      "files": [
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "dialog": {
+      "name": "dialog",
+      "category": "organisms",
+      "path": "src/components/organisms/dialog",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "disclosure-group": {
+      "name": "disclosure-group",
+      "category": "molecules",
+      "path": "src/components/molecules/disclosure-group",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "dots": {
+      "name": "dots",
+      "category": "molecules",
+      "path": "src/components/molecules/Loaders/dots",
+      "files": [
+        "OrbitingDots.Indicator.tsx",
+        "OrbitingDots.types.ts",
+        "PlusingDots.Indicator.tsx",
+        "PlusingDots.types.ts"
+      ]
+    },
+    "dropdown": {
+      "name": "dropdown",
+      "category": "organisms",
+      "path": "src/components/organisms/dropdown",
+      "files": [
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "dynamic-island": {
+      "name": "dynamic-island",
+      "category": "molecules",
+      "path": "src/components/molecules/dynamic-island",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "dynamic-text": {
+      "name": "dynamic-text",
+      "category": "molecules",
+      "path": "src/components/molecules/dynamic-text",
+      "files": [
+        "const.ts",
+        "helpers.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "elastic-slider": {
+      "name": "elastic-slider",
+      "category": "micro-interactions",
+      "path": "src/components/micro-interactions/elastic-slider",
+      "files": [
+        "const.ts",
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "empty-state": {
+      "name": "empty-state",
+      "category": "base",
+      "path": "src/components/base/empty-state",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "energy-orb": {
+      "name": "energy-orb",
+      "category": "organisms",
+      "path": "src/components/organisms/energy-orb",
+      "files": [
+        "conf.ts",
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "fade-component": {
+      "name": "fade-component",
+      "category": "base",
+      "path": "src/components/base/fade-component",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "fade-text": {
+      "name": "fade-text",
+      "category": "organisms",
+      "path": "src/components/organisms/fade-text",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "flexi-button": {
+      "name": "flexi-button",
+      "category": "micro-interactions",
+      "path": "src/components/micro-interactions/flexi-button",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "flip-card": {
+      "name": "flip-card",
+      "category": "base",
+      "path": "src/components/base/flip-card",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "floating-sheet": {
+      "name": "floating-sheet",
+      "category": "templates",
+      "path": "src/components/templates/sheet/floating-sheet",
+      "files": [
+        "FloatingSheet.tsx"
+      ]
+    },
+    "glow": {
+      "name": "glow",
+      "category": "base",
+      "path": "src/components/base/glow",
+      "files": [
+        "helper.ts",
+        "index.tsx",
+        "types.ts",
+        "v.tsx"
+      ]
+    },
+    "gooey-switch": {
+      "name": "gooey-switch",
+      "category": "micro-interactions",
+      "path": "src/components/micro-interactions/gooey-switch",
+      "files": [
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "gooey-text": {
+      "name": "gooey-text",
+      "category": "molecules",
+      "path": "src/components/molecules/gooey-text",
+      "files": [
+        "conf.ts",
+        "helpers.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "hamburger": {
+      "name": "hamburger",
+      "category": "micro-interactions",
+      "path": "src/components/micro-interactions/hamburger",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "header": {
+      "name": "header",
+      "category": "templates",
+      "path": "src/components/templates/headers/parallax/helpers/header",
+      "files": [
+        "HeaderNavBar.tsx"
+      ]
+    },
+    "horizontal": {
+      "name": "horizontal",
+      "category": "atoms",
+      "path": "src/components/atoms/divider/horizontal",
+      "files": [
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "infinite-menu": {
+      "name": "infinite-menu",
+      "category": "organisms",
+      "path": "src/components/organisms/infinite-menu",
+      "files": [
+        "__LEFT-OVER__.tsx",
+        "const.ts",
+        "helpers.ts",
+        "hooks.ts",
+        "index.tsx",
+        "maths-type.ts",
+        "maths.ts",
+        "types.ts"
+      ]
+    },
+    "lanyard": {
+      "name": "lanyard",
+      "category": "molecules",
+      "path": "src/components/molecules/lanyard",
+      "files": [
+        "const.ts",
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "liquid-metal": {
+      "name": "liquid-metal",
+      "category": "organisms",
+      "path": "src/components/organisms/liquid-metal",
+      "files": [
+        "conf.ts",
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "List": {
+      "name": "List",
+      "category": "molecules",
+      "path": "src/components/molecules/List",
+      "files": [
+        "List.tsx",
+        "List.types.ts"
+      ]
+    },
+    "marquee": {
+      "name": "marquee",
+      "category": "base",
+      "path": "src/components/base/marquee",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "matched-geometry": {
+      "name": "matched-geometry",
+      "category": "organisms",
+      "path": "src/components/organisms/matched-geometry",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "material-carousel": {
+      "name": "material-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/material-carousel",
+      "files": [
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "media-list": {
+      "name": "media-list",
+      "category": "templates",
+      "path": "src/components/templates/media-list",
+      "files": [
+        "MediaList.tsx",
+        "MediaList.types.ts"
+      ]
+    },
+    "morphing-tabbar": {
+      "name": "morphing-tabbar",
+      "category": "molecules",
+      "path": "src/components/molecules/morphing-tabbar",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "otp": {
+      "name": "otp",
+      "category": "screens",
+      "path": "src/components/screens/otp",
+      "files": [
+        "v1.tsx"
+      ]
+    },
+    "otp-input": {
+      "name": "otp-input",
+      "category": "base",
+      "path": "src/components/base/otp-input",
+      "files": [
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "Pagination": {
+      "name": "Pagination",
+      "category": "molecules",
+      "path": "src/components/molecules/Pagination",
+      "files": [
+        "Pagination.tsx",
+        "Pagination.types.ts"
+      ]
+    },
+    "parallax-carousel": {
+      "name": "parallax-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/parallax-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "paywall": {
+      "name": "paywall",
+      "category": "screens",
+      "path": "src/components/screens/paywall",
+      "files": [
+        "v1.tsx"
+      ]
+    },
+    "picker": {
+      "name": "picker",
+      "category": "organisms",
+      "path": "src/components/organisms/picker",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "pressable": {
+      "name": "pressable",
+      "category": "atoms",
+      "path": "src/components/atoms/pressable",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "privacy-notice-text": {
+      "name": "privacy-notice-text",
+      "category": "base",
+      "path": "src/components/base/privacy-notice-text",
+      "files": [
+        "PrivacyNoticeLink.tsx",
+        "PrivacyNoticeLink.type.ts",
+        "const.ts"
+      ]
+    },
+    "progress": {
+      "name": "progress",
+      "category": "organisms",
+      "path": "src/components/organisms/progress",
+      "files": [
+        "AnimatedProgress.tsx",
+        "AnimatedProgress.types.ts"
+      ]
+    },
+    "qr-code": {
+      "name": "qr-code",
+      "category": "base",
+      "path": "src/components/base/qr-code",
+      "files": [
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "radial-intro": {
+      "name": "radial-intro",
+      "category": "organisms",
+      "path": "src/components/organisms/radial-intro",
+      "files": [
+        "config.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "ripple": {
+      "name": "ripple",
+      "category": "base",
+      "path": "src/components/base/ripple",
+      "files": [
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "rolling-counter": {
+      "name": "rolling-counter",
+      "category": "organisms",
+      "path": "src/components/organisms/rolling-counter",
+      "files": [
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "rotate": {
+      "name": "rotate",
+      "category": "molecules",
+      "path": "src/components/molecules/Loaders/rotate",
+      "files": [
+        "SpinnerArc.Indicator.tsx",
+        "SpinnerArc.types.ts"
+      ]
+    },
+    "rotate-carousel": {
+      "name": "rotate-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/rotate-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "ruler": {
+      "name": "ruler",
+      "category": "base",
+      "path": "src/components/base/ruler",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "scale-carousel": {
+      "name": "scale-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/scale-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "scroll-progress": {
+      "name": "scroll-progress",
+      "category": "molecules",
+      "path": "src/components/molecules/scroll-progress",
+      "files": [
+        "index.tsx"
+      ]
+    },
+    "scrollable-search": {
+      "name": "scrollable-search",
+      "category": "base",
+      "path": "src/components/base/scrollable-search",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "seek-bar": {
+      "name": "seek-bar",
+      "category": "molecules",
+      "path": "src/components/molecules/seek-bar",
+      "files": [
+        "SeekBar.tsx",
+        "SeekBar.types.ts"
+      ]
+    },
+    "segmented-control": {
+      "name": "segmented-control",
+      "category": "organisms",
+      "path": "src/components/organisms/segmented-control",
+      "files": [
+        "index.tsx",
+        "presets.ts",
+        "types.ts"
+      ]
+    },
+    "Shimmer": {
+      "name": "Shimmer",
+      "category": "molecules",
+      "path": "src/components/molecules/Shimmer",
+      "files": [
+        "Shimmer.tsx",
+        "Shimmer.types.ts",
+        "const.ts"
+      ]
+    },
+    "shimmer-wave-text": {
+      "name": "shimmer-wave-text",
+      "category": "base",
+      "path": "src/components/base/shimmer-wave-text",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "skia-ripple": {
+      "name": "skia-ripple",
+      "category": "organisms",
+      "path": "src/components/organisms/skia-ripple",
+      "files": [
+        "conf.ts",
+        "hook.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "spin-button": {
+      "name": "spin-button",
+      "category": "micro-interactions",
+      "path": "src/components/micro-interactions/spin-button",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "split-view": {
+      "name": "split-view",
+      "category": "molecules",
+      "path": "src/components/molecules/split-view",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "stack-aware-tabs": {
+      "name": "stack-aware-tabs",
+      "category": "base",
+      "path": "src/components/base/stack-aware-tabs",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "stack-carousel": {
+      "name": "stack-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/stack-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "stacked-cards": {
+      "name": "stacked-cards",
+      "category": "molecules",
+      "path": "src/components/molecules/stacked-cards",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "stacked-chips": {
+      "name": "stacked-chips",
+      "category": "micro-interactions",
+      "path": "src/components/micro-interactions/stacked-chips",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "stacks": {
+      "name": "stacks",
+      "category": "atoms",
+      "path": "src/components/atoms/stacks",
+      "files": [
+        "Center.tsx",
+        "Center.types.ts",
+        "Row.tsx",
+        "Row.types.ts"
+      ]
+    },
+    "stepper": {
+      "name": "stepper",
+      "category": "molecules",
+      "path": "src/components/molecules/stepper",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "subtitle": {
+      "name": "subtitle",
+      "category": "base",
+      "path": "src/components/base/subtitle",
+      "files": [
+        "Subtitle.props.ts",
+        "Subtitle.tsx"
+      ]
+    },
+    "switch": {
+      "name": "switch",
+      "category": "base",
+      "path": "src/components/base/switch",
+      "files": [
+        "AnimatedSwitch.tsx",
+        "AnimatedSwitch.types.ts"
+      ]
+    },
+    "tabs": {
+      "name": "tabs",
+      "category": "base",
+      "path": "src/components/base/tabs",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "theme-switch": {
+      "name": "theme-switch",
+      "category": "organisms",
+      "path": "src/components/organisms/theme-switch",
+      "files": [
+        "conf.ts",
+        "context.tsx",
+        "helpers.ts",
+        "hooks.ts",
+        "theme.tsx",
+        "types.ts"
+      ]
+    },
+    "thinking-state": {
+      "name": "thinking-state",
+      "category": "ai",
+      "path": "src/components/ai/thinking-state",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "tilt-carousel": {
+      "name": "tilt-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/tilt-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "Timeline": {
+      "name": "Timeline",
+      "category": "molecules",
+      "path": "src/components/molecules/Timeline",
+      "files": [
+        "TimelineView.tsx",
+        "TimelineView.types.ts"
+      ]
+    },
+    "title": {
+      "name": "title",
+      "category": "base",
+      "path": "src/components/base/title",
+      "files": [
+        "const.ts",
+        "helpers.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "Toast": {
+      "name": "Toast",
+      "category": "molecules",
+      "path": "src/components/molecules/Toast",
+      "files": [
+        "Toast.tsx",
+        "Toast.types.ts",
+        "ToastViewPort.tsx",
+        "index.tsx"
+      ]
+    },
+    "unstable_aurora": {
+      "name": "unstable_aurora",
+      "category": "organisms",
+      "path": "src/components/organisms/unstable_aurora",
+      "files": [
+        "conf.ts",
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "unstable_curved-text-marquee": {
+      "name": "unstable_curved-text-marquee",
+      "category": "organisms",
+      "path": "src/components/organisms/unstable_curved-text-marquee",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "unstable_infinite-menu": {
+      "name": "unstable_infinite-menu",
+      "category": "organisms",
+      "path": "src/components/organisms/unstable_infinite-menu",
+      "files": [
+        "__LEFT-OVER__.tsx",
+        "conf.ts",
+        "const.ts",
+        "helpers.ts",
+        "hooks.ts",
+        "index.tsx",
+        "maths-type.ts",
+        "maths.ts",
+        "types.ts"
+      ]
+    },
+    "unstable_metallic-paint": {
+      "name": "unstable_metallic-paint",
+      "category": "organisms",
+      "path": "src/components/organisms/unstable_metallic-paint",
+      "files": [
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "unstable_orb": {
+      "name": "unstable_orb",
+      "category": "organisms",
+      "path": "src/components/organisms/unstable_orb",
+      "files": [
+        "conf.ts",
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "unstable_siri_orb": {
+      "name": "unstable_siri_orb",
+      "category": "organisms",
+      "path": "src/components/organisms/unstable_siri_orb",
+      "files": [
+        "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "v1": {
+      "name": "v1",
+      "category": "screens",
+      "path": "src/components/screens/empty-state/v1",
+      "files": [
+        "v1.tsx"
+      ]
+    },
+    "vertical": {
+      "name": "vertical",
+      "category": "atoms",
+      "path": "src/components/atoms/divider/vertical",
+      "files": [
+        "index.tsx"
+      ]
+    },
+    "vertical-flow-carousel": {
+      "name": "vertical-flow-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/vertical-flow-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "vertical-page-carousel": {
+      "name": "vertical-page-carousel",
+      "category": "molecules",
+      "path": "src/components/molecules/vertical-page-carousel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "vertical-wheel": {
+      "name": "vertical-wheel",
+      "category": "molecules",
+      "path": "src/components/molecules/vertical-wheel",
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "wave-scrawler": {
+      "name": "wave-scrawler",
+      "category": "organisms",
+      "path": "src/components/organisms/wave-scrawler",
+      "files": [
+        "conf.ts",
+        "hooks.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "whats-new": {
+      "name": "whats-new",
+      "category": "templates",
+      "path": "src/components/templates/whats-new",
+      "files": [
+        "WhatsNew.tsx",
+        "WhatsNew.type.ts"
+      ]
+    },
+    "wrapper": {
+      "name": "wrapper",
+      "category": "templates",
+      "path": "src/components/templates/headers/parallax/helpers/wrapper",
+      "files": [
+        "AnimatedScrollViewTitleWrapper.tsx",
+        "HeaderComponentWrapper.tsx"
+      ]
+    }
+  }
+}

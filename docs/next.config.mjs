@@ -7,9 +7,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   outputFileTracingIncludes: {
     "/**": ["components/kokonutui/**/*"],
   },
@@ -65,7 +62,14 @@ const nextConfig = {
   },
   reactStrictMode: true,
   cacheComponents: true,
-  serverExternalPackages: ["twoslash", "typescript", "shiki", "gsap", "ogl", "three"],
+  serverExternalPackages: [
+    "twoslash",
+    "typescript",
+    "shiki",
+    "gsap",
+    "ogl",
+    "three",
+  ],
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
@@ -74,9 +78,9 @@ const nextConfig = {
     if (isServer) {
       config.externals = config.externals || [];
       config.externals.push({
-        'shiki': 'commonjs shiki',
-        'gsap': 'commonjs gsap',
-        'ogl': 'commonjs ogl',
+        shiki: "commonjs shiki",
+        gsap: "commonjs gsap",
+        ogl: "commonjs ogl",
       });
     }
     return config;

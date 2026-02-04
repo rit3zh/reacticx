@@ -1,6 +1,6 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import Image from "next/image";
-import HeaderProSmall from "@/components/landing/header-pro-small";
+import HeaderProSmall from "@/components/landing/header-mobile";
 import { GithubInfo } from "fumadocs-ui/components/github-info";
 
 export const baseOptions = <T extends Partial<BaseLayoutProps>>(

@@ -33,6 +33,18 @@ Visit our [documentation](https://www.reacticx.com/docs) to learn more about our
 
 We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) to get started.
 
+## 💬 Community
+
+Join our [Discord community](https://discord.gg/wCpFkYpyHA) to suggest components, share feedback, get help, and connect with other developers. Every idea and contribution helps make Reacticx much more better!
+
+<div>
+  <a href="https://discord.gg/wCpFkYpyHA" target="_blank">
+    <img src="https://dcbadge.limes.pink/api/server/wCpFkYpyHA?style=flat" alt="Join Discord" />
+  </a>  
+</div>
+
+<br>
+
 ## 📝 License
 
 MIT © [rit3zh](https://github.com/rit3zh)

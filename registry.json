@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 104,
+  "totalComponents": 106,
   "categories": [
     "ai",
     "atoms",
@@ -529,6 +529,18 @@
         "types.ts"
       ]
     },
+    "grainy-gradient": {
+      "name": "grainy-gradient",
+      "category": "organisms",
+      "path": "src/components/organisms/grainy-gradient",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
     "hamburger": {
       "name": "hamburger",
       "category": "micro-interactions",
@@ -713,6 +725,18 @@
       "files": [
         "MediaList.tsx",
         "MediaList.types.ts"
+      ]
+    },
+    "mesh-gradient": {
+      "name": "mesh-gradient",
+      "category": "organisms",
+      "path": "src/components/organisms/mesh-gradient",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "index.tsx",
+        "types.ts"
       ]
     },
     "morphing-tabbar": {

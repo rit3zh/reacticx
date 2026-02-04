@@ -1,3 +1,4 @@
+// @ts-check
 import React, { memo, useMemo } from "react";
 import { StyleSheet, View, useWindowDimensions } from "react-native";
 import { Canvas, Shader, Skia, Fill, vec } from "@shopify/react-native-skia";

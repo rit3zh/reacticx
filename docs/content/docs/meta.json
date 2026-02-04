@@ -10,6 +10,8 @@
     "components/chroma-ring",
     "components/energy-orb",
     "components/siri-orb",
+    "components/mesh-gradient",
+    "components/grainy-gradient",
     "components/skia-ripple",
     "components/wave-scrawler",
 

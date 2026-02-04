@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 104,
+  "totalComponents": 106,
   "categories": [
     "ai",
     "atoms",
@@ -318,12 +318,12 @@
       "path": "src/components/templates/sheet/floating-sheet",
       "folders": [
         {
-          "name": "constants",
-          "files": ["sizes/sheetSizes.ts"]
-        },
-        {
           "name": "types",
           "files": ["FloatingPlayer.types.ts"]
+        },
+        {
+          "name": "constants",
+          "files": ["sizes/sheetSizes.ts"]
         },
         {
           "name": "utils",
@@ -361,6 +361,13 @@
       "path": "src/components/molecules/gooey-text",
       "folders": [],
       "files": ["conf.ts", "helpers.ts", "index.tsx", "types.ts"]
+    },
+    "grainy-gradient": {
+      "name": "grainy-gradient",
+      "category": "organisms",
+      "path": "src/components/organisms/grainy-gradient",
+      "folders": [],
+      "files": ["conf.ts", "helper.ts", "index.tsx", "types.ts"]
     },
     "hamburger": {
       "name": "hamburger",
@@ -431,12 +438,16 @@
       "path": "src/components/molecules/Loaders",
       "folders": [
         {
-          "name": "circle",
-          "files": ["Circle.Indiactor.tsx", "Circle.types.ts"]
+          "name": "rotate",
+          "files": ["SpinnerArc.Indicator.tsx", "SpinnerArc.types.ts"]
         },
         {
-          "name": "circular",
-          "files": ["index.tsx", "types.ts"]
+          "name": "square",
+          "files": ["rotate/RotateSquare.Indicator.tsx"]
+        },
+        {
+          "name": "circle",
+          "files": ["Circle.Indiactor.tsx", "Circle.types.ts"]
         },
         {
           "name": "dots",
@@ -448,12 +459,8 @@
           ]
         },
         {
-          "name": "rotate",
-          "files": ["SpinnerArc.Indicator.tsx", "SpinnerArc.types.ts"]
-        },
-        {
-          "name": "square",
-          "files": ["rotate/RotateSquare.Indicator.tsx"]
+          "name": "circular",
+          "files": ["index.tsx", "types.ts"]
         }
       ],
       "files": []
@@ -485,6 +492,10 @@
       "path": "src/components/templates/media-list",
       "folders": [
         {
+          "name": "utils",
+          "files": ["chunk.ts", "snap.ts"]
+        },
+        {
           "name": "children",
           "files": [
             "MediaListSubtitle.tsx",
@@ -492,13 +503,16 @@
             "MediaListTitleWrapper.tsx",
             "MediaListWrapper.tsx"
           ]
-        },
-        {
-          "name": "utils",
-          "files": ["chunk.ts", "snap.ts"]
         }
       ],
       "files": ["MediaList.tsx", "MediaList.types.ts"]
+    },
+    "mesh-gradient": {
+      "name": "mesh-gradient",
+      "category": "organisms",
+      "path": "src/components/organisms/mesh-gradient",
+      "folders": [],
+      "files": ["conf.ts", "const.ts", "index.tsx", "types.ts"]
     },
     "morphing-tabbar": {
       "name": "morphing-tabbar",
@@ -534,6 +548,14 @@
       "path": "src/components/templates/parallax-header",
       "folders": [
         {
+          "name": "types",
+          "files": ["index.ts"]
+        },
+        {
+          "name": "constants",
+          "files": ["index.ts"]
+        },
+        {
           "name": "components",
           "files": [
             "AnimatedHeader.tsx",
@@ -543,8 +565,8 @@
           ]
         },
         {
-          "name": "constants",
-          "files": ["index.ts"]
+          "name": "hooks",
+          "files": ["useAnimatedNavBar.ts", "useAnimatedScrollView.ts"]
         },
         {
           "name": "helpers",
@@ -553,14 +575,6 @@
             "wrapper/AnimatedScrollViewTitleWrapper.tsx",
             "wrapper/HeaderComponentWrapper.tsx"
           ]
-        },
-        {
-          "name": "hooks",
-          "files": ["useAnimatedNavBar.ts", "useAnimatedScrollView.ts"]
-        },
-        {
-          "name": "types",
-          "files": ["index.ts"]
         }
       ],
       "files": ["ParallaxHeader.props.ts"]
@@ -898,6 +912,10 @@
       "path": "src/components/templates/whats-new",
       "folders": [
         {
+          "name": "context",
+          "files": ["WhatsNewContext.ts"]
+        },
+        {
           "name": "children",
           "files": [
             "WhatsNewButton.tsx",
@@ -907,10 +925,6 @@
             "WhatsNewTrigger.tsx",
             "WhatsNewWrapper.tsx"
           ]
-        },
-        {
-          "name": "context",
-          "files": ["WhatsNewContext.ts"]
         }
       ],
       "files": ["WhatsNew.tsx", "WhatsNew.type.ts"]

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { source } from "@/lib/source";
 import { baseOptions } from "../layout.config";
+import { AnnouncementDialog } from "@/components/announcement-dialog";
 
 export const metadata: Metadata = {
   title: {
@@ -14,8 +15,11 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: LayoutProps<"/docs">) {
   return (
-    <DocsLayout tree={source.pageTree} {...baseOptions()}>
-      {children}
-    </DocsLayout>
+    <>
+      <DocsLayout tree={source.pageTree} {...baseOptions()}>
+        {children}
+      </DocsLayout>
+      <AnnouncementDialog />
+    </>
   );
 }

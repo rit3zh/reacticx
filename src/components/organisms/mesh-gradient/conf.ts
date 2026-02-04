@@ -50,8 +50,7 @@ float2 mod289(float2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 float3 permute(float3 x) { return mod289(((x*34.0)+1.0)*x); }
 
 float snoise(float2 v) {
-  const float4 C = float4(0.211324865405187, 0.366025403784439,
-                          -0.577350269189626, 0.024390243902439);
+  const float4 C = float4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
   float2 i  = floor(v + dot(v, C.yy));
   float2 x0 = v - i + dot(i, C.xx);
   float2 i1 = (x0.x > x0.y) ? float2(1.0, 0.0) : float2(0.0, 1.0);

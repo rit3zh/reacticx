@@ -2,7 +2,7 @@
 
 import { CheckCheck, Copy } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import {
+import React, {
   type RefObject,
   useCallback,
   useEffect,
@@ -12,12 +12,12 @@ import {
 import { cn } from "@/lib/utils";
 import { PackageManagerTabs } from "./package-manager-tabs";
 
-const REGISTRY_URL = "https://reacticx-ui-components.pages.dev";
+const REGISTRY_URL: string = "https://reacticx-ui-components.pages.dev";
 
-function SuccessParticles({
+function SuccessParticles<T extends React.RefObject<HTMLButtonElement>>({
   buttonRef,
 }: {
-  buttonRef: React.RefObject<HTMLButtonElement>;
+  buttonRef: T;
 }) {
   const rect = buttonRef.current?.getBoundingClientRect();
   if (!rect) return null;

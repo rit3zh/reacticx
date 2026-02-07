@@ -164,7 +164,7 @@ importers:
         version: 2.3.11
       '@cloudflare/next-on-pages':
         specifier: ^1.13.16
-        version: 1.13.16(next@16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(vercel@34.4.0)(wrangler@4.63.0)
+        version: 1.13.16(next@16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(vercel@35.0.0)(wrangler@4.63.0)
       '@next/swc-darwin-arm64':
         specifier: ^16.1.6
         version: 16.1.6
@@ -187,8 +187,8 @@ importers:
         specifier: 7.0.8
         version: 7.0.8(typescript@5.9.3)
       vercel:
-        specifier: 34.4.0
-        version: 34.4.0
+        specifier: 35.0.0
+        version: 35.0.0
       wrangler:
         specifier: ^4.63.0
         version: 4.63.0
@@ -925,7 +925,6 @@ packages:
   '@next/swc-darwin-arm64@16.1.6':
     resolution: {integrity: sha512-wTzYulosJr/6nFnqGW7FrG3jfUUlEf8UjGA0/pyypJl42ExdVgC6xJgcXQ+V8QFn6niSG2Pb8+MIG1mZr2vczw==}
     engines: {node: '>= 10'}
-    cpu: [arm64]
     os: [darwin]
 
   '@next/swc-darwin-x64@16.1.6':
@@ -1790,25 +1789,25 @@ packages:
   '@vercel/hydrogen@1.0.2':
     resolution: {integrity: sha512-/Q2MKk1GfOuZAnkE9jQexjtUQqanbY65R+xtJWd9yKIgwcfRI1hxiNH3uXyVM5AvLoY+fxxULkSuxDtUKpkJpQ==}
 
-  '@vercel/next@4.3.2':
-    resolution: {integrity: sha512-sZ8SlDIYPoPVOe1HjAqKd4Pi6f5TBE7gDmt12X+ja/g6VPNNwqDaQG3SizVjcZsavnpH1fZNm8Rc1HRoBLihfA==}
+  '@vercel/next@4.3.3':
+    resolution: {integrity: sha512-us5h8nNntPDmivCD/Pc6IsxFdAVVZhktNT3ye27Fz1g8kh0TgYsvlqFyNxacU/HeCGKhHsjGyjv5Qkksnh9nuQ==}
 
-  '@vercel/nft@0.27.2':
-    resolution: {integrity: sha512-7LeioS1yE5hwPpQfD3DdH04tuugKjo5KrJk3yK5kAI3Lh76iSsK/ezoFQfzuT08X3ZASQOd1y9ePjLNI9+TxTQ==}
+  '@vercel/nft@0.27.3':
+    resolution: {integrity: sha512-oySTdDSzUAFDXpsSLk9Q943o+/Yu/+TCFxnehpFQEf/3khi2stMpTHPVNwFdvZq/Z4Ky93lE+MGHpXCRpMkSCA==}
     engines: {node: '>=16'}
     hasBin: true
 
-  '@vercel/node@3.2.3':
-    resolution: {integrity: sha512-M/trB1Cs5/aaZVpJJpylntoektXeShFkl8uSCehbh4wy/gGMXFsTRmQfGfUbcJq8K/rhPHrRv1lmJEU5S5zerg==}
+  '@vercel/node@3.2.4':
+    resolution: {integrity: sha512-6zmLRzKt8PG3wWMx1vA+A+Eg02AtRT/m9aP4fnFxH7k8fzaKqtT8E9QfQiDSGi4YG2A1/Dmtu3saPhV37ovtyw==}
 
   '@vercel/python@4.3.0':
     resolution: {integrity: sha512-tj6ffEh+ligmQoo/ONOg7DNX0VGKJt9FyswyOIIp6lZufs5oGzHAfan4+5QzF/2INxvXobN0aMYgcbFHJ81ZKg==}
 
-  '@vercel/redwood@2.1.0':
-    resolution: {integrity: sha512-kwlAJSA0qHrq3eG5k4+xiOXUfPNQ5mUm3Zs+2FUweEhyhIBRlue862H55A5w1kZBPDSTtnlQZrkrwCOMpz0pHg==}
+  '@vercel/redwood@2.1.1':
+    resolution: {integrity: sha512-4m4NVkQ+jIBPgkbTxfdXA8cIR9XifUdBJVaBOzh+hjdczP8K5iEcY+I8A8nEjh9MFQVdKY2uDqPb12rikBJF5A==}
 
-  '@vercel/remix-builder@2.1.10':
-    resolution: {integrity: sha512-Ehw0TGWOma7Z5zD42pZXh+b4QPSPMZO98Va88uVsebD4TmTg+V3I/6E+U/HRKHsxSWixy5ZSdWjdrNV9NoZgQA==}
+  '@vercel/remix-builder@2.1.11':
+    resolution: {integrity: sha512-5jYODIi9GDkdcTF5lTf6tm/P4StBFAJcn+8KNoBSB2p2qHuuNCrkQB2d82OkR7z6v39Q4wRAsQfAWbTqyLljog==}
 
   '@vercel/routing-utils@3.1.0':
     resolution: {integrity: sha512-Ci5xTjVTJY/JLZXpCXpLehMft97i9fH34nu9PGav6DtwkVUF6TOPX86U0W0niQjMZ5n6/ZP0BwcJK2LOozKaGw==}
@@ -4021,8 +4020,8 @@ packages:
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
 
-  vercel@34.4.0:
-    resolution: {integrity: sha512-QOErHTqWRfR9zz11uRB/CJgmeYtnia1CTBC1rk0hWU1QXMohqCXB6qjmFC87cNKBlMb5sNE5c7YvXBCVBuKRAQ==}
+  vercel@35.0.0:
+    resolution: {integrity: sha512-UfhZbtXkHhlzNX+Doc5kYZ1KuhbwdUDFFItuVSPCVLMxi4zcl5Ly9ox6x1Lm4VTlDfBdNtRX07ARzJfmn3YqHw==}
     engines: {node: '>= 16'}
     hasBin: true
 
@@ -4183,7 +4182,7 @@ snapshots:
 
   '@cloudflare/kv-asset-handler@0.4.2': {}
 
-  '@cloudflare/next-on-pages@1.13.16(next@16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(vercel@34.4.0)(wrangler@4.63.0)':
+  '@cloudflare/next-on-pages@1.13.16(next@16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(vercel@35.0.0)(wrangler@4.63.0)':
     dependencies:
       acorn: 8.15.0
       ast-types: 0.14.2
@@ -4198,7 +4197,7 @@ snapshots:
       package-manager-manager: 0.2.0
       pcre-to-regexp: 1.1.0
       semver: 7.7.4
-      vercel: 34.4.0
+      vercel: 35.0.0
       wrangler: 4.63.0
     transitivePeerDependencies:
       - bufferutil
@@ -5506,14 +5505,14 @@ snapshots:
       '@vercel/static-config': 3.0.0
       ts-morph: 12.0.0
 
-  '@vercel/next@4.3.2':
+  '@vercel/next@4.3.3':
     dependencies:
-      '@vercel/nft': 0.27.2
+      '@vercel/nft': 0.27.3
     transitivePeerDependencies:
       - encoding
       - supports-color
 
-  '@vercel/nft@0.27.2':
+  '@vercel/nft@0.27.3':
     dependencies:
       '@mapbox/node-pre-gyp': 1.0.11
       '@rollup/pluginutils': 4.2.1
@@ -5531,7 +5530,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@vercel/node@3.2.3':
+  '@vercel/node@3.2.4':
     dependencies:
       '@edge-runtime/node-utils': 2.3.0
       '@edge-runtime/primitives': 4.1.0
@@ -5539,7 +5538,7 @@ snapshots:
       '@types/node': 16.18.11
       '@vercel/build-utils': 8.3.2
       '@vercel/error-utils': 2.0.2
-      '@vercel/nft': 0.27.2
+      '@vercel/nft': 0.27.3
       '@vercel/static-config': 3.0.0
       async-listen: 3.0.0
       cjs-module-lexer: 1.2.3
@@ -5561,9 +5560,9 @@ snapshots:
 
   '@vercel/python@4.3.0': {}
 
-  '@vercel/redwood@2.1.0':
+  '@vercel/redwood@2.1.1':
     dependencies:
-      '@vercel/nft': 0.27.2
+      '@vercel/nft': 0.27.3
       '@vercel/routing-utils': 3.1.0
       '@vercel/static-config': 3.0.0
       semver: 6.3.1
@@ -5572,10 +5571,10 @@ snapshots:
       - encoding
       - supports-color
 
-  '@vercel/remix-builder@2.1.10':
+  '@vercel/remix-builder@2.1.11':
     dependencies:
       '@vercel/error-utils': 2.0.2
-      '@vercel/nft': 0.27.2
+      '@vercel/nft': 0.27.3
       '@vercel/static-config': 3.0.0
       ts-morph: 12.0.0
     transitivePeerDependencies:
@@ -5819,7 +5818,7 @@ snapshots:
 
   debug@4.1.1:
     dependencies:
-      ms: 2.1.1
+      ms: 2.1.3
 
   debug@4.4.3:
     dependencies:
@@ -8023,17 +8022,17 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  vercel@34.4.0:
+  vercel@35.0.0:
     dependencies:
       '@vercel/build-utils': 8.3.2
       '@vercel/fun': 1.1.0
       '@vercel/go': 3.1.1
       '@vercel/hydrogen': 1.0.2
-      '@vercel/next': 4.3.2
-      '@vercel/node': 3.2.3
+      '@vercel/next': 4.3.3
+      '@vercel/node': 3.2.4
       '@vercel/python': 4.3.0
-      '@vercel/redwood': 2.1.0
-      '@vercel/remix-builder': 2.1.10
+      '@vercel/redwood': 2.1.1
+      '@vercel/remix-builder': 2.1.11
       '@vercel/ruby': 2.1.0
       '@vercel/static-build': 2.5.14
       chokidar: 3.3.1

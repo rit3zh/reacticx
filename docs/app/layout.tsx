@@ -85,6 +85,13 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
+        <head>
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID}`}
+            crossOrigin="anonymous"
+          />
+        </head>
         <body className={cn(geist.variable, geist.className, "antialiased")}>
           <RootProvider>
             <ThemeProvider
@@ -96,11 +103,6 @@ export default function RootLayout({
               <TooltipProvider>{children}</TooltipProvider>
             </ThemeProvider>
           </RootProvider>
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID}`}
-            crossOrigin="anonymous"
-          ></Script>
         </body>
       </html>
     </ViewTransitions>

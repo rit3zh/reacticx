@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 109,
+  "totalComponents": 114,
   "categories": [
     "ai",
     "atoms",
@@ -200,6 +200,13 @@
       "folders": [],
       "files": ["index.tsx", "types.ts"]
     },
+    "circle-loader": {
+      "name": "circle-loader",
+      "category": "molecules",
+      "path": "src/components/molecules/circle-loader",
+      "folders": [],
+      "files": ["index.tsx", "types.ts"]
+    },
     "circular-carousel": {
       "name": "circular-carousel",
       "category": "molecules",
@@ -211,6 +218,13 @@
       "name": "circular-list",
       "category": "molecules",
       "path": "src/components/molecules/circular-list",
+      "folders": [],
+      "files": ["index.tsx", "types.ts"]
+    },
+    "circular-loader": {
+      "name": "circular-loader",
+      "category": "molecules",
+      "path": "src/components/molecules/circular-loader",
       "folders": [],
       "files": ["index.tsx", "types.ts"]
     },
@@ -434,10 +448,10 @@
       "folders": [],
       "files": ["conf.ts", "helper.ts", "index.tsx", "types.ts"]
     },
-    "List": {
-      "name": "List",
+    "list": {
+      "name": "list",
       "category": "molecules",
-      "path": "src/components/molecules/List",
+      "path": "src/components/molecules/list",
       "folders": [
         {
           "name": "children",
@@ -452,39 +466,6 @@
         }
       ],
       "files": ["List.tsx", "List.types.ts"]
-    },
-    "Loaders": {
-      "name": "Loaders",
-      "category": "molecules",
-      "path": "src/components/molecules/Loaders",
-      "folders": [
-        {
-          "name": "rotate",
-          "files": ["SpinnerArc.Indicator.tsx", "SpinnerArc.types.ts"]
-        },
-        {
-          "name": "square",
-          "files": ["rotate/RotateSquare.Indicator.tsx"]
-        },
-        {
-          "name": "circle",
-          "files": ["Circle.Indiactor.tsx", "Circle.types.ts"]
-        },
-        {
-          "name": "dots",
-          "files": [
-            "OrbitingDots.Indicator.tsx",
-            "OrbitingDots.types.ts",
-            "PlusingDots.Indicator.tsx",
-            "PlusingDots.types.ts"
-          ]
-        },
-        {
-          "name": "circular",
-          "files": ["index.tsx", "types.ts"]
-        }
-      ],
-      "files": []
     },
     "marquee": {
       "name": "marquee",
@@ -542,6 +523,13 @@
       "folders": [],
       "files": ["conf.ts", "index.tsx", "types.ts"]
     },
+    "orbiting-dots": {
+      "name": "orbiting-dots",
+      "category": "molecules",
+      "path": "src/components/molecules/orbiting-dots",
+      "folders": [],
+      "files": ["index.tsx", "types.ts"]
+    },
     "otp-input": {
       "name": "otp-input",
       "category": "base",
@@ -549,10 +537,10 @@
       "folders": [],
       "files": ["const.ts", "index.tsx", "types.ts"]
     },
-    "Pagination": {
-      "name": "Pagination",
+    "pagination": {
+      "name": "pagination",
       "category": "molecules",
-      "path": "src/components/molecules/Pagination",
+      "path": "src/components/molecules/pagination",
       "folders": [],
       "files": ["Pagination.tsx", "Pagination.types.ts"]
     },
@@ -614,6 +602,13 @@
       "folders": [],
       "files": ["index.tsx", "types.ts"]
     },
+    "pulsing-dots": {
+      "name": "pulsing-dots",
+      "category": "molecules",
+      "path": "src/components/molecules/pulsing-dots",
+      "folders": [],
+      "files": ["index.tsx", "types.ts"]
+    },
     "qr-code": {
       "name": "qr-code",
       "category": "base",
@@ -646,6 +641,13 @@
       "name": "rotate-carousel",
       "category": "molecules",
       "path": "src/components/molecules/rotate-carousel",
+      "folders": [],
+      "files": ["index.tsx", "types.ts"]
+    },
+    "rotating-square": {
+      "name": "rotating-square",
+      "category": "molecules",
+      "path": "src/components/molecules/rotating-square",
       "folders": [],
       "files": ["index.tsx", "types.ts"]
     },
@@ -698,10 +700,10 @@
       "folders": [],
       "files": ["index.tsx", "presets.ts", "types.ts"]
     },
-    "Shimmer": {
-      "name": "Shimmer",
+    "shimmer": {
+      "name": "shimmer",
       "category": "molecules",
-      "path": "src/components/molecules/Shimmer",
+      "path": "src/components/molecules/shimmer",
       "folders": [],
       "files": ["Shimmer.tsx", "Shimmer.types.ts", "const.ts"]
     },
@@ -725,6 +727,13 @@
       "path": "src/components/micro-interactions/spin-button",
       "folders": [],
       "files": ["conf.ts", "index.tsx", "types.ts"]
+    },
+    "spinner-arc": {
+      "name": "spinner-arc",
+      "category": "molecules",
+      "path": "src/components/molecules/spinner-arc",
+      "folders": [],
+      "files": ["index.tsx", "types.ts"]
     },
     "split-view": {
       "name": "split-view",
@@ -831,10 +840,10 @@
       "folders": [],
       "files": ["const.ts", "helpers.ts", "index.tsx", "types.ts"]
     },
-    "Toast": {
-      "name": "Toast",
+    "toast": {
+      "name": "toast",
       "category": "molecules",
-      "path": "src/components/molecules/Toast",
+      "path": "src/components/molecules/toast",
       "folders": [
         {
           "name": "context",

@@ -1,4 +1,4 @@
-import { StyleProp, StyleSheet, ViewStyle } from "react-native";
+import { StyleSheet, type StyleProp, type ViewStyle } from "react-native";
 
 interface DashStyleProps {
   style?: StyleProp<ViewStyle>;
@@ -11,7 +11,7 @@ interface DashStyleProps {
 const stylesStore: Record<string, ViewStyle> = {};
 
 export const isStyleRow = (
-  style?: StyleProp<ViewStyle> | undefined
+  style?: StyleProp<ViewStyle> | undefined,
 ): boolean => {
   const flatStyle = StyleSheet.flatten(style || {});
   return flatStyle.flexDirection !== "column";
@@ -19,13 +19,13 @@ export const isStyleRow = (
 
 const getDashStyleId = (
   { dashGap, dashLength, dashThickness, dashColor }: DashStyleProps,
-  isRow: boolean
+  isRow: boolean,
 ): string =>
   `${dashGap}-${dashLength}-${dashThickness}-${dashColor}-${isRow ? "row" : "column"}`;
 
 const createDashStyleSheet = (
   { dashGap, dashLength, dashThickness, dashColor }: DashStyleProps,
-  isRow: boolean
+  isRow: boolean,
 ): ViewStyle => {
   const idStyle = StyleSheet.create({
     style: {
@@ -49,13 +49,13 @@ export const getDashStyle = ({
   const isRow = isStyleRow(style);
   const id = getDashStyleId(
     { dashGap, dashLength, dashThickness, dashColor, style },
-    isRow
+    isRow,
   );
 
   if (!stylesStore[id]) {
     stylesStore[id] = createDashStyleSheet(
       { dashGap, dashLength, dashThickness, dashColor, style },
-      isRow
+      isRow,
     );
   }
 

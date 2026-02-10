@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, View, Pressable, ScrollView } from "react-native";
+import React, {useEffect, useRef}  from "react";
+import { StyleSheet, Text, TextInput, View, Pressable, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SymbolView } from "expo-symbols";
 import { useFonts } from "expo-font";
@@ -24,6 +24,16 @@ const RECENT = ["Tokyo", "Kyoto", "Osaka"];
 
 const SearchBar = ({ fontLoaded }: { fontLoaded: boolean }) => {
   const { setIsFocused, isFocused } = useScrollableSearch();
+  const inputRef = useRef<TextInput>(null);
+
+  useEffect(() => {
+    if (isFocused) {
+      inputRef.current?.focus();
+    } else {
+      inputRef.current?.blur();
+    }
+  }, [isFocused]);
+
 
   return (
     <ScrollableSearch.AnimatedComponent
@@ -33,17 +43,19 @@ const SearchBar = ({ fontLoaded }: { fontLoaded: boolean }) => {
     >
       <Pressable
         style={styles.searchBar}
-        onPress={() => setIsFocused(!isFocused)}
+        onPress={() => setIsFocused(true)}
       >
         <SymbolView name="magnifyingglass" size={18} tintColor="#666" />
-        <Text
+         <TextInput
+          ref={inputRef}
           style={[
             styles.searchPlaceholder,
             fontLoaded && { fontFamily: "SfProRounded" },
           ]}
-        >
-          Search destinations...
-        </Text>
+          placeholder="Search destinations..."
+          placeholderTextColor="#555"
+          onFocus={() => setIsFocused(true)}
+        />
       </Pressable>
     </ScrollableSearch.AnimatedComponent>
   );
@@ -287,6 +299,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     color: "#555",
+    color:"#fff"
   },
   focusedContainer: {
     flex: 1,

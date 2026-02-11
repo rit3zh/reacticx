@@ -1,4 +1,4 @@
-import { loader } from "fumadocs-core/source";
+import { loader, type InferPageType } from "fumadocs-core/source";
 import { icons } from "lucide-react";
 import { createElement } from "react";
 import { docs } from "@/.source";
@@ -16,3 +16,5 @@ export const source = loader({
     }
   },
 });
+
+export type Page = InferPageType<typeof source>;

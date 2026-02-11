@@ -15,6 +15,9 @@ export const docs = defineDocs({
         .transform((val) => (val ? new Date(val) : undefined))
         .optional(),
     }),
+    postprocess: {
+      includeProcessedMarkdown: true,
+    },
   },
 });
 

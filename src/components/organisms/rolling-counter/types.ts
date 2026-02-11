@@ -1,3 +1,4 @@
+import { StyleProp, TextStyle } from "react-native";
 import type { SharedValue, WithSpringConfig } from "react-native-reanimated";
 
 interface IReusableDigit {
@@ -5,8 +6,7 @@ interface IReusableDigit {
   counterValue: SharedValue<number>;
   height: number;
   width: number;
-  color: string;
-  fontSize: number;
+  digitStyle: StyleProp<TextStyle>;
   springConfig: Partial<WithSpringConfig>;
 }
 
@@ -14,8 +14,7 @@ interface ICounter {
   value: number | SharedValue<number>;
   height?: number;
   width?: number;
-  fontSize?: number;
-  color?: string;
+  digitStyle?: StyleProp<TextStyle>;
   springConfig?: Partial<WithSpringConfig>;
 }
 

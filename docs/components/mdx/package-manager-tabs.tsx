@@ -11,18 +11,31 @@ type PackageManagerTabsProps = {
   prePath: string;
 };
 
+const STORAGE_KEY = "package-manager-selection";
+
 const packageManagers = [
   { id: "npm", title: "npm" },
   { id: "bun", title: "bun" },
   { id: "pnpm", title: "pnpm" },
 ];
+const DEFAULT_PACKAGE_MANAGER = "bun";
 
 export function PackageManagerTabs({
   onSelect,
   commandName,
   prePath,
 }: PackageManagerTabsProps) {
-  const [selected, setSelected] = React.useState<string>("bun");
+  const [selected, setSelected] = React.useState<string>(() => {
+    if (typeof window === "undefined") return DEFAULT_PACKAGE_MANAGER;
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (!stored) return DEFAULT_PACKAGE_MANAGER;
+      const isValidPackageManager = packageManagers.some((item) => item.id === stored);
+      return isValidPackageManager ? stored : DEFAULT_PACKAGE_MANAGER;
+    } catch {
+      return DEFAULT_PACKAGE_MANAGER;
+    }
+  });
   const [dimensions, setDimensions] = React.useState({ width: 0, left: 0 });
   const [isCopied, setIsCopied] = React.useState(false);
 
@@ -53,6 +66,11 @@ export function PackageManagerTabs({
 
   const handleTabClick = (tabId: string) => {
     setSelected(tabId);
+    try {
+      localStorage.setItem(STORAGE_KEY, tabId);
+    } catch {
+      // Ignore err
+    }
     onSelect(tabId);
   };
 

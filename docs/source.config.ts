@@ -18,4 +18,12 @@ export const docs = defineDocs({
   },
 });
 
-export default defineConfig();
+export default defineConfig({
+  mdxOptions: {
+    remarkNpmOptions: {
+      persist: {
+        id: "package-manager",
+      },
+    },
+  },
+});

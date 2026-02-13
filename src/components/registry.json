@@ -602,6 +602,13 @@
       "folders": [],
       "files": ["index.tsx", "types.ts"]
     },
+    "progress": {
+      "name": "progress",
+      "category": "organisms",
+      "path": "src/components/organisms/progress",
+      "folders": [],
+      "files": ["AnimatedProgress.tsx", "AnimatedProgress.types.ts"]
+    },
     "pulsing-dots": {
       "name": "pulsing-dots",
       "category": "molecules",

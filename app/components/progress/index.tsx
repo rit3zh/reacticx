@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   Dimensions,
 } from "react-native";
-import { AnimatedProgressBar } from "@/components/organisms/progress/AnimatedProgress";
+import { AnimatedProgressBar } from "@/components/organisms/progress";
 import { Ionicons, MaterialIcons, Feather } from "@expo/vector-icons";
 
 const { width: screenWidth } = Dimensions.get("window");

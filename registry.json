@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 115,
+  "totalComponents": 116,
   "categories": [
     "ai",
     "atoms",
@@ -216,10 +216,10 @@
         "types.ts"
       ]
     },
-    "breadcrumbs": {
-      "name": "breadcrumbs",
+    "Breadcrumbs": {
+      "name": "Breadcrumbs",
       "category": "molecules",
-      "path": "src/components/molecules/breadcrumbs",
+      "path": "src/components/molecules/Breadcrumbs",
       "folders": [
         {
           "name": "children",
@@ -654,10 +654,10 @@
         "types.ts"
       ]
     },
-    "list": {
-      "name": "list",
+    "List": {
+      "name": "List",
       "category": "molecules",
-      "path": "src/components/molecules/list",
+      "path": "src/components/molecules/List",
       "folders": [
         {
           "name": "children",
@@ -779,10 +779,10 @@
         "types.ts"
       ]
     },
-    "pagination": {
-      "name": "pagination",
+    "Pagination": {
+      "name": "Pagination",
       "category": "molecules",
-      "path": "src/components/molecules/pagination",
+      "path": "src/components/molecules/Pagination",
       "folders": [],
       "files": [
         "Pagination.tsx",
@@ -859,6 +859,16 @@
       "name": "pressable",
       "category": "atoms",
       "path": "src/components/atoms/pressable",
+      "folders": [],
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "progress": {
+      "name": "progress",
+      "category": "organisms",
+      "path": "src/components/organisms/progress",
       "folders": [],
       "files": [
         "index.tsx",
@@ -1022,10 +1032,10 @@
         "types.ts"
       ]
     },
-    "shimmer": {
-      "name": "shimmer",
+    "Shimmer": {
+      "name": "Shimmer",
       "category": "molecules",
-      "path": "src/components/molecules/shimmer",
+      "path": "src/components/molecules/Shimmer",
       "folders": [],
       "files": [
         "Shimmer.tsx",
@@ -1218,10 +1228,10 @@
         "types.ts"
       ]
     },
-    "toast": {
-      "name": "toast",
+    "Toast": {
+      "name": "Toast",
       "category": "molecules",
-      "path": "src/components/molecules/toast",
+      "path": "src/components/molecules/Toast",
       "folders": [
         {
           "name": "context",

@@ -217,6 +217,7 @@ a[href="/docs/components/grainy-gradient"]::after,
 a[href="/docs/components/aurora"]::after,
 a[href="/docs/components/curved-marquee"]::after,
 a[href="/docs/components/staggered-text"]::after,
+a[href="/docs/components/radiant-button"]::after,
 a[href="/docs/components/mesh-gradient"]::after {
   content: "New";
   position: absolute;
@@ -249,6 +250,7 @@ a[href="/docs/components/mesh-gradient"]::after {
 .dark a[href="/docs/components/aurora"]::after,
 .dark a[href="/docs/components/staggered-text"]::after,
 .dark a[href="/docs/components/curved-marquee"]::after,
+.dark a[href="/docs/components/radiant-button"]::after,
 .dark a[href="/docs/components/mesh-gradient"]::after {
   color: rgb(255, 255, 255);
   background:

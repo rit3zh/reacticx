@@ -18,6 +18,7 @@
 
     "---Texts---",
     "components/animated-text",
+    "components/circular-text",
     "components/dynamic-text",
     "components/fade-text",
     "components/gooey-text",
@@ -75,6 +76,7 @@
     "components/glow",
     "components/infinite-menu",
     "components/lanyard",
+    "components/liquid-metal",
     "components/loader",
     "components/marquee",
     "components/material-carousel",
@@ -93,6 +95,7 @@
     "components/pulsing-dots",
     "components/qr-code",
     "components/radial-intro",
+    "components/radiant-button",
     "components/ripple",
     "components/rolling-counter",
     "components/rotate-carousel",

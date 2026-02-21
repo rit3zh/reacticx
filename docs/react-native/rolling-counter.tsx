@@ -39,8 +39,7 @@ const CounterDigit: FC<IReusableDigit> = memo<IReusableDigit>(
     counterValue,
     height,
     width,
-    color,
-    fontSize,
+    digitStyle,
     springConfig,
   }: IReusableDigit):
     | (React.JSX.Element & React.ReactNode & React.ReactElement)
@@ -91,16 +90,7 @@ const CounterDigit: FC<IReusableDigit> = memo<IReusableDigit>(
           {Array.from({ length: 10 }, (_, i) => (
             <Text
               key={i}
-              style={{
-                height,
-                width,
-                textAlign: "center",
-                lineHeight: height,
-                fontSize,
-                fontWeight: "bold",
-                color,
-                fontVariant: ["tabular-nums"],
-              }}
+              style={[styles.digit, digitStyle, { lineHeight: height }]}
             >
               {i}
             </Text>
@@ -124,8 +114,7 @@ const RollingCounter: FC<ICounter> = memo(
     value,
     height = 60,
     width = 40,
-    fontSize = 48,
-    color = "#000",
+    digitStyle,
     springConfig = SPRING_CONFIG,
   }: ICounter):
     | (React.JSX.Element & React.ReactNode & React.ReactElement)
@@ -178,8 +167,7 @@ const RollingCounter: FC<ICounter> = memo(
               counterValue={animatedValue}
               height={height}
               width={width}
-              color={color}
-              fontSize={fontSize}
+              digitStyle={digitStyle}
             />
           );
         })}
@@ -192,6 +180,14 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: "row",
     overflow: "hidden",
+  },
+  digit: {
+    fontSize: 48,
+    color: "#000",
+    fontWeight: "bold",
+    fontVariant: ["tabular-nums"],
+    lineHeight: 64,
+    textAlign: "center",
   },
 });
 

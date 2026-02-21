@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 116,
+  "totalComponents": 117,
   "categories": [
     "ai",
     "atoms",
@@ -1094,6 +1094,17 @@
       "folders": [],
       "files": [
         "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "squiggly-slider": {
+      "name": "squiggly-slider",
+      "category": "molecules",
+      "path": "src/components/molecules/squiggly-slider",
+      "folders": [],
+      "files": [
+        "const.ts",
         "index.tsx",
         "types.ts"
       ]

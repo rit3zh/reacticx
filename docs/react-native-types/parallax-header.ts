@@ -85,7 +85,7 @@ export type AnimatedNavbarProps = {
   headerElevation: number;
 };
 
-export type AnimatedHeaderProps = {
+export interface AnimatedHeaderProps  {
   imageHeight: number;
   OverlayHeaderContent?: React.ReactNode;
   translateYUp: Animated.AnimatedInterpolation<string | number> | 0;

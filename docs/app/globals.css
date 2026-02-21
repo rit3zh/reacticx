@@ -212,13 +212,8 @@ button {
     --gradient-angle: 360deg;
   }
 }
-
-a[href="/docs/components/grainy-gradient"]::after,
-a[href="/docs/components/aurora"]::after,
-a[href="/docs/components/curved-marquee"]::after,
-a[href="/docs/components/staggered-text"]::after,
-a[href="/docs/components/radiant-button"]::after,
-a[href="/docs/components/mesh-gradient"]::after {
+a[href="/docs/components/squiggly-slider"]::after,
+a[href="/docs/components/parallax-header"]::after {
   content: "New";
   position: absolute;
   right: 0.2rem;
@@ -245,13 +240,8 @@ a[href="/docs/components/mesh-gradient"]::after {
 
   animation: gradient-angle 3s linear infinite;
 }
-
-.dark a[href="/docs/components/grainy-gradient"]::after,
-.dark a[href="/docs/components/aurora"]::after,
-.dark a[href="/docs/components/staggered-text"]::after,
-.dark a[href="/docs/components/curved-marquee"]::after,
-.dark a[href="/docs/components/radiant-button"]::after,
-.dark a[href="/docs/components/mesh-gradient"]::after {
+.dark a[href="/docs/components/parallax-header"]::after,
+.dark a[href="/docs/components/squiggly-slider"]::after {
   color: rgb(255, 255, 255);
   background:
     linear-gradient(rgb(20, 20, 20), rgb(20, 20, 20)) padding-box,

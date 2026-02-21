@@ -1,0 +1,4 @@
+const TWO_PI = 2 * Math.PI;
+const SEGMENTS_PER_WAVELENGTH = 20;
+
+export { TWO_PI, SEGMENTS_PER_WAVELENGTH };

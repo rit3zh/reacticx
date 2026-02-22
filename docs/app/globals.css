@@ -213,6 +213,7 @@ button {
   }
 }
 a[href="/docs/components/squiggly-slider"]::after,
+a[href="/docs/components/apple-intelligence"]::after,
 a[href="/docs/components/parallax-header"]::after {
   content: "New";
   position: absolute;
@@ -241,7 +242,8 @@ a[href="/docs/components/parallax-header"]::after {
   animation: gradient-angle 3s linear infinite;
 }
 .dark a[href="/docs/components/parallax-header"]::after,
-.dark a[href="/docs/components/squiggly-slider"]::after {
+.dark a[href="/docs/components/squiggly-slider"]::after,
+.dark a[href="/docs/components/apple-intelligence"]::after {
   color: rgb(255, 255, 255);
   background:
     linear-gradient(rgb(20, 20, 20), rgb(20, 20, 20)) padding-box,

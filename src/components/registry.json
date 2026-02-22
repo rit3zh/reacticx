@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 117,
+  "totalComponents": 119,
   "categories": [
     "ai",
     "atoms",
@@ -90,6 +90,28 @@
       "path": "src/components/micro-interactions/animated-theme-toggle",
       "folders": [],
       "files": ["const.ts", "index.tsx", "types.ts"]
+    },
+    "apple-intelligence": {
+      "name": "apple-intelligence",
+      "category": "organisms",
+      "path": "src/components/organisms/apple-intelligence",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "context.ts",
+        "helpers.ts",
+        "index.tsx",
+        "types.ts",
+        "use-siri-uniforms.ts"
+      ]
+    },
+    "aura-lift": {
+      "name": "aura-lift",
+      "category": "organisms",
+      "path": "src/components/organisms/aura-lift",
+      "folders": [],
+      "files": ["conf.ts", "context.tsx", "index.tsx", "types.ts"]
     },
     "aurora": {
       "name": "aurora",
@@ -353,12 +375,12 @@
       "path": "src/components/templates/sheet/floating-sheet",
       "folders": [
         {
-          "name": "types",
-          "files": ["FloatingPlayer.types.ts"]
-        },
-        {
           "name": "constants",
           "files": ["sizes/sheetSizes.ts"]
+        },
+        {
+          "name": "types",
+          "files": ["FloatingPlayer.types.ts"]
         },
         {
           "name": "utils",
@@ -494,10 +516,6 @@
       "path": "src/components/templates/media-list",
       "folders": [
         {
-          "name": "utils",
-          "files": ["chunk.ts", "snap.ts"]
-        },
-        {
           "name": "children",
           "files": [
             "MediaListSubtitle.tsx",
@@ -505,6 +523,10 @@
             "MediaListTitleWrapper.tsx",
             "MediaListWrapper.tsx"
           ]
+        },
+        {
+          "name": "utils",
+          "files": ["chunk.ts", "snap.ts"]
         }
       ],
       "files": ["MediaList.tsx", "MediaList.types.ts"]
@@ -557,14 +579,6 @@
       "path": "src/components/templates/parallax-header",
       "folders": [
         {
-          "name": "types",
-          "files": ["index.ts"]
-        },
-        {
-          "name": "constants",
-          "files": ["index.ts"]
-        },
-        {
           "name": "components",
           "files": [
             "AnimatedHeader.tsx",
@@ -574,8 +588,8 @@
           ]
         },
         {
-          "name": "hooks",
-          "files": ["useAnimatedNavBar.ts", "useAnimatedScrollView.ts"]
+          "name": "constants",
+          "files": ["index.ts"]
         },
         {
           "name": "helpers",
@@ -584,6 +598,14 @@
             "wrapper/AnimatedScrollViewTitleWrapper.tsx",
             "wrapper/HeaderComponentWrapper.tsx"
           ]
+        },
+        {
+          "name": "hooks",
+          "files": ["useAnimatedNavBar.ts", "useAnimatedScrollView.ts"]
+        },
+        {
+          "name": "types",
+          "files": ["index.ts"]
         }
       ],
       "files": ["ParallaxHeader.props.ts"]
@@ -970,10 +992,6 @@
       "path": "src/components/templates/whats-new",
       "folders": [
         {
-          "name": "context",
-          "files": ["WhatsNewContext.ts"]
-        },
-        {
           "name": "children",
           "files": [
             "WhatsNewButton.tsx",
@@ -983,6 +1001,10 @@
             "WhatsNewTrigger.tsx",
             "WhatsNewWrapper.tsx"
           ]
+        },
+        {
+          "name": "context",
+          "files": ["WhatsNewContext.ts"]
         }
       ],
       "files": ["WhatsNew.tsx", "WhatsNew.type.ts"]

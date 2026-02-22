@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 117,
+  "totalComponents": 119,
   "categories": [
     "ai",
     "atoms",
@@ -122,6 +122,33 @@
       "folders": [],
       "files": [
         "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "apple-intelligence": {
+      "name": "apple-intelligence",
+      "category": "organisms",
+      "path": "src/components/organisms/apple-intelligence",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "context.ts",
+        "helpers.ts",
+        "index.tsx",
+        "types.ts",
+        "use-siri-uniforms.ts"
+      ]
+    },
+    "aura-lift": {
+      "name": "aura-lift",
+      "category": "organisms",
+      "path": "src/components/organisms/aura-lift",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "context.tsx",
         "index.tsx",
         "types.ts"
       ]

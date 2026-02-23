@@ -19,42 +19,114 @@ It does **not** rely on external styling systems and is designed to integrate cl
 
 ---
 
-## 1. Install Required Utilities
+## Setup
 
-Some components depend on shared native utilities that must be installed once.
+<Tabs items={["New Project", "Existing Project"]}>
 
-```package-install
-react-native-reanimated react-native-gesture-handler react-native-svg expo-haptics expo-blur expo-symbols @expo/vector-icons @shopify/react-native-skia
-```
+  <Tab value="New Project">
 
-Additional dependencies are listed on individual component pages when required.
+    The fastest way to get started — `reacticx create` scaffolds a full Expo app and wires up Reacticx in one command.
+
+    ```bash
+    npx reacticx create
+    ```
+
+    ### Interactive prompts
+
+    The CLI will guide you through a short setup:
+
+    ```
+    ✨  Create a new Expo app with Reacticx
+
+    ✔ App name                              › my-expo-app
+    ✔ Bundle / package ID (leave blank to skip) › com.company.myapp
+    ✔ Template                              › Blank — TypeScript
+    ✔ Package manager                       › bun  ← detected
+    ✔ Run bunx reacticx init inside the new project? › Yes
+    ```
+
+    | Prompt | Description |
+    | --- | --- |
+    | **App name** | Directory name for your project. Spaces are converted to dashes automatically. |
+    | **Bundle / package ID** | iOS `bundleIdentifier` and Android `package` — written directly into `app.json`. Leave blank and it will be derived from the app name. |
+    | **Template** | Starting point for your app. |
+    | **Package manager** | Auto-detected from your system. You can override it. |
+    | **Run reacticx init** | Initializes the Reacticx config inside the new project right after creation. |
+
+    ### Templates
+
+    | Template | Description |
+    | --- | --- |
+    | **Blank — TypeScript** *(default)* | Minimal Expo app with TypeScript |
+    | **Blank** | Minimal Expo app with JavaScript |
+    | **Tabs — Expo Router** | File-based routing with tab navigation |
+
+    ### What happens under the hood
+
+    ```
+    ┌ Creating Expo app
+    │  bunx create-expo-app my-expo-app --template blank-typescript
+
+    │  Updated app.json → bundle ID: com.company.myapp
+
+    ├ Initializing Reacticx
+    │  bunx reacticx init
+
+    └ All done! 🎉
+
+      Next steps:
+
+        cd my-expo-app
+        bunx reacticx add button
+    ```
+
+    The runner command (`bunx`, `pnpm dlx`, `yarn dlx`, `npx`) matches whichever package manager you selected.
+
+  </Tab>
+
+  <Tab value="Existing Project">
+
+    Already have a React Native / Expo project? Install the required dependencies and run `init`.
+
+    ### 1. Install dependencies
+
+    Some components depend on shared native utilities that must be installed once.
+
+    ```package-install
+    react-native-reanimated react-native-gesture-handler react-native-svg expo-haptics expo-blur expo-symbols @expo/vector-icons @shopify/react-native-skia
+    ```
+
+    Additional dependencies are listed on individual component pages when required.
+
+    ---
+
+    ### 2. Initialize Reacticx
+
+    <Card title="The config file is optional">
+      `component.config.json` is only needed when using the CLI to add components.
+      If you prefer copy-pasting, you can skip this step entirely.
+    </Card>
+
+    ```bash
+    npx reacticx init
+    ```
+
+    You'll be prompted for an output directory (default: `src/shared/ui`).
+    This creates a `component.config.json` in your project root:
+
+    ```json
+    {
+      "outDir": "src/shared/ui"
+    }
+    ```
+
+  </Tab>
+
+</Tabs>
 
 ---
 
-## 2. Initialize Reacticx
-
-<Card title="Note: The `components.json` file is optional">
-  It is only required if you're using the CLI to add components to your project.
-  If you're using the copy and paste method, you pretty much don't need this
-  file.
-</Card>
-Run the init command to create your config file:
-
-```bash
-npx reacticx init
-```
-
-This creates a `component.config.json` in your project root:
-
-```json
-{
-  "outDir": "src/shared/ui"
-}
-```
-
----
-
-## 3. Browse Components
+## Browse Components
 
 List all available components:
 
@@ -92,7 +164,7 @@ micro-interactions/
 
 ---
 
-## 4. Add Components
+## Add Components
 
 Add a component to your project:
 
@@ -112,27 +184,28 @@ Files created:
 
 ### Options
 
+| Flag           | Description                                                          |
+| -------------- | -------------------------------------------------------------------- |
+| `--dir <path>` | Write files to a custom directory instead of the configured `outDir` |
+| `--overwrite`  | Overwrite existing files without prompting                           |
+
 ```bash
-npx reacticx add <component> --dir <path>
-npx reacticx add <component> --overwrite
+npx reacticx add button --dir src/components
+npx reacticx add button --overwrite
 ```
 
 ---
 
-## 5. CLI Reference
+## CLI Reference
 
-| Command                                 | Description              |
-| --------------------------------------- | ------------------------ |
-| `reacticx init`                         | Create config file       |
-| `reacticx list`                         | List all components      |
-| `reacticx list -c <category>`           | Filter by category       |
-| `reacticx add <component>`              | Add component            |
-| `reacticx add <component> --dir <path>` | Custom output directory  |
-| `reacticx add <component> --overwrite`  | Overwrite existing files |
+| Command                                 | Description                                     |
+| --------------------------------------- | ----------------------------------------------- |
+| `reacticx create`                       | Scaffold a new Expo app and initialize Reacticx |
+| `reacticx init`                         | Set up Reacticx in an existing project          |
+| `reacticx list`                         | List all available components                   |
+| `reacticx list -c <category>`           | Filter components by category                   |
+| `reacticx add <component>`              | Add a component to your project                 |
+| `reacticx add <component> --dir <path>` | Write to a custom directory                     |
+| `reacticx add <component> --overwrite`  | Overwrite existing files                        |
 
 ---
-
-## What's Next
-
-Each component page documents required dependencies and usage patterns.
-Install only what you need, and customize freely.

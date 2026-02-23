@@ -27,6 +27,9 @@ import {
   TOCItem,
   type TOCItemType,
 } from "fumadocs-core/toc";
+
+import * as TabsComponents from "fumadocs-ui/components/tabs";
+import type { MDXComponents } from "mdx/types";
 // import { useRef } from "react";
 // Force static generation for Cloudflare Pages compatibility
 // This ensures pages are fully static and Node.js APIs are only used at build time
@@ -81,6 +84,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             Preview,
             PreviewClient,
             PreviewComment,
+            ...TabsComponents,
             PreviewTemplate,
             ComponentSource,
             img: (props: any) => <ImageZoom {...(props as any)} />,

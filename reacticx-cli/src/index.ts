@@ -4,6 +4,7 @@ import { Command } from "commander";
 import { add } from "./commands/add.js";
 import { list } from "./commands/list.js";
 import { init } from "./commands/init.js";
+import { create } from "./commands/create.js";
 
 const program = new Command();
 
@@ -11,6 +12,11 @@ program
   .name("reacticx")
   .description("Add beautiful React Native components to your project")
   .version("0.1.0");
+
+program
+  .command("create")
+  .description("Scaffold a new Expo app and initialize Reacticx")
+  .action(create);
 
 program
   .command("init")

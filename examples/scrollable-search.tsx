@@ -128,6 +128,7 @@ const Content = ({ fontLoaded }: { fontLoaded: boolean }) => {
             <ScrollView
               style={styles.focusedScroll}
               showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
             >
               <View style={styles.focusedSection}>
                 <View style={styles.focusedHeader}>

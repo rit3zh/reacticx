@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 119,
+  "totalComponents": 122,
   "categories": [
     "ai",
     "atoms",
@@ -771,7 +771,8 @@
         "conf.ts",
         "const.ts",
         "index.tsx",
-        "types.ts"
+        "types.ts",
+        "useFrameTime.ts"
       ]
     },
     "morphing-tabbar": {
@@ -1059,6 +1060,18 @@
         "types.ts"
       ]
     },
+    "settings-v1": {
+      "name": "settings-v1",
+      "category": "templates",
+      "path": "src/components/templates/settings-v1",
+      "folders": [],
+      "files": [
+        "components.tsx",
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
     "Shimmer": {
       "name": "Shimmer",
       "category": "molecules",
@@ -1077,6 +1090,29 @@
       "folders": [],
       "files": [
         "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "sign-up-v1": {
+      "name": "sign-up-v1",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v1",
+      "folders": [],
+      "files": [
+        "background-gradient.tsx",
+        "icons.tsx",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "sign-up-v2": {
+      "name": "sign-up-v2",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v2",
+      "folders": [],
+      "files": [
+        "background-grid.tsx",
         "index.tsx",
         "types.ts"
       ]

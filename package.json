@@ -47,6 +47,7 @@
     "expo-blur": "~15.0.8",
     "expo-constants": "~18.0.13",
     "expo-dev-client": "~6.0.20",
+    "expo-device": "^55.0.9",
     "expo-haptics": "~15.0.8",
     "expo-ios-popover": "^0.1.2",
     "expo-linear-gradient": "~15.0.8",

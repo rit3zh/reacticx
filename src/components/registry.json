@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 119,
+  "totalComponents": 122,
   "categories": [
     "ai",
     "atoms",
@@ -375,12 +375,12 @@
       "path": "src/components/templates/sheet/floating-sheet",
       "folders": [
         {
-          "name": "constants",
-          "files": ["sizes/sheetSizes.ts"]
-        },
-        {
           "name": "types",
           "files": ["FloatingPlayer.types.ts"]
+        },
+        {
+          "name": "constants",
+          "files": ["sizes/sheetSizes.ts"]
         },
         {
           "name": "utils",
@@ -516,6 +516,10 @@
       "path": "src/components/templates/media-list",
       "folders": [
         {
+          "name": "utils",
+          "files": ["chunk.ts", "snap.ts"]
+        },
+        {
           "name": "children",
           "files": [
             "MediaListSubtitle.tsx",
@@ -523,10 +527,6 @@
             "MediaListTitleWrapper.tsx",
             "MediaListWrapper.tsx"
           ]
-        },
-        {
-          "name": "utils",
-          "files": ["chunk.ts", "snap.ts"]
         }
       ],
       "files": ["MediaList.tsx", "MediaList.types.ts"]
@@ -536,7 +536,13 @@
       "category": "organisms",
       "path": "src/components/organisms/mesh-gradient",
       "folders": [],
-      "files": ["conf.ts", "const.ts", "index.tsx", "types.ts"]
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "index.tsx",
+        "types.ts",
+        "useFrameTime.ts"
+      ]
     },
     "morphing-tabbar": {
       "name": "morphing-tabbar",
@@ -579,6 +585,14 @@
       "path": "src/components/templates/parallax-header",
       "folders": [
         {
+          "name": "types",
+          "files": ["index.ts"]
+        },
+        {
+          "name": "constants",
+          "files": ["index.ts"]
+        },
+        {
           "name": "components",
           "files": [
             "AnimatedHeader.tsx",
@@ -588,8 +602,8 @@
           ]
         },
         {
-          "name": "constants",
-          "files": ["index.ts"]
+          "name": "hooks",
+          "files": ["useAnimatedNavBar.ts", "useAnimatedScrollView.ts"]
         },
         {
           "name": "helpers",
@@ -598,14 +612,6 @@
             "wrapper/AnimatedScrollViewTitleWrapper.tsx",
             "wrapper/HeaderComponentWrapper.tsx"
           ]
-        },
-        {
-          "name": "hooks",
-          "files": ["useAnimatedNavBar.ts", "useAnimatedScrollView.ts"]
-        },
-        {
-          "name": "types",
-          "files": ["index.ts"]
         }
       ],
       "files": ["ParallaxHeader.props.ts"]
@@ -736,6 +742,13 @@
       "folders": [],
       "files": ["index.tsx", "presets.ts", "types.ts"]
     },
+    "settings-v1": {
+      "name": "settings-v1",
+      "category": "templates",
+      "path": "src/components/templates/settings-v1",
+      "folders": [],
+      "files": ["components.tsx", "const.ts", "index.tsx", "types.ts"]
+    },
     "Shimmer": {
       "name": "Shimmer",
       "category": "molecules",
@@ -749,6 +762,20 @@
       "path": "src/components/base/shimmer-wave-text",
       "folders": [],
       "files": ["conf.ts", "index.tsx", "types.ts"]
+    },
+    "sign-up-v1": {
+      "name": "sign-up-v1",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v1",
+      "folders": [],
+      "files": ["background-gradient.tsx", "icons.tsx", "index.tsx", "types.ts"]
+    },
+    "sign-up-v2": {
+      "name": "sign-up-v2",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v2",
+      "folders": [],
+      "files": ["background-grid.tsx", "index.tsx", "types.ts"]
     },
     "skia-ripple": {
       "name": "skia-ripple",
@@ -992,6 +1019,10 @@
       "path": "src/components/templates/whats-new",
       "folders": [
         {
+          "name": "context",
+          "files": ["WhatsNewContext.ts"]
+        },
+        {
           "name": "children",
           "files": [
             "WhatsNewButton.tsx",
@@ -1001,10 +1032,6 @@
             "WhatsNewTrigger.tsx",
             "WhatsNewWrapper.tsx"
           ]
-        },
-        {
-          "name": "context",
-          "files": ["WhatsNewContext.ts"]
         }
       ],
       "files": ["WhatsNew.tsx", "WhatsNew.type.ts"]

@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { BlurView, type BlurViewProps } from "@sbaiahmed1/react-native-blur";
+import { BlurView, type BlurViewProps } from "expo-blur";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Platform, Pressable, StyleSheet, View } from "react-native";
 import Animated, {
@@ -319,7 +319,7 @@ const AccordionContent = ({ children }: AccordionContentProps) => {
   }, [isOpen]);
 
   const animatedBlurProps = useAnimatedProps(() => ({
-    blurAmount: blurIntensity.value,
+    intensity: blurIntensity.value,
   }));
 
   return (
@@ -333,7 +333,7 @@ const AccordionContent = ({ children }: AccordionContentProps) => {
         <View style={styles.contentWrapper}>
           <View style={styles.content}>{children}</View>
           <AnimatedBlurView
-            blurType={
+            tint={
               theme.backgroundColor === "#18181b" ||
               theme.backgroundColor === "#0c4a6e" ||
               theme.backgroundColor === "#7c2d12"

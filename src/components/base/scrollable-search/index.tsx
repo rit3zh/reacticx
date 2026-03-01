@@ -175,6 +175,7 @@ const ScrollContent: React.FC<IScrollContent> &
           onScroll={onScroll}
           scrollEventThrottle={8}
           bounces={true}
+          keyboardShouldPersistTaps="handled"
         >
           {children}
         </Animated.ScrollView>

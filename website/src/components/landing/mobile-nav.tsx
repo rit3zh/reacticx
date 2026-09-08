@@ -19,6 +19,7 @@ import {
   NAV_COMPONENTS,
   NAV_OTHER_CATALOGUES,
   REPO,
+  SPONSOR_HREF,
   TWITTER,
 } from "./data";
 import { SPRING_SOFT } from "./motion";
@@ -133,26 +134,49 @@ export function MobileNavProvider({ children }: { children: React.ReactNode }) {
     [setOpen],
   );
 
+  /**
+   * Opening does three expensive things in one commit: the card is pinned and
+   * promoted to its own layer, the drawer mounts, and the spring starts. Run
+   * on the same frame, the first two eat the first frames of the third and the
+   * drawer appears to stutter out of the edge. Handing the browser a frame to
+   * do the promotion in before the spring starts costs 16ms of delay nobody
+   * can see and buys back every frame of the motion itself.
+   */
   React.useEffect(() => {
     if (phase === "closed") return;
 
-    const controls = animate(
-      progress,
-      phase === "open" ? 1 : 0,
-      reduceMotion ? { duration: 0.2 } : SPRING_SOFT,
-    );
+    let controls: ReturnType<typeof animate> | null = null;
 
+    const start = () => {
+      controls = animate(
+        progress,
+        phase === "open" ? 1 : 0,
+        reduceMotion ? { duration: 0.2 } : SPRING_SOFT,
+      );
+
+      if (phase === "closing") {
+        controls.then(() => {
+          // Reopening mid-close stops these controls, but a stopped animation
+          // can still settle its promise — ignore it unless we are still
+          // closing.
+          if (phaseRef.current !== "closing") return;
+          phaseRef.current = "closed";
+          setPhase("closed");
+        });
+      }
+    };
+
+    // Closing has no such setup to wait on — the layer already exists.
     if (phase === "closing") {
-      controls.then(() => {
-        // Reopening mid-close stops these controls, but a stopped animation can
-        // still settle its promise — ignore it unless we are still closing.
-        if (phaseRef.current !== "closing") return;
-        phaseRef.current = "closed";
-        setPhase("closed");
-      });
+      start();
+      return () => controls?.stop();
     }
 
-    return () => controls.stop();
+    const frame = requestAnimationFrame(start);
+    return () => {
+      cancelAnimationFrame(frame);
+      controls?.stop();
+    };
   }, [phase, progress, reduceMotion]);
 
   // GSAP's ScrollSmoother pins an explicit height on <body>, so pinning the card
@@ -292,6 +316,7 @@ const PRIMARY_LINKS: DrawerLink[] = [
   { label: NAV_COMPONENTS.label, href: NAV_COMPONENTS.href },
   { label: "Blocks", href: "/blocks" },
   { label: "Docs", href: DOCS_HREF },
+  { label: "Sponsor", href: SPONSOR_HREF },
 ];
 
 /**
@@ -320,25 +345,16 @@ const listVariants = {
 };
 
 /**
- * Rows arrive on the same rise-and-unblur curve the headline copy uses, so the
- * menu reads as part of the page's motion vocabulary rather than a stock sheet.
+ * Rows arrive on the same rise curve the headline copy uses, so the menu reads
+ * as part of the page's motion vocabulary rather than a stock sheet.
+ *
+ * They used to unblur as well. A `filter` animation is not composited, so a
+ * dozen of them ran a dozen per-frame blurs on the CPU at exactly the moment
+ * the page card was being scaled — the one frame budget on a phone that had
+ * nothing to spare. Opacity and transform alone read almost identically and
+ * cost nothing.
  */
 const itemVariants = {
-  closed: {
-    opacity: 0,
-    x: -16,
-    filter: "blur(6px)",
-    transition: { duration: 0.16 },
-  },
-  open: {
-    opacity: 1,
-    x: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] as const },
-  },
-};
-
-const flatVariants = {
   closed: { opacity: 0, x: -16, transition: { duration: 0.16 } },
   open: {
     opacity: 1,
@@ -349,17 +365,14 @@ const flatVariants = {
 
 export function MobileNavDrawer() {
   const { active, open, progress, width, setOpen } = useMobileNav();
-  const reduceMotion = useReducedMotion();
   const x = useTransform(progress, [0, 1], [-width, 0]);
 
   if (!active) return null;
 
-  const rowVariants = reduceMotion ? flatVariants : itemVariants;
-
   return (
     <motion.aside
       aria-label="Site menu"
-      className="fixed inset-y-0 left-0 z-[90] flex flex-col overflow-y-auto overscroll-contain bg-[#060606] pt-24 pr-5 pb-10 pl-6 lg:hidden"
+      className="fixed inset-y-0 left-0 z-[90] flex flex-col overflow-y-auto overscroll-contain bg-[#060606] pt-24 pr-5 pb-10 pl-6 will-change-transform lg:hidden"
       style={{ x, width }}
     >
       <motion.nav
@@ -370,7 +383,7 @@ export function MobileNavDrawer() {
       >
         <ul className="flex flex-col gap-7">
           {PRIMARY_LINKS.map((link) => (
-            <motion.li key={link.label} variants={rowVariants}>
+            <motion.li key={link.label} variants={itemVariants}>
               <DrawerRow
                 className="font-semibold text-[1.3rem] text-ink tracking-[-0.02em]"
                 link={link}
@@ -383,19 +396,19 @@ export function MobileNavDrawer() {
         <motion.div
           aria-hidden
           className="my-8 h-px w-full bg-white/10"
-          variants={flatVariants}
+          variants={itemVariants}
         />
 
         <motion.p
           className="mb-4 text-[0.65rem] uppercase tracking-[0.08em] text-ink-faint"
-          variants={flatVariants}
+          variants={itemVariants}
         >
           Catalogues
         </motion.p>
 
         <ul className="flex flex-col gap-5">
           {CATALOGUE_LINKS.map((link) => (
-            <motion.li key={link.label} variants={rowVariants}>
+            <motion.li key={link.label} variants={itemVariants}>
               <DrawerRow
                 className="font-medium text-[1.05rem] text-ink tracking-[-0.015em]"
                 link={link}
@@ -408,12 +421,12 @@ export function MobileNavDrawer() {
         <motion.div
           aria-hidden
           className="my-8 h-px w-full bg-white/10"
-          variants={flatVariants}
+          variants={itemVariants}
         />
 
         <ul className="flex flex-col gap-5">
           {SECONDARY_LINKS.map((link) => (
-            <motion.li key={link.label} variants={rowVariants}>
+            <motion.li key={link.label} variants={itemVariants}>
               <DrawerRow
                 className="font-medium text-[0.95rem] text-ink-muted"
                 link={link}

@@ -51,6 +51,50 @@ const url = (key: string) =>
   `${CODEBASE_ORIGIN}/${key.split("/").map(encodeURIComponent).join("/")}`;
 
 /**
+ * How many requests one worker may have in flight at once.
+ *
+ * The 429s below are the bucket telling us we asked for too much at once, and
+ * retrying harder is the wrong half of the answer on its own: nine prerender
+ * workers each opening as many sockets as Node will give them is what provokes
+ * the limit in the first place. Holding each worker to a handful keeps the
+ * build inside what r2.dev will serve, so the retry only has to cover the
+ * genuine blips rather than a self-inflicted stampede.
+ */
+const MAX_IN_FLIGHT = 6;
+
+let inFlight = 0;
+const waiting: Array<() => void> = [];
+
+async function acquire() {
+  if (inFlight < MAX_IN_FLIGHT) {
+    inFlight += 1;
+    return;
+  }
+  await new Promise<void>((resolve) => waiting.push(resolve));
+  inFlight += 1;
+}
+
+function release() {
+  inFlight -= 1;
+  waiting.shift()?.();
+}
+
+/** `Retry-After`, in ms — the bucket's own answer beats our backoff curve. */
+function retryAfter(response: Response) {
+  const header = response.headers.get("retry-after");
+  if (!header) return null;
+
+  const seconds = Number(header);
+  if (Number.isFinite(seconds)) return Math.max(0, seconds * 1000);
+
+  const date = Date.parse(header);
+  return Number.isNaN(date) ? null : Math.max(0, date - Date.now());
+}
+
+const sleep = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
  * Fetches one object, retrying the failures that are worth retrying.
  *
  * A build prerenders hundreds of pages across nine workers, all reading from
@@ -60,26 +104,32 @@ const url = (key: string) =>
  * two pages that disagree about the same file leave the `.segments` output on
  * disk inconsistent and the build dies later in `next build` or in the OpenNext
  * bundler. Retrying keeps a build's view of the bucket the same throughout.
+ *
+ * Five attempts over about four seconds turned out to be short of what a full
+ * catalogue build needs — a 429 that outlived them was reported as a missing
+ * object, which is how a handful of pages shipped denying source that is in the
+ * bucket. The budget is wider now, and a `Retry-After` is honoured over the
+ * curve, because a build that waits a minute is strictly better than one that
+ * publishes a component with no props.
  */
-async function fetchWithRetry(key: string, attempts = 5): Promise<Response> {
+async function fetchWithRetry(key: string, attempts = 8): Promise<Response> {
   let lastError: Error | undefined;
 
   for (let attempt = 0; attempt < attempts; attempt++) {
-    if (attempt > 0) {
-      // Exponential backoff, jittered so the workers don't retry in lockstep.
-      const backoff = 250 * 2 ** (attempt - 1);
-      await new Promise((resolve) =>
-        setTimeout(resolve, backoff + Math.random() * backoff),
-      );
-    }
-
     let response: Response;
+
+    await acquire();
     try {
       response = await fetch(url(key), { cache: "no-store" });
     } catch (error) {
       // Connection reset, DNS blip, socket timeout — all worth another go.
       lastError = error as Error;
+      // Exponential backoff, jittered so the workers don't retry in lockstep.
+      const backoff = 250 * 2 ** attempt;
+      await sleep(backoff + Math.random() * backoff);
       continue;
+    } finally {
+      release();
     }
 
     // 429 and 5xx are transient. Everything else — including 404, which means
@@ -87,6 +137,11 @@ async function fetchWithRetry(key: string, attempts = 5): Promise<Response> {
     if (response.status !== 429 && response.status < 500) return response;
 
     lastError = new Error(`HTTP ${response.status}`);
+
+    if (attempt === attempts - 1) break;
+
+    const backoff = 250 * 2 ** attempt;
+    await sleep(retryAfter(response) ?? backoff + Math.random() * backoff);
   }
 
   throw lastError ?? new Error("request failed");
@@ -104,6 +159,41 @@ async function fetchWithRetry(key: string, attempts = 5): Promise<Response> {
  */
 let indexPromise: Promise<CodebaseIndex | null> | null = null;
 
+/**
+ * A build that cannot read the index has nothing to say about any component,
+ * and it must not say it quietly.
+ *
+ * This used to warn and return null, on the strength of a fallback to synced
+ * copies under the site root — copies that were deleted when the bucket became
+ * the only source, leaving the null to mean "every component on this page is
+ * missing". `next build` prerenders across several workers with an index cache
+ * each, so one worker losing its fetch to an r2.dev 429 does not fail anything
+ * or even look unusual: it just ships that worker's slice of the catalogue with
+ * an empty file tree and "No props found" on every table, while the rest of the
+ * build is perfect. That is exactly how nebula-orb and the four pages either
+ * side of it went out claiming to be unsynced source that has been in the
+ * bucket since August.
+ *
+ * So during a build the failure is fatal — the retry above has already given
+ * the transient case five chances, and past that a wrong catalogue is worse
+ * than no deploy. `next dev` keeps the old soft failure, since a laptop off the
+ * network should still be able to render the prose half of a page.
+ */
+function onIndexFailure(error: Error): null {
+  const message = `[codebase] could not load index.json: ${error.message}`;
+
+  if (process.env.NODE_ENV === "production") {
+    throw new Error(
+      `${message}. Every component page reads its source and props from this ` +
+        "listing, so building without it would publish the whole catalogue as " +
+        '"not synced yet".',
+    );
+  }
+
+  console.warn(`${message} — source and props will be missing from this page`);
+  return null;
+}
+
 async function loadIndex(): Promise<CodebaseIndex | null> {
   indexPromise ??= (async () => {
     try {
@@ -115,12 +205,8 @@ async function loadIndex(): Promise<CodebaseIndex | null> {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return (await response.json()) as CodebaseIndex;
     } catch (error) {
-      console.warn(
-        `[codebase] could not load index.json (${(error as Error).message}) — ` +
-          "falling back to the synced copies on disk",
-      );
       indexPromise = null;
-      return null;
+      return onIndexFailure(error as Error);
     }
   })();
 
@@ -326,7 +412,16 @@ export function fetchCodebaseFile(key: string): Promise<string | null> {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.text();
     } catch (error) {
-      console.warn(`[codebase] could not read ${key}: ${(error as Error).message}`);
+      const message = `[codebase] could not read ${key}: ${(error as Error).message}`;
+
+      // The index listed this object, so failing to read it is a fault in the
+      // request, not an answer about the bucket — and the memoisation below
+      // would otherwise make one blip permanent for the rest of the build.
+      // Same reasoning as the index: better no deploy than a page that denies
+      // source it can see in the listing.
+      if (process.env.NODE_ENV === "production") throw new Error(message);
+
+      console.warn(message);
       // The miss stays memoised. Every page that reads this key has to agree on
       // what it holds — a key that reads null for one page and its source for
       // the next is what leaves the segment output inconsistent.

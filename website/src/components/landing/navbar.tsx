@@ -14,6 +14,7 @@ import {
   NAV_COMPONENTS,
   NAV_OTHER_CATALOGUES,
   REPO,
+  SPONSOR_HREF,
   TWITTER,
 } from "./data";
 import { EdgeBlur } from "./edge-blur";
@@ -306,6 +307,15 @@ export function Navbar({
             aria-hidden
             className="mx-1.5 hidden h-4 w-px bg-[var(--nav-rule)] lg:block"
           />
+
+          {/* Outlined, not filled: `Browse` is the bar's one bright thing, and
+              a second solid pill beside it read as two competing CTAs. */}
+          <Link
+            className="inline-flex h-8 items-center rounded-lg border border-[var(--nav-rule)] px-3 font-medium text-[0.8rem] text-[color:var(--nav-fg)] leading-none tracking-[-0.01em] transition-[background-color,transform] duration-200 hover:bg-[var(--nav-hover-soft)] active:scale-[0.97]"
+            href={SPONSOR_HREF}
+          >
+            Sponsor
+          </Link>
 
           <Link
             className="inline-flex h-8 items-center rounded-lg bg-[var(--nav-cta)] px-3 font-medium text-[0.8rem] text-[color:var(--nav-cta-fg)] leading-none tracking-[-0.01em] transition-[transform,opacity] duration-200 hover:opacity-85 active:scale-[0.97]"

@@ -5,6 +5,7 @@ import { Geist, Geist_Mono, Inter, Instrument_Serif } from "next/font/google";
 import { META_THEME_COLORS, siteConfig } from "@/app/config/site";
 import { cn } from "#/lib/utils";
 import { TooltipProvider } from "@/components/tooltip";
+import { CoffeeWidget } from "@/components/landing/coffee-widget";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -133,6 +134,7 @@ export default function RootLayout({
           }}
         >
           <TooltipProvider>{children}</TooltipProvider>
+          <CoffeeWidget />
         </RootProvider>
       </body>
     </html>

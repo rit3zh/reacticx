@@ -856,7 +856,8 @@ a[href="/docs/components/morph-loader"]::after {
 /* --- Layout metrics ------------------------------------------------------- *
  * Fumadocs positions its own shell (`#nd-*`). The nav is fixed and 4rem tall,
  * so the article has to be pushed clear of it by hand — the framework assumes
- * a static header and leaves no room otherwise.                              */
+ * a static header and leaves no room otherwise. The article's `pt` is that
+ * 4rem of clearance plus the gap the title actually sits on.                 */
 
 .ux #nd-sidebar {
   @apply md:border-0!;
@@ -877,7 +878,7 @@ a[href="/docs/components/morph-loader"]::after {
  * drifting away from the rail; pinning it to the start instead keeps it
  * hugging the sidebar, with the leftover space pushed to the right. */
 .ux #nd-page article {
-  @apply pt-23! max-md:px-6! md:max-w-[min(94%,1600px)]! md:ms-0! md:me-auto! 3xl:mx-auto!;
+  @apply pt-31! max-md:px-6! md:max-w-[min(94%,1600px)]! md:ms-0! md:me-auto! 3xl:mx-auto!;
 }
 
 /* The table of contents is the docked control in `floating-toc.tsx`, so the

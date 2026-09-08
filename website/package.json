@@ -25,6 +25,7 @@
     "@base-ui/react": "^1.7.0",
     "@floating-ui/react": "^0.27.20",
     "@opennextjs/cloudflare": "^1.17.1",
+    "@paper-design/shaders-react": "^0.0.80",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-popover": "^1.1.15",

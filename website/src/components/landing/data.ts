@@ -7,6 +7,15 @@ export const TWITTER = "https://x.com/rit3zh";
 export const BUY_ME_A_COFFEE = "https://buymeacoffee.com/rit3zh";
 
 /**
+ * Buy Me a Coffee's membership tab — the recurring tier, as opposed to the
+ * one-off coffee the link above buys. The sponsors page sends people here.
+ */
+export const BMC_MEMBERSHIP = "https://buymeacoffee.com/rit3zh/membership";
+
+/** The sponsors page: what the membership is, and where to start one. */
+export const SPONSOR_HREF = "/sponsors";
+
+/**
  * What the hero claims the library holds.
  *
  * Counted from the registry rather than typed out — the hand-written number had

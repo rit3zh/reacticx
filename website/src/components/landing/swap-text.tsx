@@ -128,9 +128,23 @@ export function Phrase({
   // "in" starts displaced and settles; "out" starts at rest and leaves.
   const [atRest, setAtRest] = React.useState(mode === "out");
 
+  /**
+   * Two frames, not one. A single `requestAnimationFrame` can land before the
+   * browser has resolved style for the displaced first render, in which case
+   * the two states collapse into one and the glyph simply appears — which is
+   * what the headline's occasional hard pop was. Waiting for the frame after
+   * guarantees the start state has been through style and paint, so every
+   * glyph has something to transition from.
+   */
   React.useEffect(() => {
-    const frame = requestAnimationFrame(() => setAtRest(mode === "in"));
-    return () => cancelAnimationFrame(frame);
+    let inner = 0;
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => setAtRest(mode === "in"));
+    });
+    return () => {
+      cancelAnimationFrame(outer);
+      cancelAnimationFrame(inner);
+    };
   }, [mode]);
 
   const chars = [...text];
@@ -145,14 +159,16 @@ export function Phrase({
    */
   const [done, setDone] = React.useState(false);
 
+  // Total time from the first glyph starting to the last one settling.
+  const span = Math.max(animating - 1, 0) * step + DURATION;
+
   React.useEffect(() => {
     if (mode !== "in" || reduced) return;
 
     setDone(false);
-    const last = Math.max(animating - 1, 0) * step + DURATION;
-    const timer = window.setTimeout(() => setDone(true), last * 1000 + 60);
+    const timer = window.setTimeout(() => setDone(true), span * 1000 + 60);
     return () => window.clearTimeout(timer);
-  }, [mode, reduced, animating, step, text]);
+  }, [mode, reduced, span, text]);
 
   // Enter rises from below, exit continues upward — one direction of travel.
   const displaced =
@@ -160,8 +176,29 @@ export function Phrase({
       ? `translateY(${CHAR.y}em) scale(${CHAR.scale}) rotateZ(${CHAR.rotate}deg)`
       : `translateY(-${CHAR.y}em) scale(${CHAR.scale}) rotateZ(${CHAR.rotate}deg)`;
 
+  /**
+   * The blur is one filter on the phrase rather than one per glyph.
+   *
+   * `filter` is not a compositable property, so every animated glyph was a
+   * separate per-frame CPU blur — and with an outgoing phrase overlapping an
+   * incoming one, a four-word headline was running two dozen of them at once
+   * while the wrapper's width tween relaid out the line each frame. Lifting it
+   * to the wrapper leaves two, and because the glyphs underneath still carry
+   * the stagger, the string still reads as resolving letter by letter.
+   *
+   * Opacity and transform stay per glyph: both are compositable, so the
+   * stagger that carries the whole effect costs nothing.
+   */
   return (
-    <span aria-label={mode === "in" ? text : undefined}>
+    <span
+      aria-label={mode === "in" ? text : undefined}
+      style={{
+        display: "inline-block",
+        filter: atRest ? "blur(0px)" : `blur(${CHAR.blur}em)`,
+        transition: reduced ? "none" : `filter ${span}s ${EASE_NUMERIC}`,
+        willChange: done || reduced ? undefined : "filter",
+      }}
+    >
       {chars.map((char, charIndex) => (
         <span
           aria-hidden
@@ -170,14 +207,11 @@ export function Phrase({
           style={{
             opacity: atRest ? 1 : 0,
             transform: atRest ? "none" : displaced,
-            filter: atRest ? "blur(0px)" : `blur(${CHAR.blur}em)`,
             transition: reduced
               ? "none"
               : `opacity ${DURATION}s ${EASE_NUMERIC} ${charIndex * step}s,
-                 transform ${DURATION}s ${EASE_NUMERIC} ${charIndex * step}s,
-                 filter ${DURATION}s ${EASE_NUMERIC} ${charIndex * step}s`,
-            willChange:
-              done || reduced ? undefined : "transform, filter, opacity",
+                 transform ${DURATION}s ${EASE_NUMERIC} ${charIndex * step}s`,
+            willChange: done || reduced ? undefined : "transform, opacity",
           }}
         >
           {char === " " ? NBSP : char}

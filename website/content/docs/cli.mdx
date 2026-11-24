@@ -138,11 +138,12 @@ project with no path mapping still compiles.
 The registry mirrors source, not packages, so there is no dependency list to
 trust. Instead the imports in the files just written are read back, anything
 already in your `package.json` is dropped, and what remains is offered for
-install with your own package manager.
+install with your own package manager. When the CLI offers Skia and WebGPU, it
+uses versions built against the same Dawn release.
 
 ```
 │  ! 2 package(s) are imported but not installed
-│  · @shopify/react-native-skia
+│  · react-native-skia
 │  · react-native-reanimated
 │
 ? Install them with bun? › (Y/n)

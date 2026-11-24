@@ -11,7 +11,7 @@ import {
   rect,
   type SkRuntimeEffect,
   type Uniforms,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   useSharedValue,
   withTiming,

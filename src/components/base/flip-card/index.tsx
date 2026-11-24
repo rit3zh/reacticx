@@ -17,7 +17,7 @@ import Animated, {
   Extrapolation,
   type WithSpringConfig,
 } from "react-native-reanimated";
-import { BlurView, type BlurViewProps } from "@sbaiahmed1/react-native-blur";
+import { BlurView } from "@sbaiahmed1/react-native-blur";
 import * as Haptics from "expo-haptics";
 
 import { createCompoundComponent } from "@/utils/create-compound-component";
@@ -32,7 +32,7 @@ import type {
 } from "./types";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 const FlipCardContext = createContext<FlipCardContextValue | null>(null);
 

@@ -1,22 +1,23 @@
-import React, { memo, useMemo } from "react";
-import { StyleSheet } from "react-native";
+import React, { memo } from "react";
 import {
   Canvas,
+  useClock,
+  useCanvasSize,
   Fill,
   Skia,
   Shader,
-  type SkRuntimeEffect as RuntimeEffect,
   type Uniforms,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   useSharedValue,
-  useFrameCallback,
   useDerivedValue,
   withTiming,
 } from "react-native-reanimated";
 import { hexToRgb } from "./helper";
 import type { UnstableOrbProps } from "./types";
 import { SHADER_SOURCE } from "./conf";
+
+const shader = Skia.RuntimeEffect.Make(SHADER_SOURCE);
 
 export const UnstableOrb: React.FC<UnstableOrbProps> &
   React.FunctionComponent<UnstableOrbProps> = memo<UnstableOrbProps>(
@@ -27,28 +28,15 @@ export const UnstableOrb: React.FC<UnstableOrbProps> &
     colors = ["#9C43FE", "#4CC2E9", "#101499"],
     style = { width: 200, height: 200 },
   }: UnstableOrbProps): React.ReactNode & React.JSX.Element => {
-    const size = useSharedValue({ width: 0, height: 0 });
-    const time = useSharedValue<number>(0);
+    const { size, onLayout } = useCanvasSize();
+    const time = useClock();
     const animatedIntensity = useSharedValue<number>(intensity);
-
-    const shader: RuntimeEffect | null = useMemo(() => {
-      const effect = Skia.RuntimeEffect.Make(SHADER_SOURCE);
-      if (!effect) {
-        console.error("[MetallicPaint] Failed to create runtime effect");
-        return null;
-      }
-      return effect;
-    }, []);
-
-    useFrameCallback(() => {
-      time.value += 0.016;
-    });
 
     React.useEffect(() => {
       animatedIntensity.value = withTiming<number>(intensity, {
         duration: 400,
       });
-    }, [intensity]);
+    }, [animatedIntensity, intensity]);
 
     const [bgR, bgG, bgB] = hexToRgb<string>(background);
     const [orb1R, orb1G, orb1B] = hexToRgb<string>(colors[0]);
@@ -56,8 +44,8 @@ export const UnstableOrb: React.FC<UnstableOrbProps> &
     const [orb3R, orb3G, orb3B] = hexToRgb<string>(colors[2]);
 
     const uniforms = useDerivedValue<Uniforms>(() => ({
-      iTime: time.value,
-      iResolution: [size.value.width, size.value.height],
+      iTime: time.value / 1000,
+      iResolution: [Math.max(1, size.width), Math.max(1, size.height)],
       colorShift: colorShift,
       distortion: animatedIntensity.value,
       bgColor: [bgR, bgG, bgB],
@@ -67,19 +55,15 @@ export const UnstableOrb: React.FC<UnstableOrbProps> &
     }));
 
     return (
-      <Canvas style={[styles.canvas, style]} onSize={size}>
-        <Fill>
-          <Shader source={shader as RuntimeEffect} uniforms={uniforms} />
-        </Fill>
+      <Canvas style={style} onLayout={onLayout}>
+        {shader && (
+          <Fill>
+            <Shader source={shader} uniforms={uniforms} />
+          </Fill>
+        )}
       </Canvas>
     );
   },
 );
 
-const styles = StyleSheet.create({
-  canvas: {
-    // flex: 1,
-  },
-});
-
-export default memo<UnstableOrbProps>(UnstableOrb);
+export default UnstableOrb;

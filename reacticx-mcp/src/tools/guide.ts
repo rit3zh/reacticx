@@ -36,7 +36,7 @@ becomes yours to edit.
 
 - Components lean on the usual React Native animation stack: Reanimated,
   Gesture Handler, Skia, and friends.
-- Skia is published as \`@shopify/react-native-skia\`.
+- Reacticx Skia components require \`react-native-skia@3.11.0\` on React 19.2.
 - \`react-native-blur\` here is the GitHub fork: install
   \`sbaiahmed1/react-native-blur\`, not the npm package of the same name.
 - After adding any native dependency, rebuild the native target

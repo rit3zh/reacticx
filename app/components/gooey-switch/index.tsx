@@ -3,7 +3,6 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import { SymbolView } from "expo-symbols";
-import { CountdownTimer } from "@/components/micro-interactions/countdown";
 import { Ionicons } from "@expo/vector-icons";
 import { FlexiButton } from "@/components/micro-interactions/flexi-button";
 import GooeySwitch from "@/components/micro-interactions/gooey-switch";

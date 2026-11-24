@@ -14,9 +14,9 @@ import {
   Shader,
   ImageShader,
   Skia,
-  makeImageFromView,
   type SkImage,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
+import { captureViewImage } from "@/helpers/capture-view-image";
 import {
   useSharedValue,
   useDerivedValue,
@@ -44,6 +44,7 @@ export const AuraLiftGlobalContextProvider: React.FC<IAuraLiftProvider> &
     | (React.ReactNode & React.JSX.Element & React.ReactElement)
     | null => {
     const viewRef = useRef<View>(null);
+    const busyRef = useRef(false);
     const [snapshot, setSnapshot] = useState<SkImage | null>(null);
     const [isActive, setIsActive] = useState<boolean>(false);
     const [layout, setLayout] = useState<Pick<ScaledSize, "width" | "height">>({
@@ -65,20 +66,21 @@ export const AuraLiftGlobalContextProvider: React.FC<IAuraLiftProvider> &
     }));
 
     const hideOverlay = useCallback(() => {
+      busyRef.current = false;
       setIsActive(false);
       setSnapshot(null);
     }, []);
 
     const toggleAuraLift = useCallback(async () => {
-      if (isActive) {
-        return;
-      }
-
-      if (!viewRef.current) return;
+      if (busyRef.current || !viewRef.current) return;
+      busyRef.current = true;
 
       try {
-        const image = await makeImageFromView<View | null>(viewRef);
-        if (!image) return;
+        const image = await captureViewImage(viewRef);
+        if (!image) {
+          busyRef.current = false;
+          return;
+        }
 
         setSnapshot(image);
         setIsActive(true);
@@ -104,9 +106,10 @@ export const AuraLiftGlobalContextProvider: React.FC<IAuraLiftProvider> &
           },
         );
       } catch (err) {
+        busyRef.current = false;
         console.warn("[AuraLiftContextProvider] Failed to capture view:", err);
       }
-    }, [isActive, duration, progress, overlayOpacity, hideOverlay]);
+    }, [duration, progress, overlayOpacity, hideOverlay]);
 
     const contextValue: IAuraLiftContext = {
       toggle: toggleAuraLift,

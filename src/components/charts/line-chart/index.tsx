@@ -36,7 +36,7 @@ import {
   LinearGradient,
   Path,
   vec,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import { scheduleOnRN } from "react-native-worklets";
 import { createCompoundComponent } from "@/utils/create-compound-component";
 import {

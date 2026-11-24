@@ -19,7 +19,6 @@ const SPAWN_RING_SPREAD = 0.35;
 const SPAWN_SCALE = 0;
 const TOUCH_LERP = 0.35;
 const DRIFT_SPEED = 0.0022;
-const START_DELAY_FRAMES = 2;
 
 export {
   DEFAULT_COLORS,
@@ -41,5 +40,4 @@ export {
   SPAWN_SCALE,
   TOUCH_LERP,
   DRIFT_SPEED,
-  START_DELAY_FRAMES,
 };

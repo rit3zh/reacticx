@@ -37,7 +37,7 @@ import {
 } from "./const";
 
 const AnimatedBlur =
-  Animated.createAnimatedComponent<Partial<BlurViewProps>>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 const IS_IOS = Platform.OS === "ios";
 

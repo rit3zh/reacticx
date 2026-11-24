@@ -1,4 +1,4 @@
-import { BlurView, type BlurViewProps } from "expo-blur";
+import { BlurView } from "expo-blur";
 import React, {
   createContext,
   useContext,
@@ -38,7 +38,7 @@ import type {
 } from "./types";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 

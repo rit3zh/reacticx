@@ -7,7 +7,7 @@ import {
   Skia,
   Shader,
   type Uniforms,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   useSharedValue,
   useFrameCallback,

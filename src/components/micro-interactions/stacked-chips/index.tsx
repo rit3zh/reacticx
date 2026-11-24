@@ -24,7 +24,7 @@ import {
 import type { ChipContextType, StackedChipsProps, TriggerProps } from "./types";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 const ChipContext = createContext<ChipContextType | null>(null);
 
 export const StackedChips = ({ children }: StackedChipsProps) => {

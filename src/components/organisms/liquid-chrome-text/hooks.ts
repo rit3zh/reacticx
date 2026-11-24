@@ -9,9 +9,10 @@ import {
   Skia,
   matchFont,
   useFont,
+  useGpu,
   type DataSourceParam,
   type SkFont,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import { buildChromeField } from "./helper";
 import type { IChromeField, IUseChromeField, TSkiaWeight } from "./types";
 import { BASE_FONT_SIZE, NAMED_WEIGHTS } from "./const";
@@ -124,14 +125,16 @@ const useChromeField = <T extends IUseChromeField>(
     bulge,
   } = opts;
   const [field, setField] = useState<IChromeField | null>(null);
+  const gpu = useGpu();
 
   useEffect(() => {
-    if (!font || !(width > 0) || !(height > 0)) return;
+    if (!gpu.isAvailable || !font || !(width > 0) || !(height > 0)) {
+      setField(null);
+      return;
+    }
 
-    let cancelled = false;
-    const handle = requestAnimationFrame(() => {
-      if (cancelled) return;
-      const built = buildChromeField({
+    setField(
+      buildChromeField({
         text,
         font,
         width,
@@ -141,15 +144,10 @@ const useChromeField = <T extends IUseChromeField>(
         widthRatio,
         letterSpacing,
         bulge,
-      });
-      if (!cancelled && built) setField(built);
-    });
-
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(handle);
-    };
+      }),
+    );
   }, [
+    gpu,
     text,
     font,
     width,

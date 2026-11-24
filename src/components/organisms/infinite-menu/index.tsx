@@ -1,7 +1,7 @@
 // @ts-check
 import React, { useCallback, useMemo, useState, useRef, memo } from "react";
 import { StyleSheet, Dimensions, type LayoutChangeEvent } from "react-native";
-import { Canvas, Circle, Group, Image, Skia } from "@shopify/react-native-skia";
+import { Canvas, Circle, Group, Image, Skia } from "react-native-skia";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -49,11 +49,10 @@ const DiscComponent: React.FC<IDiscComponent> = memo<IDiscComponent>(
     borderColor = "rgba(255, 255, 255, 0.25)",
     minRadius = 1,
   }: IDiscComponent): React.ReactElement | null => {
-    const clipPath = useMemo(() => {
-      const path = Skia.Path.Make();
-      path.addCircle(x, y, radius);
-      return path;
-    }, [x, y, radius]);
+    const clipPath = useMemo(
+      () => Skia.Path.Circle(x, y, radius),
+      [x, y, radius],
+    );
 
     if (radius < minRadius) return null;
 

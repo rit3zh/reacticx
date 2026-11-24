@@ -18,11 +18,12 @@ import {
   Skia,
   type SkImage,
   type Uniforms,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   Easing,
   useDerivedValue,
   useSharedValue,
+  cancelAnimation,
   withTiming,
 } from "react-native-reanimated";
 
@@ -120,7 +121,7 @@ const ShockwaveRoot: React.MemoExoticComponent<React.FC<IShockwaveProps>> =
       React.ReactElement => {
       const fromRef = useRef<View | null>(null);
       const toRef = useRef<View | null>(null);
-      const prevValueRef = useRef<ShockwaveValue>(value);
+      const activeValueRef = useRef<ShockwaveValue>(value);
 
       const [activeValue, setActiveValue] = useState<ShockwaveValue>(value);
       const [snapshots, setSnapshots] = useState<{
@@ -132,6 +133,7 @@ const ShockwaveRoot: React.MemoExoticComponent<React.FC<IShockwaveProps>> =
 
       const finishTransition = useCallback(
         (next: ShockwaveValue) => {
+          activeValueRef.current = next;
           setActiveValue(next);
           setSnapshots(null);
           onTransitionEnd?.(next);
@@ -140,22 +142,22 @@ const ShockwaveRoot: React.MemoExoticComponent<React.FC<IShockwaveProps>> =
       );
 
       useEffect(() => {
-        if (value === prevValueRef.current) return;
-        const prev = prevValueRef.current;
+        const prev = activeValueRef.current;
+        if (value === prev) {
+          setSnapshots(null);
+          return;
+        }
         const next = value;
-        prevValueRef.current = value;
 
         let cancelled = false;
+        const complete = () => {
+          if (!cancelled) finishTransition(next);
+        };
         (async () => {
-          const pair = await snapshotPair(
-            fromRef as React.RefObject<View>,
-            toRef as React.RefObject<View>,
-            prev,
-            next,
-          );
+          const pair = await snapshotPair(fromRef, toRef, prev, next).catch(() => null);
           if (cancelled) return;
           if (!pair) {
-            setActiveValue(next);
+            complete();
             return;
           }
           setSnapshots(pair);
@@ -164,13 +166,14 @@ const ShockwaveRoot: React.MemoExoticComponent<React.FC<IShockwaveProps>> =
             1,
             { duration, easing: Easing.linear },
             (done) => {
-              if (done) scheduleOnRN(finishTransition, next);
+              if (done) scheduleOnRN(complete);
             },
           );
         })();
 
         return () => {
           cancelled = true;
+          cancelAnimation(progress);
         };
       }, [value, duration, finishTransition, progress]);
 

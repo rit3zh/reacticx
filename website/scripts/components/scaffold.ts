@@ -176,14 +176,21 @@ const IGNORED_IMPORTS = new Set(["react", "react-native"]);
 
 async function readDependencies(dirs: readonly string[]) {
   const found = new Set<string>();
+  const sourceDirs = new Set(dirs);
 
-  for (const dir of dirs) {
+  for (const dir of sourceDirs) {
     for (const file of await walk(dir)) {
       if (!/\.tsx?$/.test(file)) continue;
       const source = await readFile(file, "utf8");
 
       for (const match of source.matchAll(/from\s+["']([^"']+)["']/g)) {
         const specifier = match[1]!;
+        if (specifier.startsWith("@/helpers/")) {
+          const helper = join(REPO_ROOT, "src", specifier.slice(2));
+          if (existsSync(helper) && (await stat(helper)).isDirectory()) {
+            sourceDirs.add(helper);
+          }
+        }
         if (specifier.startsWith(".") || specifier.startsWith("@/") || specifier.startsWith("~"))
           continue;
 
@@ -194,6 +201,7 @@ async function readDependencies(dirs: readonly string[]) {
     }
   }
 
+  if (found.has("react-native-webgpu")) found.add("@webgpu/types");
   return [...found].sort();
 }
 

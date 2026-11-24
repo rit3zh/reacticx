@@ -16,11 +16,13 @@ full: true
 
 ### Manual
 
+For the native build requirements, see [Skia on iOS and Android](/docs/installation#skia-on-ios-and-android).
+
 <Steps>
   <Step>
      Install the following dependencies:
      ```package-install
-     @expo/vector-icons @shopify/react-native-skia react-native-reanimated react-native-worklets
+     @expo/vector-icons react-native-skia@3.11.0 react-native-webgpu@0.23.0 @webgpu/types@0.1.65 react-native-reanimated react-native-worklets
      ```
   </Step>
 
@@ -28,6 +30,8 @@ full: true
   Copy and paste the following code into your project.
   ```component/aura-lift.tsx```
   <ComponentFiles name="aura-lift" />
+
+  Copy the [view capture helper](https://github.com/rit3zh/reacticx/blob/main/src/helpers/capture-view-image/index.ts) to `src/helpers/capture-view-image/index.ts`. The CLI copies it automatically.
 </Step>
 </Steps>
 

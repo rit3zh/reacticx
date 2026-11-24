@@ -1,19 +1,19 @@
-import React, { memo, useCallback, useEffect, useMemo, useRef } from "react";
+import React, { memo, useCallback, useEffect, useRef } from "react";
 import { View } from "react-native";
 import {
   Canvas,
-  PaintStyle,
-  Picture,
+  Group,
+  Path,
+  RoundedRect,
   Skia,
-  StrokeCap,
-  createPicture,
-  type SkPicture,
-} from "@shopify/react-native-skia";
+  type Transforms3d,
+} from "react-native-skia";
 import {
   cancelAnimation,
   Easing,
   useDerivedValue,
   useSharedValue,
+  type SharedValue,
   withDelay,
   withRepeat,
   withSequence,
@@ -52,6 +52,35 @@ const WIFI_OUTER = Skia.Path.MakeFromSVGString(WIFI_OUTER_PATH)!;
 const WIFI_INNER = Skia.Path.MakeFromSVGString(WIFI_INNER_PATH)!;
 const WIFI_WEDGE = Skia.Path.MakeFromSVGString(WIFI_WEDGE_PATH)!;
 const BATTERY_CAP = Skia.Path.MakeFromSVGString(BATTERY_CAP_PATH)!;
+const EMPTY_PATH = Skia.PathBuilder.Make().detach();
+const SIGNAL_BARS = Array.from({ length: SIGNAL.count }, (_, index) => index);
+
+function SignalBar({
+  color,
+  index,
+  time,
+}: {
+  color: string;
+  index: number;
+  time: SharedValue<number>;
+}) {
+  const rect = useDerivedValue(() => {
+    const bar = signalPose(index, time.value);
+    const radius = Math.min(SIGNAL.width, bar.height) / 2;
+    return Skia.RRectXY(
+      Skia.XYWHRect(
+        bar.cx - SIGNAL.width / 2,
+        bar.cy - bar.height / 2,
+        SIGNAL.width,
+        bar.height,
+      ),
+      radius,
+      radius,
+    );
+  });
+
+  return <RoundedRect rect={rect} color={color} />;
+}
 
 export const CircularStatusBarIphoneDuo: React.FC<ICircularStatusBarIphoneDuo> = ({
   size = DEFAULT_SIZE,
@@ -135,99 +164,52 @@ export const CircularStatusBarIphoneDuo: React.FC<ICircularStatusBarIphoneDuo> =
   const height = (size * VIEW_BOX.height) / VIEW_BOX.width;
   const scale = size / VIEW_BOX.width;
 
-  const paints = useMemo(() => {
-    const fill = Skia.Paint();
-    fill.setAntiAlias(true);
-    fill.setColor(Skia.Color(color));
-
-    const cap = fill.copy();
-
-    const wifi = fill.copy();
-    wifi.setStyle(PaintStyle.Stroke);
-    wifi.setStrokeCap(StrokeCap.Round);
-    wifi.setStrokeWidth(WIFI.arcWidth);
-
-    const arc = wifi.copy();
-    arc.setStrokeWidth(LINE_WIDTH);
-
-    return { fill, cap, wifi, arc };
-  }, [color]);
-
-  const picture = useDerivedValue<SkPicture>(() => {
-    const time = Math.min(Math.max(driver.value, 0), 1) * TIMELINE_LENGTH;
-
-    return createPicture(
-      (canvas) => {
-        canvas.save();
-        canvas.scale(scale, scale);
-        canvas.translate(-VIEW_BOX.x, -VIEW_BOX.y);
-
-        for (let index = 0; index < SIGNAL.count; index++) {
-          const bar = signalPose(index, time);
-          const radius = Math.min(SIGNAL.width, bar.height) / 2;
-          canvas.drawRRect(
-            Skia.RRectXY(
-              Skia.XYWHRect(
-                bar.cx - SIGNAL.width / 2,
-                bar.cy - bar.height / 2,
-                SIGNAL.width,
-                bar.height,
-              ),
-              radius,
-              radius,
-            ),
-            paints.fill,
-          );
-        }
-
-        const glyph = wifiPose(time);
-        canvas.save();
-        canvas.translate(glyph.cx, glyph.cy);
-        canvas.scale(glyph.scale, glyph.scale);
-        canvas.translate(-WIFI.width / 2, -WIFI.height / 2);
-        canvas.drawPath(WIFI_OUTER, paints.wifi);
-        canvas.drawPath(WIFI_INNER, paints.wifi);
-        canvas.drawPath(WIFI_WEDGE, paints.fill);
-        canvas.restore();
-
-        if (time < SWAP_AT) {
-          const body = batteryPose(time);
-          const corner = Math.min(BATTERY.radius, body.width / 2);
-          canvas.drawRRect(
-            Skia.RRectXY(
-              Skia.XYWHRect(
-                body.cx - body.width / 2,
-                body.cy - body.height / 2,
-                body.width,
-                body.height,
-              ),
-              corner,
-              corner,
-            ),
-            paints.fill,
-          );
-
-          if (body.capScale > 0.001) {
-            paints.cap.setAlphaf(body.capScale);
-            canvas.save();
-            canvas.translate(body.capX, body.cy);
-            canvas.scale(body.capScale, body.capScale);
-            canvas.translate(0, -BATTERY.capHeight / 2);
-            canvas.drawPath(BATTERY_CAP, paints.cap);
-            canvas.restore();
-          }
-        } else {
-          canvas.drawPath(
-            traceArc(Skia.Path.Make(), arcPose(time)),
-            paints.arc,
-          );
-        }
-
-        canvas.restore();
-      },
-      { width, height },
+  const time = useDerivedValue(
+    () => Math.min(Math.max(driver.value, 0), 1) * TIMELINE_LENGTH,
+  );
+  const wifiTransform = useDerivedValue<Transforms3d>(() => {
+    const glyph = wifiPose(time.value);
+    return [
+      { translateX: glyph.cx },
+      { translateY: glyph.cy },
+      { scale: glyph.scale },
+      { translateX: -WIFI.width / 2 },
+      { translateY: -WIFI.height / 2 },
+    ];
+  });
+  const battery = useDerivedValue(() => batteryPose(Math.min(time.value, SWAP_AT)));
+  const batteryOpacity = useDerivedValue(() => Number(time.value < SWAP_AT));
+  const bodyRect = useDerivedValue(() => {
+    const body = battery.value;
+    const corner = Math.min(BATTERY.radius, body.width / 2);
+    return Skia.RRectXY(
+      Skia.XYWHRect(
+        body.cx - body.width / 2,
+        body.cy - body.height / 2,
+        body.width,
+        body.height,
+      ),
+      corner,
+      corner,
     );
   });
+  const capOpacity = useDerivedValue(() =>
+    battery.value.capScale > 0.001 ? battery.value.capScale : 0,
+  );
+  const capTransform = useDerivedValue<Transforms3d>(() => {
+    const body = battery.value;
+    return [
+      { translateX: body.capX },
+      { translateY: body.cy },
+      { scale: Math.max(0.001, body.capScale) },
+      { translateY: -BATTERY.capHeight / 2 },
+    ];
+  });
+  const arc = useDerivedValue(() =>
+    time.value < SWAP_AT
+      ? EMPTY_PATH
+      : traceArc(Skia.PathBuilder.Make(), arcPose(time.value)),
+  );
 
   return (
     <View
@@ -237,7 +219,35 @@ export const CircularStatusBarIphoneDuo: React.FC<ICircularStatusBarIphoneDuo> =
       style={[{ width, height }, style]}
     >
       <Canvas style={{ width, height }}>
-        <Picture picture={picture} />
+        <Group
+          transform={[
+            { scale },
+            { translateX: -VIEW_BOX.x },
+            { translateY: -VIEW_BOX.y },
+          ]}
+        >
+          {SIGNAL_BARS.map((index) => (
+            <SignalBar key={index} index={index} time={time} color={color} />
+          ))}
+          <Group transform={wifiTransform} color={color}>
+            <Group style="stroke" strokeCap="round" strokeWidth={WIFI.arcWidth}>
+              <Path path={WIFI_OUTER} />
+              <Path path={WIFI_INNER} />
+            </Group>
+            <Path path={WIFI_WEDGE} />
+          </Group>
+          <Group opacity={batteryOpacity} color={color}>
+            <RoundedRect rect={bodyRect} />
+            <Path path={BATTERY_CAP} transform={capTransform} opacity={capOpacity} />
+          </Group>
+          <Path
+            path={arc}
+            color={color}
+            style="stroke"
+            strokeCap="round"
+            strokeWidth={LINE_WIDTH}
+          />
+        </Group>
       </Canvas>
     </View>
   );

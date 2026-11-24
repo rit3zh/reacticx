@@ -1,10 +1,10 @@
-import type { SkPath } from "@shopify/react-native-skia";
+import type { SkPath, SkPathBuilder } from "react-native-skia";
 import type {
   ICircularStatusBarIphoneDuoArcPose,
   ICircularStatusBarIphoneDuoBatteryPose,
   ICircularStatusBarIphoneDuoSignalPose,
   ICircularStatusBarIphoneDuoWifiPose,
-  CircularStatusBarIphoneDuoPhase,
+  TCircularStatusBarIphoneDuoPhase,
 } from "./types";
 import {
   ARC,
@@ -24,7 +24,7 @@ const lerp = (from: number, to: number, amount: number): number => {
   return from + (to - from) * amount;
 };
 
-const phase = (time: number, [start, end]: CircularStatusBarIphoneDuoPhase): number => {
+const phase = (time: number, [start, end]: TCircularStatusBarIphoneDuoPhase): number => {
   "worklet";
   return Math.min(1, Math.max(0, (time - start) / (end - start)));
 };
@@ -68,7 +68,7 @@ const springResponse = (amount: number, damping: number): number => {
 
 const spring = (
   time: number,
-  window: CircularStatusBarIphoneDuoPhase,
+  window: TCircularStatusBarIphoneDuoPhase,
   damping: number,
 ): number => {
   "worklet";
@@ -193,7 +193,7 @@ const arcPose = (time: number): ICircularStatusBarIphoneDuoArcPose => {
 };
 
 const traceArc = (
-  path: SkPath,
+  path: SkPathBuilder,
   { cx, cy, angle, curvature, length }: ICircularStatusBarIphoneDuoArcPose,
 ): SkPath => {
   "worklet";
@@ -251,7 +251,7 @@ const traceArc = (
     from = to;
   }
 
-  return path;
+  return path.detach();
 };
 
 export { signalPose, wifiPose, batteryPose, arcPose, traceArc };

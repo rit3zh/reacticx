@@ -15,7 +15,7 @@ import {
   RadialGradient,
   SkPath,
   SkPaint,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import type { IGridBackground } from "./types";
 
 export const GridBackground: React.FC<IGridBackground> &
@@ -34,7 +34,7 @@ export const GridBackground: React.FC<IGridBackground> &
   const { width, height }: ScaledSize = useWindowDimensions();
 
   const gridPath = useMemo<SkPath>(() => {
-    const path = Skia.Path.Make();
+    const path = Skia.PathBuilder.Make();
 
     const cols = Math.ceil(width / cellSize);
     for (let i = 0; i <= cols; i++) {
@@ -49,7 +49,7 @@ export const GridBackground: React.FC<IGridBackground> &
       path.lineTo(width, y);
     }
 
-    return path;
+    return path.detach();
   }, [width, height, cellSize]);
 
   const gridPaint = useMemo<SkPaint>(() => {

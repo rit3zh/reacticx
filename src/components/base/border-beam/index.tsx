@@ -13,7 +13,7 @@ import {
   Skia,
   Uniforms,
   useClock,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import { useDerivedValue } from "react-native-reanimated";
 import { BORDER_BEAM_SHADER } from "./conf";
 import { DEFAULT_COLORS } from "./const";

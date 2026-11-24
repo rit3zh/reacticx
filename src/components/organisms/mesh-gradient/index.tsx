@@ -7,7 +7,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { Canvas, Shader, Skia, Fill, vec } from "@shopify/react-native-skia";
+import { Canvas, Shader, Skia, Fill, vec } from "react-native-skia";
 import Animated, {
   useAnimatedStyle,
   useDerivedValue,

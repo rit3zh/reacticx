@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { Image } from "react-native";
-import { SkImage, Skia } from "@shopify/react-native-skia";
+import { SkImage, Skia } from "react-native-skia";
 import type { ImageSource } from "./types";
 
 const useLoadedImages = (sources: ImageSource[]): (SkImage | null)[] => {
@@ -25,7 +25,7 @@ const useLoadedImages = (sources: ImageSource[]): (SkImage | null)[] => {
     async (uri: string): Promise<SkImage | null> => {
       try {
         const data = await Skia.Data.fromURI(uri);
-        return Skia.Image.MakeImageFromEncoded(data);
+        return Skia.Image.MakeFromEncoded(data);
       } catch (error) {
         console.warn("Failed to load image:", uri, error);
         return null;

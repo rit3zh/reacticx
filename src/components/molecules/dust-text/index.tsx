@@ -3,7 +3,6 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
 import { StyleSheet, View, type LayoutChangeEvent } from "react-native";
@@ -15,7 +14,7 @@ import {
   useFont,
   type SkRect,
   type SkRSXform,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import {
   Easing,
@@ -41,7 +40,6 @@ import {
   DEFAULT_TOUCH_RADIUS,
   DRIFT_SPEED,
   SPAWN_SCALE,
-  START_DELAY_FRAMES,
   TOUCH_LERP,
 } from "./const";
 import { buildAtlas, deriveFont, sampleField } from "./helpers";
@@ -82,9 +80,6 @@ const DustText: React.FC<IDustText> = ({
 
   const fieldValue = useSharedValue<IDustField | null>(null);
   const revision = useSharedValue(0);
-  const startFrame = useRef<number | null>(null);
-  const visibleRef = useRef(visible);
-  visibleRef.current = visible;
   const colorsKey = colors.join("|");
   const atlas = useMemo(() => buildAtlas(colors, shape), [colorsKey, shape]);
 
@@ -108,7 +103,8 @@ const DustText: React.FC<IDustText> = ({
 
     if (!font) return;
 
-    const next = sampleField(
+    let cancelled = false;
+    sampleField(
       children,
       font,
       size.width,
@@ -116,12 +112,19 @@ const DustText: React.FC<IDustText> = ({
       density,
       maxParticles,
       autoFit,
-    );
+    )
+      .catch(() => null)
+      .then((next) => {
+        if (cancelled) return;
+        progress.value = 0;
+        fieldValue.value = next;
+        revision.value += 1;
+        setField(next);
+      });
 
-    progress.value = 0;
-    fieldValue.value = next;
-    revision.value += 1;
-    setField(next);
+    return () => {
+      cancelled = true;
+    };
   }, [
     children,
     size.width,
@@ -138,39 +141,11 @@ const DustText: React.FC<IDustText> = ({
   useEffect(() => {
     if (!field) return;
 
-    let pending = START_DELAY_FRAMES;
-
-    const step = () => {
-      pending -= 1;
-
-      if (pending > 0) {
-        startFrame.current = requestAnimationFrame(step);
-        return;
-      }
-
-      startFrame.current = null;
-      progress.value = withTiming(visibleRef.current ? 1 : 0, {
-        duration,
-        easing: Easing.linear,
-      });
-    };
-
-    startFrame.current = requestAnimationFrame(step);
-
-    return () => {
-      if (startFrame.current !== null) cancelAnimationFrame(startFrame.current);
-      startFrame.current = null;
-    };
-  }, [field]);
-
-  useEffect(() => {
-    if (!field || startFrame.current !== null) return;
-
     progress.value = withTiming(visible ? 1 : 0, {
       duration,
       easing: Easing.linear,
     });
-  }, [visible, duration]);
+  }, [field, visible, duration, progress]);
 
   const frame = useFrameCallback(({ timeSinceFirstFrame }) => {
     "worklet";

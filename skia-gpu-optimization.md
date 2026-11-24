@@ -1,6 +1,9 @@
 # Building Performant Skia Shader Components in React Native
 
-Guide for `@shopify/react-native-skia` + `react-native-reanimated` animated shader components.
+Guide for animated shaders with Skia v3 and Reanimated. Keep the Canvas drawing
+tree stable and update its uniforms with shared values. Graphite replays that
+tree on native worker threads. Reanimated supplies the changing values on the UI
+runtime.
 
 ---
 
@@ -260,7 +263,7 @@ my-shader-component/
 ### Minimal dependency set
 
 ```
-@shopify/react-native-skia  — Canvas, Shader, Fill, vec, Skia
+react-native-skia  — Canvas, Shader, Fill, vec, Skia
 react-native-reanimated     — useSharedValue, useDerivedValue, useFrameCallback,
                                useAnimatedStyle, Animated
 react-native                — View, StyleSheet, LayoutChangeEvent

@@ -11,7 +11,6 @@ import {
 import type {
   LayoutRectangle,
   ViewStyle,
-  PressableProps,
   LayoutChangeEvent,
 } from "react-native";
 import {
@@ -23,7 +22,7 @@ import {
   Fill,
   rect,
   rrect,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -58,7 +57,7 @@ import { createCompoundComponent } from "@/utils/create-compound-component";
 const ANIMATION_EASING = Easing.bezier(0.4, 0, 0.2, 1);
 
 const AnimatedPressable =
-  Animated.createAnimatedComponent<PressableProps>(Pressable);
+  Animated.createAnimatedComponent(Pressable);
 
 const MorphicTabBarBackground: React.FC<IMorphicTabBarBackground> &
   React.FunctionComponent<IMorphicTabBarBackground> =

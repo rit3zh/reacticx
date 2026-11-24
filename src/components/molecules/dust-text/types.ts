@@ -3,7 +3,7 @@ import type {
   DataSourceParam,
   SkImage,
   SkRect,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 
 type TDustShape = "circle" | "square";
 

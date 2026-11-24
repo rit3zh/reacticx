@@ -83,7 +83,7 @@ function docsUrl(page: DocPage) {
 /* ── docs frontmatter ─────────────────────────────────────────────────────── */
 
 function readFrontmatter(file: string) {
-  const source = fs.readFileSync(file, "utf8");
+  const source = fs.readFileSync(file, "utf8").replaceAll("\r\n", "\n");
   const match = /^---\n([\s\S]*?)\n---/.exec(source);
   if (!match) return {};
 
@@ -149,8 +149,9 @@ function dependenciesOf(component: ComponentInfo, registry: Registry) {
   const packages = new Set<string>();
   const uses = new Set<string>();
   const dir = path.join(ROOT, component.path);
+  const files = new Set(sourceFiles(dir));
 
-  for (const file of sourceFiles(dir)) {
+  for (const file of files) {
     const source = fs.readFileSync(file, "utf8");
 
     for (const match of source.matchAll(SPECIFIER)) {
@@ -159,7 +160,15 @@ function dependenciesOf(component: ComponentInfo, registry: Registry) {
       const pkg = packageFor(specifier);
       if (pkg) {
         packages.add(pkg);
+        if (pkg === "react-native-webgpu") packages.add("@webgpu/types");
         continue;
+      }
+
+      if (specifier.startsWith("@/helpers/")) {
+        const shared = path.join(ROOT, "src", specifier.slice(2));
+        if (fs.existsSync(shared) && fs.statSync(shared).isDirectory()) {
+          for (const file of sourceFiles(shared)) files.add(file);
+        }
       }
 
       if (!specifier.startsWith("@/components/")) continue;

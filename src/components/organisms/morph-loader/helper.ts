@@ -1,4 +1,4 @@
-import { Skia } from "@shopify/react-native-skia";
+import { Skia } from "react-native-skia";
 import { Easing, type EasingFunction } from "react-native-reanimated";
 import {
   DISTANCE_EPSILON,

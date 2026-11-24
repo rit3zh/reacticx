@@ -14,7 +14,7 @@ import {
   Skia,
   useClock,
   type Uniforms,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import { useDerivedValue, useSharedValue } from "react-native-reanimated";
 import MaskedView from "@react-native-masked-view/masked-view";
 import { GRADIENT_WAVE_SHADER } from "./conf";

@@ -11,7 +11,7 @@ import Animated, {
 import type { ICircleLoadingIndicator } from "./types";
 
 const AnimatedCircle =
-  Animated.createAnimatedComponent<Partial<CircleProps>>(Circle);
+  Animated.createAnimatedComponent(Circle);
 
 export const CircleLoadingIndicator: React.FC<ICircleLoadingIndicator> =
   memo<ICircleLoadingIndicator>(

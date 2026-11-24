@@ -1,5 +1,5 @@
 import { Platform, type TextStyle } from "react-native";
-import { Skia, matchFont, type SkFont } from "@shopify/react-native-skia";
+import { Skia, matchFont, type SkFont } from "react-native-skia";
 
 import {
   ALPHA_CUTOFF,
@@ -61,7 +61,7 @@ function deriveFont(
 
 function buildAtlas(colors: string[], shape: TDustShape): IDustAtlas | null {
   const cell = ATLAS_CELL;
-  const surface = Skia.Surface.Make(cell * colors.length, cell);
+  const surface = Skia.Surface.MakeRaster(cell * colors.length, cell);
   if (!surface) return null;
 
   const canvas = surface.getCanvas();
@@ -89,7 +89,7 @@ function buildAtlas(colors: string[], shape: TDustShape): IDustAtlas | null {
   };
 }
 
-function sampleField(
+async function sampleField(
   text: string,
   font: SkFont,
   width: number,
@@ -97,7 +97,7 @@ function sampleField(
   density: number,
   maxParticles: number,
   autoFit: boolean,
-): IDustField | null {
+): Promise<IDustField | null> {
   if (!text || width <= 0 || height <= 0) return null;
 
   const maxW = width * FIT_RATIO;
@@ -114,7 +114,7 @@ function sampleField(
     bounds = font.measureText(text);
   }
 
-  const surface = Skia.Surface.Make(Math.ceil(width), Math.ceil(height));
+  const surface = Skia.Surface.MakeRaster(Math.ceil(width), Math.ceil(height));
 
   if (!surface) return null;
 
@@ -134,7 +134,7 @@ function sampleField(
   surface.flush();
 
   const image = surface.makeImageSnapshot();
-  const pixels = image.readPixels();
+  const pixels = await image.readPixels();
 
   if (!pixels) return null;
 

@@ -14,6 +14,7 @@ import {
   componentLocator,
   findMissingDependencies,
   installCommand,
+  installSpecifier,
   loadConfig,
   resolveComponentName,
   resolvePackageManager,
@@ -315,7 +316,7 @@ async function offerDependencies(
   const missing = await findMissingDependencies(written, root);
   if (missing.length === 0) return;
 
-  const packages = missing.map((entry) => entry.name);
+  const packages = missing.map((entry) => installSpecifier(entry.name));
   const pm = resolvePackageManager(config.packageManager, root);
   const command = installCommand(pm, packages);
 

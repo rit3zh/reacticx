@@ -743,15 +743,15 @@
       "path": "src/components/templates/sheet/floating-sheet",
       "folders": [
         {
-          "name": "types",
-          "files": [
-            "FloatingPlayer.types.ts"
-          ]
-        },
-        {
           "name": "constants",
           "files": [
             "sizes/sheetSizes.ts"
+          ]
+        },
+        {
+          "name": "types",
+          "files": [
+            "FloatingPlayer.types.ts"
           ]
         },
         {
@@ -1013,19 +1013,19 @@
       "path": "src/components/templates/media-list",
       "folders": [
         {
-          "name": "utils",
-          "files": [
-            "chunk.ts",
-            "snap.ts"
-          ]
-        },
-        {
           "name": "children",
           "files": [
             "MediaListSubtitle.tsx",
             "MediaListTitle.tsx",
             "MediaListTitleWrapper.tsx",
             "MediaListWrapper.tsx"
+          ]
+        },
+        {
+          "name": "utils",
+          "files": [
+            "chunk.ts",
+            "snap.ts"
           ]
         }
       ],
@@ -1192,9 +1192,12 @@
       "path": "src/components/templates/parallax-header",
       "folders": [
         {
-          "name": "types",
+          "name": "components",
           "files": [
-            "index.ts"
+            "AnimatedHeader.tsx",
+            "AnimatedNavBar.tsx",
+            "AnimatedScrollView.tsx",
+            "AnimatedScrollViewTitle.tsx"
           ]
         },
         {
@@ -1204,12 +1207,11 @@
           ]
         },
         {
-          "name": "components",
+          "name": "helpers",
           "files": [
-            "AnimatedHeader.tsx",
-            "AnimatedNavBar.tsx",
-            "AnimatedScrollView.tsx",
-            "AnimatedScrollViewTitle.tsx"
+            "header/HeaderNavBar.tsx",
+            "wrapper/AnimatedScrollViewTitleWrapper.tsx",
+            "wrapper/HeaderComponentWrapper.tsx"
           ]
         },
         {
@@ -1220,11 +1222,9 @@
           ]
         },
         {
-          "name": "helpers",
+          "name": "types",
           "files": [
-            "header/HeaderNavBar.tsx",
-            "wrapper/AnimatedScrollViewTitleWrapper.tsx",
-            "wrapper/HeaderComponentWrapper.tsx"
+            "index.ts"
           ]
         }
       ],
@@ -1831,6 +1831,12 @@
       "path": "src/components/molecules/Toast",
       "folders": [
         {
+          "name": "hooks",
+          "files": [
+            "useToast.ts"
+          ]
+        },
+        {
           "name": "internal",
           "files": [
             "toast-body.tsx",
@@ -1842,12 +1848,6 @@
             "use-toast-lifecycle.ts",
             "use-toast-motion.ts",
             "use-toast-swipe.ts"
-          ]
-        },
-        {
-          "name": "hooks",
-          "files": [
-            "useToast.ts"
           ]
         }
       ],

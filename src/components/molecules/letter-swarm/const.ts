@@ -25,7 +25,6 @@ const LETTER_ADVANCE = 0.6;
 const REVEAL_MS = 420;
 const SWAY_SPEED = 0.0011;
 const POINTER_EASE = 0.35;
-const WARMUP_FRAMES = 2;
 export {
   SWARM_CHARSET,
   SWARM_PALETTE,
@@ -51,5 +50,4 @@ export {
   REVEAL_MS,
   SWAY_SPEED,
   POINTER_EASE,
-  WARMUP_FRAMES,
 };

@@ -5,7 +5,7 @@ import type {
   matchFont,
   SkFont,
   SkImage,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 
 type RGB = [number, number, number];
 type TSkiaWeight = Parameters<typeof matchFont>[0] extends

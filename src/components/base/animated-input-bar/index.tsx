@@ -18,11 +18,11 @@ import Animated, {
   interpolate,
   withSequence,
 } from "react-native-reanimated";
-import { BlurView, type BlurViewProps } from "expo-blur";
+import { BlurView } from "expo-blur";
 import type { ICharacter, IAnimatedInput } from "./types";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 const Character: React.FC<ICharacter> & React.FunctionComponent<ICharacter> = ({
   char,

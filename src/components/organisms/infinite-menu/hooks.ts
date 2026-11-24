@@ -1,5 +1,5 @@
 // @ts-check
-import { useImage, type SkImage } from "@shopify/react-native-skia";
+import { useImage, type SkImage } from "react-native-skia";
 import { useMemo } from "react";
 
 /** Hook rules mean the image slots are fixed; 20 is the item ceiling. */

@@ -3,7 +3,6 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
 import { StyleSheet, View, type LayoutChangeEvent } from "react-native";
@@ -15,7 +14,7 @@ import {
   useFont,
   type SkRect,
   type SkRSXform,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import {
   Easing,
@@ -46,7 +45,6 @@ import {
   SWAY_SPEED,
   TRACKING,
   TRAVEL_MS,
-  WARMUP_FRAMES,
 } from "./const";
 import {
   buildCloud,
@@ -107,7 +105,6 @@ const LetterSwarm: React.FC<ILetterSwarm> = ({
 
   const cloudValue = useSharedValue<ISwarmCloud | null>(null);
   const revision = useSharedValue(0);
-  const warmup = useRef<number | null>(null);
 
   const onLayout = useCallback((event: LayoutChangeEvent) => {
     const { width, height } = event.nativeEvent.layout;
@@ -156,45 +153,32 @@ const LetterSwarm: React.FC<ILetterSwarm> = ({
   useEffect(() => {
     if (!atlas || stride <= 0) return;
 
-    const next = buildCloud(
+    let cancelled = false;
+    buildCloud(
       forms,
       stride,
       maxLetters,
       atlas.rects.length,
       seededRandom(seed),
-    );
+    )
+      .catch(() => null)
+      .then((next) => {
+        if (cancelled) return;
+        cloudValue.value = next;
+        revision.value += 1;
+        journey.value = 1;
+        curve.value = 0;
+        setCloud(next);
+      });
 
-    cloudValue.value = next;
-    revision.value += 1;
-    journey.value = 1;
-    curve.value = 0;
-    setCloud(next);
+    return () => {
+      cancelled = true;
+    };
   }, [formsKey, stride, maxLetters, atlas, seed]);
 
   useEffect(() => {
-    if (!cloud) return;
-
-    let pending = WARMUP_FRAMES;
-
-    const tick = () => {
-      pending -= 1;
-
-      if (pending > 0) {
-        warmup.current = requestAnimationFrame(tick);
-        return;
-      }
-
-      warmup.current = null;
-      reveal.value = withTiming(1, { duration: REVEAL_MS });
-    };
-
-    warmup.current = requestAnimationFrame(tick);
-
-    return () => {
-      if (warmup.current !== null) cancelAnimationFrame(warmup.current);
-      warmup.current = null;
-    };
-  }, [cloud]);
+    if (cloud) reveal.value = withTiming(1, { duration: REVEAL_MS });
+  }, [cloud, reveal]);
 
   useEffect(() => {
     if (arriving.value === showing) return;

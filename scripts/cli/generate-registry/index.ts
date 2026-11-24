@@ -94,7 +94,7 @@ function getFoldersWithFiles(dir: string): FolderEntry[] {
     }
   }
 
-  return folders;
+  return folders.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function getAllFilesInFolderRecursively(
@@ -112,7 +112,7 @@ function getAllFilesInFolderRecursively(
 
   for (const item of items) {
     const fullPath = path.join(dir, item.name);
-    const relativePath = path.relative(baseDir, fullPath);
+    const relativePath = path.relative(baseDir, fullPath).split(path.sep).join("/");
 
     if (item.isDirectory()) {
       files.push(...getAllFilesInFolderRecursively(fullPath, baseDir));
@@ -166,7 +166,7 @@ function scanDirectory(
           category: currentCategory || "base",
           files: rootFiles.sort(),
           folders: folders,
-          path: fullPath.replace(/^\.\//, ""),
+          path: fullPath.split(path.sep).join("/"),
         });
       }
 

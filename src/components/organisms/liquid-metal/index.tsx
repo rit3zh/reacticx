@@ -17,7 +17,7 @@ import {
   Skia,
   SkImage,
   useImage,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 
 import {
   useDerivedValue,

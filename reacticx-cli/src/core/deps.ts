@@ -4,6 +4,16 @@ import fs from "fs-extra";
 import { packageFor, readSpecifiers } from "./transform.js";
 
 const PROVIDED = new Set(["react", "react-dom", "react-native", "expo"]);
+const INSTALL_VERSIONS = new Map([
+  ["react-native-skia", "3.11.0"],
+  ["react-native-webgpu", "0.23.0"],
+  ["@webgpu/types", "0.1.65"],
+]);
+
+export function installSpecifier(name: string): string {
+  const version = INSTALL_VERSIONS.get(name);
+  return version ? `${name}@${version}` : name;
+}
 
 export interface MissingDependency {
   name: string;
@@ -34,8 +44,9 @@ export async function findMissingDependencies(
   const found = new Map<string, string[]>();
 
   for (const file of files) {
-    for (const specifier of readSpecifiers(file.source)) {
-      const name = packageFor(specifier);
+    const packages = new Set(readSpecifiers(file.source).map(packageFor));
+    if (packages.has("react-native-webgpu")) packages.add("@webgpu/types");
+    for (const name of packages) {
       if (!name || PROVIDED.has(name) || installed.has(name)) continue;
 
       const users = found.get(name) ?? [];

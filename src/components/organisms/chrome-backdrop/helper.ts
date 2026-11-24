@@ -1,4 +1,4 @@
-import { Skia } from "@shopify/react-native-skia";
+import { Skia } from "react-native-skia";
 import type { RGB } from "./types";
 
 const colorToRGB = <T extends string>(color: T): RGB => {

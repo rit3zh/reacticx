@@ -33,7 +33,7 @@ interface IRippleSkiaEffect {
   width: number;
   height: number;
   /**
-   * Any React Native view(s). They are snapshotted with `makeImageFromView`
+   * Any React Native view(s). They are captured into a WebGPU texture
    * and the ripple shader is applied to the captured image.
    */
   readonly children?: React.ReactNode;

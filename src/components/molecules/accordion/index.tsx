@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { BlurView, type BlurViewProps } from "expo-blur";
+import { BlurView } from "expo-blur";
 import React, {
   createContext,
   useContext,
@@ -35,7 +35,7 @@ import {
 } from "expo-haptics";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 const AccordionContext = createContext<AccordionContextType | null>(null);
 const AccordionItemContext = createContext<{
   value: string;

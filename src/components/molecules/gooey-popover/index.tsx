@@ -14,7 +14,7 @@ import {
   Group,
   Paint,
   RoundedRect,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import Animated, {
   interpolate,
   useAnimatedStyle,

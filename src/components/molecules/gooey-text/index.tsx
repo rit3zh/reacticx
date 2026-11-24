@@ -10,7 +10,7 @@ import {
   ColorMatrix,
   matchFont,
   Skia,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   useSharedValue,
   useDerivedValue,

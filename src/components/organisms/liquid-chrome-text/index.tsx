@@ -19,7 +19,7 @@ import {
   Shader,
   Skia,
   type Uniforms,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import Animated, {
   useAnimatedStyle,
   useDerivedValue,

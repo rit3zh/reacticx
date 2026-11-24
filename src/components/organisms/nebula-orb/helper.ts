@@ -1,4 +1,4 @@
-import { Skia } from "@shopify/react-native-skia";
+import { Skia } from "react-native-skia";
 
 function toRgb<T extends string>(color: T): [number, number, number] {
   const c = Skia.Color(color);

@@ -80,7 +80,7 @@ What `add` does beyond copying files:
 - Nearly everything animates with `react-native-reanimated`; 40 components also
   need `react-native-worklets`, which is a **separate install** since Reanimated 4
   moved worklets into its own package.
-- Skia is `@shopify/react-native-skia` — 45 components use it.
+- Skia components use `react-native-skia@3.11.0` on React 19.2. Use a native development build with iOS 15.1+ or Android API 26+ and Vulkan 1.1. The catalog lists `react-native-webgpu` for components that capture native views.
 - Blur is `@sbaiahmed1/react-native-blur`, a **scoped npm package**. Do not
   install the unscoped `react-native-blur`; it is a different library.
 - Icons come from `@expo/vector-icons`, `expo-symbols` or `@hugeicons/react-native`

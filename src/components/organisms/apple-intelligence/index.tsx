@@ -6,9 +6,9 @@ import {
   Fill,
   Shader,
   ImageShader,
-  makeImageFromView,
   type SkImage,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
+import { captureViewImage } from "@/helpers/capture-view-image";
 import {
   useSharedValue,
   withTiming,
@@ -106,7 +106,7 @@ export const SiriProvider: React.FC<IAppleIntelligenceProvider> &
         busyRef.current = true;
 
         try {
-          const image = await makeImageFromView(viewRef);
+          const image = await captureViewImage(viewRef);
           if (!image) {
             busyRef.current = false;
             return;

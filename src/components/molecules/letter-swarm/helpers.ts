@@ -5,7 +5,7 @@ import {
   matchFont,
   type SkFont,
   type SkPath,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 
 import {
   CANVAS_FIT,
@@ -23,6 +23,7 @@ import type {
   ISwarmCloud,
   ISwarmForm,
   ISwarmScatter,
+  TSwarmFillRule,
   TSwarmForm,
   TSwarmPreset,
 } from "./types";
@@ -120,7 +121,7 @@ function buildLetterAtlas(
     Math.max(8, Math.ceil(font.getSize() * TILE_PADDING)),
   );
 
-  const surface = Skia.Surface.Make(
+  const surface = Skia.Surface.MakeRaster(
     tile * characters.length,
     tile * palette.length,
   );
@@ -171,32 +172,29 @@ function resolveForm(form: TSwarmForm): ISwarmForm {
   return typeof form === "string" ? { outline: form } : form;
 }
 
-function toPath(commands: string[]): SkPath | null {
+function toPath(commands: string[], fillRule: TSwarmFillRule): SkPath | null {
   const parts = commands
     .map((command) => Skia.Path.MakeFromSVGString(command))
-    .filter(Boolean) as SkPath[];
+    .filter((path) => path !== null);
 
   if (parts.length === 0) return null;
-  if (parts.length === 1) return parts[0]!;
 
-  const merged = Skia.Path.Make();
+  const builder = Skia.PathBuilder.Make();
+  if (fillRule === "evenodd") builder.setFillType(FillType.EvenOdd);
+  parts.forEach((part) => builder.addPath(part));
 
-  parts.forEach((part) => merged.addPath(part));
-
-  return merged;
+  return builder.detach();
 }
 
-function scatterInside(
+async function scatterInside(
   form: ISwarmForm,
   stride: number,
   random: () => number,
-): ISwarmScatter | null {
+): Promise<ISwarmScatter | null> {
   const outline = readOutline(form.outline, form.box, form.fillRule);
-  const path = toPath(outline.commands);
+  const path = toPath(outline.commands, outline.fillRule);
 
   if (!path) return null;
-
-  if (outline.fillRule === "evenodd") path.setFillType(FillType.EvenOdd);
 
   const source = outline.box
     ? {
@@ -215,7 +213,7 @@ function scatterInside(
   const zoom = frame / reach;
   const middle = CANVAS_SIZE / 2;
 
-  const surface = Skia.Surface.Make(CANVAS_SIZE, CANVAS_SIZE);
+  const surface = Skia.Surface.MakeRaster(CANVAS_SIZE, CANVAS_SIZE);
 
   if (!surface) return null;
 
@@ -236,7 +234,7 @@ function scatterInside(
   canvas.restore();
   surface.flush();
 
-  const pixels = surface.makeImageSnapshot().readPixels();
+  const pixels = await surface.makeImageSnapshot().readPixels();
 
   if (!pixels) return null;
 
@@ -308,27 +306,28 @@ function sortRadially(scatter: ISwarmScatter): number[] {
   });
 }
 
-function buildCloud(
+async function buildCloud(
   forms: readonly TSwarmForm[],
   stride: number,
   maxLetters: number,
   tiles: number,
   random: () => number,
-): ISwarmCloud | null {
+): Promise<ISwarmCloud | null> {
   if (forms.length === 0 || tiles <= 0) return null;
 
-  const scattered = forms.map((form) =>
-    scatterInside(resolveForm(form), stride, random),
-  );
+  const scattered: (ISwarmScatter | null)[] = [];
+  for (const form of forms) {
+    scattered.push(await scatterInside(resolveForm(form), stride, random));
+  }
 
-  const stand = scattered.find(Boolean);
+  const stand = scattered.find((scatter) => scatter !== null);
 
   if (!stand) return null;
 
   const clouds = scattered.map((scatter) => scatter ?? stand);
   const letters = Math.min(
     maxLetters,
-    ...clouds.map((scatter) => (scatter as ISwarmScatter).total),
+    ...clouds.map((scatter) => scatter.total),
   );
 
   if (letters <= 0) return null;
@@ -336,8 +335,7 @@ function buildCloud(
   const x = new Float32Array(clouds.length * letters);
   const y = new Float32Array(clouds.length * letters);
 
-  clouds.forEach((scatter, form) => {
-    const cloud = scatter as ISwarmScatter;
+  clouds.forEach((cloud, form) => {
     const order = sortRadially(cloud);
     const base = form * letters;
 

@@ -23,7 +23,7 @@ import {
   Group,
   Paint,
   RoundedRect,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import Animated, {
   Extrapolation,
   interpolate,

@@ -1,6 +1,7 @@
-import { useDerivedValue, useSharedValue } from "react-native-reanimated";
+import { useCallback } from "react";
+import { Easing, cancelAnimation, useDerivedValue, useSharedValue, withTiming } from "react-native-reanimated";
 import type { IRippleImage as IRipple } from "./types";
-import { useClock, vec } from "@shopify/react-native-skia";
+import { vec } from "react-native-skia";
 import { Gesture } from "react-native-gesture-handler";
 
 interface IUseRipple extends Required<
@@ -19,14 +20,9 @@ interface IUseRipple extends Required<
 const useRipple = <T extends IUseRipple>(options: T) => {
   const { amplitude, decay, duration, frequency, height, speed, width } =
     options;
-  const clock = useClock();
   const touchX = useSharedValue(width / 2);
   const touchY = useSharedValue(height / 2);
-  const touchStartTime = useSharedValue(-100000);
-
-  const elapsedTime = useDerivedValue(() => {
-    return (clock.value - touchStartTime.value) / 1000;
-  }, [clock, touchStartTime]);
+  const elapsedTime = useSharedValue(0);
 
   const uniforms = useDerivedValue(() => {
     const elapsed = elapsedTime.value;
@@ -51,16 +47,20 @@ const useRipple = <T extends IUseRipple>(options: T) => {
     duration,
   ]);
 
-  const start = (x: number, y: number) => {
+  const start = useCallback((x: number, y: number) => {
+    "worklet";
+    cancelAnimation(elapsedTime);
     touchX.value = x;
     touchY.value = y;
-    touchStartTime.value = clock.value;
-  };
+    elapsedTime.value = 0;
+    elapsedTime.value = withTiming(duration, {
+      duration: duration * 1000,
+      easing: Easing.linear,
+    });
+  }, [duration, elapsedTime, touchX, touchY]);
 
   const tap = Gesture.Tap().onStart((event) => {
-    touchX.value = event.x;
-    touchY.value = event.y;
-    touchStartTime.value = clock.value;
+    start(event.x, event.y);
   });
 
   return { uniforms, tap, start };

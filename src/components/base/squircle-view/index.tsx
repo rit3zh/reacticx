@@ -6,7 +6,7 @@ import {
   ViewStyle,
   type LayoutChangeEvent,
 } from "react-native";
-import { Canvas, Path } from "@shopify/react-native-skia";
+import { Canvas, Path } from "react-native-skia";
 import Animated, {
   useAnimatedStyle,
   useDerivedValue,

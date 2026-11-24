@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useEffect, useMemo } from "react";
-import { Canvas, Group, Line } from "@shopify/react-native-skia";
+import { Canvas, Group, Line } from "react-native-skia";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import {
   useAnimatedReaction,

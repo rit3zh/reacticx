@@ -10,7 +10,7 @@ import {
   Oval,
   Circle,
   RoundedRect,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,

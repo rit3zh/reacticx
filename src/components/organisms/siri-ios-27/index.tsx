@@ -7,7 +7,7 @@ import {
   Fill,
   vec,
   Uniforms,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import Animated, {
   useSharedValue,
   useDerivedValue,

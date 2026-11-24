@@ -4,7 +4,7 @@ import {
   Skia,
   type SkImage,
   type SkRect,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 
 const hexToRgb = <T extends string>(hex: T): [number, number, number] => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -43,7 +43,7 @@ const fitRect = <T extends SkImage | null>(
 const emptyImage = (): SkImage => {
   const pixels = Skia.Data.fromBytes(new Uint8Array([0, 0, 0, 0]));
 
-  return Skia.Image.MakeImage(
+  return Skia.Image.MakeRaster(
     {
       width: 1,
       height: 1,

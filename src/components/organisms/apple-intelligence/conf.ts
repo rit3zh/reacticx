@@ -1,4 +1,4 @@
-import { Skia } from "@shopify/react-native-skia";
+import { Skia } from "react-native-skia";
 
 const SHADER_SOURCE = Skia.RuntimeEffect.Make(/*wgsl*/ `
   uniform float  iTime;

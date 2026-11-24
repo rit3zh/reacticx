@@ -18,8 +18,8 @@ import {
   Rect,
   Skia,
   SkImage,
-  makeImageFromView,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
+import { captureViewImage } from "@/helpers/capture-view-image";
 import {
   PixelRatio,
   StyleSheet,
@@ -102,16 +102,11 @@ export const ThemeSwitcher = forwardRef<ThemeSwitcherRef, ThemeSwitcherProps>(
     // the same frame both used to pass the check and race two snapshots.
     const busyRef = useRef(false);
     const mountedRef = useRef(true);
-    const snapshotRef = useRef<SkImage | null>(null);
 
     useEffect(() => {
       mountedRef.current = true;
       return () => {
         mountedRef.current = false;
-        // Skia images hold native memory that GC will not reclaim; a
-        // transition interrupted by unmount would leak a full-screen bitmap.
-        snapshotRef.current?.dispose();
-        snapshotRef.current = null;
       };
     }, []);
 
@@ -137,21 +132,14 @@ export const ThemeSwitcher = forwardRef<ThemeSwitcherRef, ThemeSwitcherProps>(
 
         onAnimationStart?.();
 
-        // makeImageFromView rejects on a backgrounded app and on views that are
-        // not yet attached. Without this the rejection escaped as an unhandled
-        // promise, busyRef stayed latched, and the switch was dead until
-        // reload. Falling back to an un-animated swap keeps the app usable.
         let image: SkImage | null = null;
         try {
-          image = await makeImageFromView(
-            viewRef as React.RefObject<React.Component>,
-          );
+          image = await captureViewImage(viewRef);
         } catch {
           image = null;
         }
 
         if (!mountedRef.current) {
-          image?.dispose();
           busyRef.current = false;
           return;
         }
@@ -167,7 +155,6 @@ export const ThemeSwitcher = forwardRef<ThemeSwitcherRef, ThemeSwitcherProps>(
         // so a tap inside that window had its fresh animation reset to 0 by
         // the previous run's tail.
         progress.value = 0;
-        snapshotRef.current = image;
         setSnapshot({
           image,
           type,
@@ -193,13 +180,6 @@ export const ThemeSwitcher = forwardRef<ThemeSwitcherRef, ThemeSwitcherProps>(
         setSnapshot(null);
         finish();
 
-        // Dispose a frame after unmounting the <Image>, not before: disposing
-        // while Skia still holds the image queued for paint crashes the canvas.
-        await wait(50);
-        if (snapshotRef.current === image) {
-          image.dispose();
-          snapshotRef.current = null;
-        }
       },
       [
         animationDuration,
@@ -293,7 +273,7 @@ const ThemeMask: React.FC<
   const irisY = useDerivedValue(() => originY - irisSide.value / 2);
 
   const clockPath = useDerivedValue(() => {
-    const path = Skia.Path.Make();
+    const path = Skia.PathBuilder.Make();
     const oval = Skia.XYWHRect(
       originX - maxRadius,
       originY - maxRadius,
@@ -304,7 +284,7 @@ const ThemeMask: React.FC<
     // Start at -90deg so the sweep begins at 12 o'clock rather than 3.
     path.arcToOval(oval, -90, 360 * progress.value, false);
     path.close();
-    return path;
+    return path.detach();
   });
 
   const full = <Rect x={0} y={0} width={width} height={height} color="white" />;

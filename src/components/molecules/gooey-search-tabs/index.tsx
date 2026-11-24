@@ -28,7 +28,7 @@ import {
   Shader,
   Skia,
   type Uniforms,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import { Feather } from "@expo/vector-icons";
 import { GooeyContext, TabContext, useGooey, useTab } from "./context";
 import { GOOEY_SHADER } from "./conf";

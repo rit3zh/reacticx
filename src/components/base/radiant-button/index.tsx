@@ -18,7 +18,7 @@ import {
   Skia,
   BlurMask,
   Mask,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import Animated, {
   useSharedValue,
   useDerivedValue,
@@ -159,15 +159,13 @@ export const RadiantButton: React.FC<IRadiantButton> &
     const innerClip = useMemo(() => {
       if (!width || !height) return undefined;
       const bw = borderWidth;
-      const p = Skia.Path.Make();
-      p.addRRect(
+      return Skia.Path.RRect(
         Skia.RRectXY(
           Skia.XYWHRect(bw, bw, width - bw * 2, height - bw * 2),
           Math.max(borderRadius - bw, 0),
           Math.max(borderRadius - bw, 0),
         ),
       );
-      return p;
     }, [width, height, borderRadius, borderWidth]);
 
     const borderGlowUniforms = useDerivedValue(() => {

@@ -52,13 +52,13 @@ It is native, so rebuild afterwards rather than restarting Metro.
 
 ## Skia components crash or show a blank screen
 
-React Native Skia requires native modules. Make sure you've installed it with Expo:
+Reacticx Skia components require React Native Skia 3.11 and a native development build. Android needs API 26 or later and Vulkan 1.1. A device without Vulkan support shows blank canvases.
 
 ```bash
-npx expo install @shopify/react-native-skia
+npx expo install react-native-skia@3.11.0
 ```
 
-If you're using a bare workflow, run `npx pod-install` (iOS) after installing. Skia **does not work in Expo Go** — use a [development build](https://docs.expo.dev/develop/development-builds/introduction/) instead.
+Check the [Skia build setup](/docs/installation#skia-on-ios-and-android) and rebuild the native app. If a snapshot effect fails, verify that Skia and React Native WebGPU resolve the same version of Dawn.
 
 ---
 

@@ -16,7 +16,7 @@ import type { AnimatedWordProps, FadeTextProps } from "./types";
 import { Platform } from "react-native";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 export const FadeText: React.FC<FadeTextProps> = memo<FadeTextProps>(
   ({

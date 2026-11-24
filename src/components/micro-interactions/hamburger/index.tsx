@@ -15,7 +15,7 @@ import type { HamburgerIconProps } from "./types";
 import { BlurView, type BlurViewProps } from "expo-blur";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 export const HamburgerIcon: React.FC<HamburgerIconProps> =
   memo<HamburgerIconProps>(

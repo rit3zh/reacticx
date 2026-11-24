@@ -32,7 +32,8 @@
 <br />
 
 The source lands in your repo and it's yours from there. Built on Expo with
-Reanimated, Skia and Gesture Handler, so everything moves on the UI thread.
+Reanimated and Gesture Handler drive interactions. Skia v3 renders canvas
+effects through Graphite on native worker threads.
 
 ## Quick start
 

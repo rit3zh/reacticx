@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 import { CircularCarouselItemProps, CircularCarouselProps } from "./types";
-import { BlurView, type BlurViewProps } from "expo-blur";
+import { BlurView } from "expo-blur";
 import Animated, {
   interpolate,
   useAnimatedScrollHandler,
@@ -21,7 +21,7 @@ import Animated, {
 import { scheduleOnRN } from "react-native-worklets";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const ITEM_WIDTH = SCREEN_WIDTH * 0.75;

@@ -1,5 +1,5 @@
 import React, { memo, useMemo } from "react";
-import { StyleSheet, Image, type ViewStyle, ImageProps } from "react-native";
+import { StyleSheet, Image, type ViewStyle } from "react-native";
 import Animated, {
   Extrapolation,
   interpolate,
@@ -10,7 +10,7 @@ import Animated, {
 import type { ICarouselItem, IMaterialCarousel } from "./types";
 import { IMAGE_WIDTH, MEDIUM_IMAGE, SCREEN_WIDTH, SMALL_IMAGE } from "./const";
 
-const AnimatedImage = Animated.createAnimatedComponent<ImageProps>(Image);
+const AnimatedImage = Animated.createAnimatedComponent(Image);
 
 const CarouselItem: React.FC<ICarouselItem> &
   React.FunctionComponent<ICarouselItem> = memo<ICarouselItem>(

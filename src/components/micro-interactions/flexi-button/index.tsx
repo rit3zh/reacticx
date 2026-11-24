@@ -4,7 +4,6 @@ import {
   Pressable,
   type LayoutChangeEvent,
   type ViewStyle,
-  type PressableProps,
   Platform,
 } from "react-native";
 import React, { useState, useCallback } from "react";
@@ -15,16 +14,15 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
   useAnimatedProps,
-  type AnimatedProps,
 } from "react-native-reanimated";
 import { Ionicons } from "@expo/vector-icons";
 import { BlurView, type BlurViewProps } from "expo-blur";
 import type { FlexiButtonProps } from "./types";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 const AnimatedPressable =
-  Animated.createAnimatedComponent<PressableProps>(Pressable);
+  Animated.createAnimatedComponent(Pressable);
 
 const FlexiButton: React.FC<FlexiButtonProps> = ({
   onPress,
@@ -65,7 +63,7 @@ const FlexiButton: React.FC<FlexiButtonProps> = ({
     };
   });
 
-  const animatedBlurProps = useAnimatedProps<AnimatedProps<BlurViewProps>>(
+  const animatedBlurProps = useAnimatedProps<Pick<BlurViewProps, "intensity">>(
     () => {
       const intensity = withSpring<number>(
         interpolate(

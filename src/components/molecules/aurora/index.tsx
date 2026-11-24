@@ -1,6 +1,6 @@
 // @ts-ignore
 import React, { memo, useMemo } from "react";
-import { Canvas, Shader, Fill, Skia } from "@shopify/react-native-skia";
+import { Canvas, Shader, Fill, Skia } from "react-native-skia";
 import {
   useSharedValue,
   useFrameCallback,

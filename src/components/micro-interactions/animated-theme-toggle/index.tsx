@@ -13,7 +13,7 @@ import Svg, { Path, PathProps } from "react-native-svg";
 import type { IAnimatedThemeToggle } from "./types";
 import { MOON_PATH, PATH_LENGTHS, SUN_PATHS } from "./const";
 
-const AnimatedPath = Animated.createAnimatedComponent<PathProps>(Path);
+const AnimatedPath = Animated.createAnimatedComponent(Path);
 
 export const AnimatedThemeToggle: React.FC<IAnimatedThemeToggle> &
   React.FunctionComponent<IAnimatedThemeToggle> = memo<IAnimatedThemeToggle>(

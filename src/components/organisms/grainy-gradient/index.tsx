@@ -6,7 +6,7 @@ import {
   Fill,
   Shader,
   type SkRuntimeEffect,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   useSharedValue,
   useDerivedValue,

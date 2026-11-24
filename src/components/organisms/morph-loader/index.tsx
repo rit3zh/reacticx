@@ -7,7 +7,7 @@ import {
   Path,
   Skia,
   type SkPath,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   useDerivedValue,
   useFrameCallback,
@@ -59,6 +59,18 @@ const MorphLoader: React.FC<IMorphLoader> &
     const scale = innerSize / VIEWBOX;
     const offset = (canvasSize - innerSize) / 2;
     const containerPad = (canvasSize - size) / 2;
+    const paths = useMemo(
+      () =>
+        Array.from({ length: frameCount }, (_, frame) => {
+          const base = frame * POINTS_PER_FRAME * 2;
+          const points = Array.from({ length: POINTS_PER_FRAME }, (_, point) => ({
+            x: flat[base + point * 2],
+            y: flat[base + point * 2 + 1],
+          }));
+          return Skia.Path.Polygon(points, true);
+        }),
+      [flat, frameCount],
+    );
 
     const origin = useMemo(
       () => ({ x: canvasSize / 2, y: canvasSize / 2 }),
@@ -75,27 +87,11 @@ const MorphLoader: React.FC<IMorphLoader> &
     });
 
     const path = useDerivedValue<SkPath>(() => {
-      const v = phase.value;
-      const i = Math.floor(v);
-      const t = v - i;
-      const baseA = i * POINTS_PER_FRAME * 2;
-      const baseB = ((i + 1) % frameCount) * POINTS_PER_FRAME * 2;
-
-      const p = Skia.Path.Make();
-      for (let k = 0; k < POINTS_PER_FRAME; k++) {
-        const ix = k * 2;
-        const iy = ix + 1;
-        const ax = flat[baseA + ix];
-        const ay = flat[baseA + iy];
-        const bx = flat[baseB + ix];
-        const by = flat[baseB + iy];
-        const x = (ax + (bx - ax) * t) * scale + offset;
-        const y = (ay + (by - ay) * t) * scale + offset;
-        if (k === 0) p.moveTo(x, y);
-        else p.lineTo(x, y);
-      }
-      p.close();
-      return p;
+      const current = phase.value % frameCount;
+      const frame = Math.floor(current);
+      const next = (frame + 1) % frameCount;
+      // Each closed contour has the same number and order of path verbs.
+      return Skia.Path.Interpolate(paths[frame], paths[next], 1 - (current - frame))!;
     });
 
     const transform = useDerivedValue(() => [
@@ -114,7 +110,9 @@ const MorphLoader: React.FC<IMorphLoader> &
           }}
         >
           <Group origin={origin} transform={transform}>
-            <Path path={path} color={color} />
+            <Group transform={[{ translateX: offset }, { translateY: offset }, { scale }]}>
+              <Path path={path} color={color} />
+            </Group>
           </Group>
         </Canvas>
       </View>

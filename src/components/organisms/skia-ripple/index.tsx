@@ -14,17 +14,18 @@ import {
   Group,
   Paint,
   RuntimeShader,
+  Shader,
   rect,
   rrect,
   Image as SkiaImage,
   ImageShader,
   Fill,
   useImage,
-  makeImageFromView,
   SkImage,
   SkPath,
-} from "@shopify/react-native-skia";
-import { PixelRatio, StyleSheet, View } from "react-native";
+} from "react-native-skia";
+import { captureViewImage } from "@/helpers/capture-view-image";
+import { StyleSheet, View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { scheduleOnRN } from "react-native-worklets";
 
@@ -51,49 +52,51 @@ const SkiaRippleEffect: React.FC<IRippleSkiaEffect> &
   }: IRippleSkiaEffect): React.ReactNode &
     React.JSX.Element &
     React.ReactElement => {
-    const pd = PixelRatio.get();
     const viewRef = useRef<View>(null);
     const snapshotRef = useRef<SkImage | null>(null);
+    const captureVersion = useRef(0);
     const [snapshot, setSnapshot] = useState<SkImage | null>(null);
 
     const { uniforms, start } = useRipple({
-      amplitude: amplitude * pd,
+      amplitude,
       decay,
       duration,
       frequency,
-      height: height * pd,
-      speed: speed * pd,
-      width: width * pd,
+      height,
+      speed,
+      width,
     });
 
     const capture = useCallback(async (): Promise<SkImage | null> => {
       if (!viewRef.current) return null;
+      const version = ++captureVersion.current;
       await new Promise((resolve) => requestAnimationFrame(resolve));
-      const image = await makeImageFromView(viewRef);
-      if (image) {
-        snapshotRef.current = image;
-        setSnapshot(image);
-      }
+      if (version !== captureVersion.current) return null;
+      const image = await captureViewImage(viewRef).catch(() => null);
+      if (!image || version !== captureVersion.current) return null;
+      snapshotRef.current = image;
+      setSnapshot(image);
       return image;
     }, []);
 
     useEffect(() => {
-      capture();
+      void capture();
+      return () => {
+        captureVersion.current++;
+      };
     }, [children, capture]);
 
     const handleTap = useCallback(
       async (x: number, y: number) => {
-        const px = x * pd;
-        const py = y * pd;
         if (snapshotRef.current) {
-          start(px, py);
-          capture();
+          start(x, y);
+          void capture();
           return;
         }
         const image = await capture();
-        if (image) start(px, py);
+        if (image) start(x, y);
       },
-      [capture, start, pd],
+      [capture, start],
     );
 
     const tap = Gesture.Tap().onStart((event) => {
@@ -126,17 +129,15 @@ const SkiaRippleEffect: React.FC<IRippleSkiaEffect> &
 
           {snapshot && (
             <Canvas style={StyleSheet.absoluteFill} pointerEvents="none">
-              <Group transform={[{ scale: 1 / pd }]}>
-                <Fill>
-                  <RuntimeShader source={RIPPLE_SHADER} uniforms={uniforms}>
-                    <ImageShader
-                      image={snapshot}
-                      fit="cover"
-                      rect={rect(0, 0, snapshot.width(), snapshot.height())}
-                    />
-                  </RuntimeShader>
-                </Fill>
-              </Group>
+              <Fill>
+                <Shader source={RIPPLE_SHADER} uniforms={uniforms}>
+                  <ImageShader
+                    image={snapshot}
+                    fit="fill"
+                    rect={rect(0, 0, width, height)}
+                  />
+                </Shader>
+              </Fill>
             </Canvas>
           )}
         </View>
@@ -175,11 +176,9 @@ const RippleImage: React.FC<IRippleImage> &
 
     const clipPath = useMemo<SkPath | null>(() => {
       if (borderRadius <= 0) return null;
-      const path = Skia.Path.Make();
-      path.addRRect(
+      return Skia.Path.RRect(
         rrect(rect(0, 0, width, height), borderRadius, borderRadius),
       );
-      return path;
     }, [width, height, borderRadius]);
 
     if (!RIPPLE_SHADER) {

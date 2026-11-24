@@ -1,7 +1,7 @@
 import { useWindowDimensions, View } from "react-native";
 import React from "react";
 import type { IBackgroundGradient } from "./types";
-import { Canvas, Rect, RadialGradient, vec } from "@shopify/react-native-skia";
+import { Canvas, Rect, RadialGradient, vec } from "react-native-skia";
 
 const BackgroundGradient: React.FC<IBackgroundGradient<string>> &
   React.FunctionComponent<IBackgroundGradient<string>> = (

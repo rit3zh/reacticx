@@ -432,7 +432,8 @@ export const undocumentedSlugs = new Set(["media-list"]);
 export const dependencyLabels: Record<string, string> = {
   "react-native-reanimated": "React Native Reanimated",
   "react-native-gesture-handler": "React Native Gesture Handler",
-  "@shopify/react-native-skia": "React Native Skia",
+  "react-native-skia": "React Native Skia",
+  "react-native-webgpu": "React Native WebGPU",
   "react-native-safe-area-context": "Safe Area Context",
   "expo-haptics": "Expo Haptics",
   "expo-linear-gradient": "Expo Linear Gradient",

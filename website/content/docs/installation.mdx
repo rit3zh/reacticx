@@ -18,11 +18,13 @@ dependencies** the components are built on, plus the CLI that copies them in.
 ## 1. Install the shared dependencies
 
 ```bash
-npx expo install react-native-reanimated react-native-worklets react-native-gesture-handler react-native-svg
+npx expo install react-native-gesture-handler react-native-svg
+npx expo install react-native-reanimated@4.2.3 react-native-worklets@0.7.4
 ```
 
 ```bash
-npx expo install @shopify/react-native-skia expo-haptics expo-blur expo-symbols @expo/vector-icons
+npx expo install expo-haptics expo-blur expo-symbols @expo/vector-icons
+npx expo install react-native-skia@3.11.0 expo-build-properties
 ```
 
 | Package | Used for |
@@ -31,24 +33,58 @@ npx expo install @shopify/react-native-skia expo-haptics expo-blur expo-symbols 
 | `react-native-worklets` | ships separately from Reanimated 4; 40 components need it |
 | `react-native-gesture-handler` | drag, swipe and press interactions |
 | `react-native-svg` | vector shapes, icons and path animations |
-| `@shopify/react-native-skia` | shaders, gradients and canvas-drawn effects |
+| `react-native-skia` | shaders, gradients and canvas-drawn effects |
 | `expo-haptics` | touch feedback on press |
 | `expo-blur` | frosted-glass surfaces |
 | `expo-symbols` / `@expo/vector-icons` | icon sets |
 
-Each component page lists anything extra it needs. Install only what you use —
-none of this is required up front.
+Each component page lists the packages it needs.
+
+### Skia on iOS and Android
+
+Reacticx uses Skia 3.11 with Graphite. Use React 19.2 and React Native 0.83
+(Expo SDK 55) or a newer compatible stack. Graphite requires iOS 15.1 or later on
+Apple and Android API 26 or later with Vulkan 1.1. Use a development build with
+Expo. If you are upgrading an existing app, remove the previous Skia package
+before rebuilding its native modules.
+
+Add the Android minimum to your Expo config, or set the same minimum in your native
+Gradle configuration:
+
+```json title="app.json"
+{
+  "expo": {
+    "plugins": [
+      ["expo-build-properties", { "android": { "minSdkVersion": 26 } }]
+    ]
+  }
+}
+```
+
+Apple Intelligence, Aura Lift, Shockwave, Skia Ripple, and Theme Switch also use
+WebGPU to capture native views into Skia textures. Install the matching WebGPU
+release and add `"react-native-webgpu"` to your Expo plugins for those components:
+
+```bash
+npx expo install react-native-webgpu@0.23.0
+npm install -D @webgpu/types@0.1.65
+```
+
+After changing native dependencies, rebuild with `npx expo run:ios` or
+`npx expo run:android`. In a checked-in iOS project, run `npx pod-install` to
+resolve the updated pods. See the [Skia migration guide](https://wcandillon.github.io/react-native-skia/docs/getting-started/migration/)
+for the complete platform and upgrade requirements.
 
 ---
 
-## 2. Add the Reanimated Babel plugin
+## 2. Configure the Worklets Babel plugin
 
-It **must be last** in the `plugins` array:
+Expo configures Worklets through `babel-preset-expo`. If you add the plugin explicitly in a custom Babel setup, put it last:
 
 ```js title="babel.config.js"
 module.exports = {
   presets: ["babel-preset-expo"],
-  plugins: ["react-native-reanimated/plugin"],
+  plugins: ["react-native-worklets/plugin"],
 };
 ```
 

@@ -1,4 +1,4 @@
-import type { SkFont } from "@shopify/react-native-skia";
+import type { SkFont } from "react-native-skia";
 import type { TStaggerFrom, ICharacterMetrics, ITextMetrics } from "./types";
 
 const withBuildCharacterMetrics = <T extends SkFont>(

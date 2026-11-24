@@ -26,7 +26,7 @@ import {
 } from "./conf";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 const Character: React.FC<CharacterProps> = memo<CharacterProps>(
   ({

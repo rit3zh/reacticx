@@ -27,7 +27,7 @@ import { DEFAULT_TIMING, DEFAULT_DOT, DEFAULT_TEXT } from "./const";
 import { getAnimationPreset, normalizeItems } from "./helpers";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 const DynamicText: React.FC<IDynamicText> &
   React.FunctionComponent<IDynamicText> = memo<IDynamicText>(

@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from "react";
 import { View } from "react-native";
-import { Canvas, Path, RoundedRect } from "@shopify/react-native-skia";
+import { Canvas, Path, RoundedRect } from "react-native-skia";
 import {
   useSharedValue,
   useDerivedValue,

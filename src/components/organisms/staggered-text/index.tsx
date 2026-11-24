@@ -8,7 +8,7 @@ import {
   Blur,
   Group,
   SkFont,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   useSharedValue,
   withTiming,

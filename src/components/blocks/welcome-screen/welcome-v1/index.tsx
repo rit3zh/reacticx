@@ -1,4 +1,4 @@
-import { Canvas, Fill, Shader, Skia } from "@shopify/react-native-skia";
+import { Canvas, Fill, Shader, Skia } from "react-native-skia";
 import React, { memo, useCallback, useMemo, useState } from "react";
 import {
   Pressable,

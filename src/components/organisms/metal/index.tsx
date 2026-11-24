@@ -10,7 +10,7 @@ import {
   type ViewStyle,
 } from "react-native";
 
-import { Canvas, Fill, Shader, Skia } from "@shopify/react-native-skia";
+import { Canvas, Fill, Shader, Skia } from "react-native-skia";
 
 import {
   useDerivedValue,

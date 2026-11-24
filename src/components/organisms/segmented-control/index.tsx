@@ -23,7 +23,7 @@ import { impactAsync, ImpactFeedbackStyle } from "expo-haptics";
 import { scheduleOnRN } from "react-native-worklets";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<Partial<BlurViewProps>>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 const DEFAULT_WIDTH = Dimensions.get("screen").width - 32;
 

@@ -1,4 +1,4 @@
-import type { DataSourceParam } from "@shopify/react-native-skia";
+import type { DataSourceParam } from "react-native-skia";
 import type { StyleProp, ViewStyle } from "react-native";
 
 interface ILiquidMetal {

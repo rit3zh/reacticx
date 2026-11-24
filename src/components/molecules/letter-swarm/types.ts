@@ -3,7 +3,7 @@ import type {
   DataSourceParam,
   SkImage,
   SkRect,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 
 import type { TSwarmPreset } from "./forms";
 

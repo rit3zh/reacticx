@@ -5,7 +5,7 @@ import {
   type SkCanvas,
   type SkFont,
   type SkPaint,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   HEIGHT_BLUR_RATIO,
   MAX_FIELD_WIDTH,
@@ -135,9 +135,9 @@ const buildChromeField = (opts: IBuildChromeField): IChromeField | null => {
   if (!(width > 0) || !(height > 0)) return null;
   const [W, H] = fieldSize(width, height, scale);
 
-  const glyphSurface =
-    Skia.Surface.Make(W, H) ?? Skia.Surface.MakeOffscreen(W, H);
-  if (!glyphSurface) return null;
+  const glyphSurface = Skia.Surface.MakeOffscreen(W, H);
+  const packSurface = Skia.Surface.MakeOffscreen(W, H);
+  if (!glyphSurface || !packSurface) return null;
 
   const glyphCanvas = glyphSurface.getCanvas();
   glyphCanvas.clear(TRANSPARENT);
@@ -169,10 +169,6 @@ const buildChromeField = (opts: IBuildChromeField): IChromeField | null => {
   glyphSurface.flush();
   const glyphs = glyphSurface.makeImageSnapshot();
 
-  const packSurface =
-    Skia.Surface.Make(W, H) ?? Skia.Surface.MakeOffscreen(W, H);
-  if (!packSurface) return null;
-
   const base = Math.max(MIN_BLUR_PX, H * HEIGHT_BLUR_RATIO);
   const wide = base * Math.max(0.05, bulge) * WIDE_BLUR_SCALE;
   const tight = base * TIGHT_BLUR_SCALE;
@@ -185,9 +181,6 @@ const buildChromeField = (opts: IBuildChromeField): IChromeField | null => {
   packSurface.flush();
 
   const image = packSurface.makeImageSnapshot();
-  glyphs.dispose?.();
-  glyphSurface.dispose?.();
-
   return { image, width: W, height: H };
 };
 

@@ -26,7 +26,7 @@ import { Colors, HEADER_HEIGHT, MAX_BLUR_INTENSITY, spacing } from "./conf";
 import type { AnimatedHeaderProps } from "./types";
 
 const AnimatedBlurView =
-  Animated.createAnimatedComponent<BlurViewProps>(BlurView);
+  Animated.createAnimatedComponent(BlurView);
 
 export const AnimatedHeaderScrollView: React.FC<AnimatedHeaderProps> &
   React.FunctionComponent<AnimatedHeaderProps> = memo<AnimatedHeaderProps>(

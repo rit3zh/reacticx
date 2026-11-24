@@ -6,7 +6,7 @@ import {
   Skia,
   Fill,
   Uniforms,
-} from "@shopify/react-native-skia";
+} from "react-native-skia";
 import {
   useDerivedValue,
   useSharedValue,
